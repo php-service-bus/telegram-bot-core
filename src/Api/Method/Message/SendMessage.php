@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * Telegram Bot API.
+ *
+ * @author  Maksim Masiukevich <dev@async-php.com>
+ * @license MIT
+ * @license https://opensource.org/licenses/MIT
+ */
+
+declare(strict_types = 1);
+
+namespace ServiceBus\TelegramBot\Api\Method\Message;
+
+use ServiceBus\TelegramBot\Api\Method\SendEntity;
+use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
+use ServiceBus\TelegramBot\Api\Type\ParseMode;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Send text messages.
+ *
+ * @see https://core.telegram.org/bots/api#sendmessage
+ */
+final class SendMessage extends SendEntity
+{
+    /**
+     * Text of the message to be sent.
+     *
+     * @Assert\NotBlank()
+     *
+     * @var string
+     */
+    private $text;
+
+    /**
+     * Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your
+     * bot's message.
+     *
+     * @var ParseMode|null
+     */
+    private $parseMode;
+
+    /**
+     * Disables link previews for links in this message.
+     *
+     * @var bool
+     */
+    private $disableWebPagePreview = false;
+
+    /**
+     * @param ChatId $chatId
+     * @param string $text
+     *
+     * @return self
+     */
+    public static function create(ChatId $chatId, string $text): self
+    {
+        $self = new static($chatId);
+
+        $self->text = $text;
+
+        return $self;
+    }
+
+    /**
+     * @return $this
+     */
+    public function disableWebPagePreview(): self
+    {
+        $this->disableWebPagePreview = true;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function enableWebPagePreview(): self
+    {
+        $this->disableWebPagePreview = true;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function useMarkdown(): self
+    {
+        $this->parseMode = ParseMode::markdown();
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function useHtml(): self
+    {
+        $this->parseMode = ParseMode::html();
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function methodName(): string
+    {
+        return 'sendMessage';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function requestData(): array
+    {
+        return \array_filter(
+            [
+                'chat_id'                  => $this->chatId(),
+                'text'                     => $this->text,
+                'disable_web_page_preview' => $this->disableWebPagePreview,
+                'disable_notification'     => $this->notificationStatus(),
+                'reply_to_message_id'      => $this->replyToMessage(),
+                'parse_mode'               => null !== $this->parseMode ? $this->parseMode->toString() : null,
+                'reply_markup'             => $this->replyMarkup(),
+            ]
+        );
+    }
+}
