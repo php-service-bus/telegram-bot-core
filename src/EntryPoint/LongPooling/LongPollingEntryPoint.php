@@ -67,8 +67,7 @@ final class LongPollingEntryPoint
         TelegramBotApi $apiClient,
         ?LoggerInterface $logger = null,
         MutexFactory $mutexFactory = null
-    )
-    {
+    ) {
         $this->apiClient    = $apiClient;
         $this->logger       = $logger ?? new NullLogger();
         $this->mutexFactory = $mutexFactory ?? new InMemoryMutexFactory();
@@ -89,8 +88,7 @@ final class LongPollingEntryPoint
         TelegramBot $bot,
         ?LongPoolingConfig $longPoolingConfig = null,
         ?MessageId $fromMessage = null
-    ): Promise
-    {
+    ): Promise {
         /** @psalm-suppress InvalidArgument */
         return call(
             function(TelegramBot $bot, LongPoolingConfig $longPoolingConfig) use ($onEvent, $fromMessage): \Generator
@@ -138,8 +136,7 @@ final class LongPollingEntryPoint
         MutexFactory $mutexFactory,
         LoggerInterface $logger,
         ?MessageId $fromMessage
-    ): string
-    {
+    ): string {
         $offset = null !== $fromMessage ? (int) $fromMessage->toString() : null;
         $limit  = $longPoolingConfig->limit;
 
@@ -164,7 +161,7 @@ final class LongPollingEntryPoint
                      */
                     $result = yield $apiClient->call(GetUpdates::create($offset, $limit), $bot);
 
-                    if($result instanceof Fail)
+                    if ($result instanceof Fail)
                     {
                         $logger->error($result->errorMessage);
 
@@ -181,7 +178,7 @@ final class LongPollingEntryPoint
 
                     yield $lock->release();
                 }
-                catch(\Throwable $throwable)
+                catch (\Throwable $throwable)
                 {
                     $logger->error($throwable->getMessage(), [
                         'throwablePoint' => \sprintf('%s:%d', $throwable->getFile(), $throwable->getLine()),
@@ -213,10 +210,9 @@ final class LongPollingEntryPoint
         callable $onEvent,
         LoggerInterface $logger,
         ?int &$offset
-    ): void
-    {
+    ): void {
         /** @var \ServiceBus\TelegramBot\Api\Type\Update $update */
-        foreach($updateCollection as $update)
+        foreach ($updateCollection as $update)
         {
             $event = adapt(clone $bot, $update);
 
@@ -232,7 +228,7 @@ final class LongPollingEntryPoint
                 ->onResolve(
                     static function(?\Throwable $throwable) use ($update, $logger, $bot): void
                     {
-                        if(null !== $throwable)
+                        if (null !== $throwable)
                         {
                             $logger->error('Message execution failed: {throwableMessage}', [
                                 'throwableMessage' => $throwable->getMessage(),

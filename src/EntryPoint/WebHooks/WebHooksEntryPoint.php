@@ -93,8 +93,7 @@ final class WebHooksEntryPoint
         callable $onEvent,
         TelegramBot $bot,
         WebHooksConfig $config
-    ): Promise
-    {
+    ): Promise {
         $requestHandler = $this->createRequestHandler($bot, $onEvent);
 
         /** @psalm-suppress InvalidArgument */
@@ -106,7 +105,7 @@ final class WebHooksEntryPoint
 
                 $this->server = $server;
 
-                if(false === Cluster::isWorker())
+                if (false === Cluster::isWorker())
                 {
                     yield from self::enableWebHook($bot, $config, $this->apiClient, $this->logger);
                 }
@@ -127,7 +126,7 @@ final class WebHooksEntryPoint
         return call(
             function(): \Generator
             {
-                if(null !== $this->server)
+                if (null !== $this->server)
                 {
                     yield $this->server->stop();
                 }
@@ -148,8 +147,7 @@ final class WebHooksEntryPoint
         WebHooksConfig $config,
         TelegramBotApi $apiClient,
         LoggerInterface $logger
-    ): \Generator
-    {
+    ): \Generator {
         $callbackUrl = \str_replace(
             '{token}',
             $bot->credentials->token,
@@ -159,7 +157,7 @@ final class WebHooksEntryPoint
         /** @var \ServiceBus\TelegramBot\Api\Result\Result $result */
         $result = yield $apiClient->call(SetWebhook::create($callbackUrl, $config->certificateFilePath), $bot);
 
-        if($result instanceof Fail)
+        if ($result instanceof Fail)
         {
             throw new \RuntimeException(
                 \sprintf('Cant set webhook details: %s', $result->errorMessage)
@@ -185,7 +183,7 @@ final class WebHooksEntryPoint
 
         return static function(Request $request) use ($bot, $serializer, $messageProcessor, $logger): \Generator
         {
-            if('POST' !== $request->getMethod())
+            if ('POST' !== $request->getMethod())
             {
                 return new Response(Status::METHOD_NOT_ALLOWED);
             }
@@ -206,7 +204,7 @@ final class WebHooksEntryPoint
 
                 return new Response(Status::OK);
             }
-            catch(\Throwable $throwable)
+            catch (\Throwable $throwable)
             {
                 $logger->error('Web hook processing error: {throwableMessage}', [
                     'throwableMessage' => $throwable->getMessage(),
