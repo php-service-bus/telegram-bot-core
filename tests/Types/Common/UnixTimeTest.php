@@ -13,7 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\Telegram\Bot\Tests\Types\Common;
 
 use PHPUnit\Framework\TestCase;
-use ServiceBus\Telegram\Bot\Type\Common\UnixTime;
+use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
 
 /**
  *
