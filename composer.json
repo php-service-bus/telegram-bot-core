@@ -1,5 +1,5 @@
 {
-  "name": "php-service-bus/telegram-bot",
+  "name": "php-service-bus/telegram-bot-core",
   "description": "Telegram bot API implementation",
   "type": "library",
   "keywords": [
