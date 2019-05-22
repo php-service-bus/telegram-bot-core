@@ -70,7 +70,7 @@ use ServiceBus\TelegramBot\Api\Type\Voice\Voice;
  * @property-read Venue|null             $venue
  * @property-read Poll|null              $poll
  * @property-read User[]                 $newChatMembers
- * @property-read User[]                 $leftChatMember
+ * @property-read User|null              $leftChatMember
  * @property-read string|null            $newChatTitle
  * @property-read PhotoSize[]            $newChatPhoto
  * @property-read bool                   $deleteChatPhoto
@@ -323,9 +323,9 @@ final class Message
     /**
      * Optional. A member was removed from the group, information about them (this member may be the bot itself).
      *
-     * @var User[]
+     * @var User|null
      */
-    public $leftChatMember = [];
+    public $leftChatMember;
 
     /**
      * Optional. A chat title was changed to this value.
