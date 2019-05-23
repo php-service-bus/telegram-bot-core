@@ -20,6 +20,7 @@ use Amp\Http\Server\RequestHandler\CallableRequestHandler;
 use Amp\Http\Server\Response;
 use Amp\Http\Server\Server;
 use Amp\Http\Status;
+use Amp\Loop;
 use Amp\Promise;
 use Psr\Log\LoggerInterface;
 use ServiceBus\TelegramBot\Api\Method\WebHook\SetWebhook;
@@ -121,6 +122,11 @@ final class WebServerUpdater implements Updater
                 if (null !== $this->server)
                 {
                     yield $this->server->stop();
+
+                    if (true === Cluster::isWorker())
+                    {
+                        Loop::stop();
+                    }
                 }
             }
         );

@@ -118,15 +118,7 @@ final class EntryPoint
      */
     public function cancel(): Promise
     {
-        return call(
-            function(): \Generator
-            {
-                if (null !== $this->updater)
-                {
-                    yield $this->updater->stop();
-                }
-            }
-        );
+        return $this->updater->stop();
     }
 
     /**

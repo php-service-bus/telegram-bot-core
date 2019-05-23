@@ -23,6 +23,8 @@ final class TelegramUpdateDispatcher
 {
     public function dispatch(Update $update): Promise
     {
+        print_r($update);
+
         return new Success();
     }
 }
