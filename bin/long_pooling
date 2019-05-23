@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types = 1);
+
+use Amp\ByteStream\ResourceOutputStream;
+use Amp\Delayed;
+use Amp\Log\StreamHandler;
+use Amp\Loop;
+use Monolog\Logger;
+use ServiceBus\TelegramBot\EntryPoint\Configuration\LongPoolingConfig;
+use ServiceBus\TelegramBot\EntryPoint\EntryPoint;
+use ServiceBus\TelegramBot\EntryPoint\TelegramUpdateDispatcher;
+use ServiceBus\TelegramBot\TelegramCredentials;
+use Symfony\Component\Dotenv\Dotenv;
+
+include __DIR__ . '/../vendor/autoload.php';
+
+(new Dotenv())->load(__DIR__ . '/../.env');
+
+$logger      = new Logger('demo', [new StreamHandler(new ResourceOutputStream(\STDOUT))]);
+$credentials = TelegramCredentials::apiToken((string) \getenv('API_TOKEN'));
+$config      = LongPoolingConfig::createDefault();
+
+$dispatcher = new TelegramUpdateDispatcher();
+
+$entryPoint = new EntryPoint($dispatcher, $logger);
+
+Loop::onSignal(
+    \SIGINT,
+    static function(string $watcherId, int $signalId) use ($entryPoint, $logger): \Generator
+    {
+        $logger->info('A signal "{signalId}" was received', ['signalId' => $signalId]);
+
+        yield $entryPoint->cancel();
+        yield new Delayed(5000);
+
+        Loop::stop();
+    }
+);
+
+Loop::run(
+    static function() use ($credentials, $config, $entryPoint): \Generator
+    {
+        yield $entryPoint->run($credentials, $config);
+    }
+);
