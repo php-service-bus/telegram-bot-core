@@ -14,6 +14,7 @@ namespace ServiceBus\TelegramBot\EntryPoint;
 
 use function Amp\call;
 use Amp\Promise;
+use Amp\Success;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use ServiceBus\HttpClient\Artax\ArtaxHttpClient;
@@ -118,7 +119,12 @@ final class EntryPoint
      */
     public function cancel(): Promise
     {
-        return $this->updater->stop();
+        if (null !== $this->updater)
+        {
+            return $this->updater->stop();
+        }
+
+        return new Success();
     }
 
     /**
