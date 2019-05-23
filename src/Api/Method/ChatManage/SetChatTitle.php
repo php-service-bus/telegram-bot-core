@@ -12,16 +12,16 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatManage;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Change the title of a chat.
  *
  * @see https://core.telegram.org/bots/api#setchattitle
  */
-final class SetChatTitle implements BotCommand
+final class SetChatTitle implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

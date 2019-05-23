@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Telegram Bot API.
+ * Telegram TelegramBot API.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT

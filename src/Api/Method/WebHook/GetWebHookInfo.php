@@ -12,15 +12,15 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\WebHook;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\WebhookInfo;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Get current webhook status.
  *
  * @see https://core.telegram.org/bots/api#getwebhookinfo
  */
-final class GetWebHookInfo implements BotCommand
+final class GetWebHookInfo implements TelegramMethod
 {
     /**
      * @return self

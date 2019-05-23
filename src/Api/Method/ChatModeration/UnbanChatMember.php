@@ -12,10 +12,10 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatModeration;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel
@@ -23,7 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserId;
  *
  * @see https://core.telegram.org/bots/api#unbanchatmember
  */
-final class UnbanChatMember implements BotCommand
+final class UnbanChatMember implements TelegramMethod
 {
     /**
      * Unique identifier for the target group or username of the target supergroup or channel (in the format username).

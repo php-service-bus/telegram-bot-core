@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Telegram Bot API.
+ * Telegram TelegramBot API.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -38,18 +38,20 @@ final class SymfonySerializer implements TelegramSerializer
 
     public function __construct()
     {
-        $this->normalizer = new Serializer([
-            new DateTimeNormalizer(['datetime_format' => 'c']),
-            new MoneyNormalizer(),
-            new EnumNormalizer(),
-            new UnixTimeNormalizer(),
-            new ChatIdNormalizer(),
-            new UserIdNormalizer(),
-            new MessageIdNormalizer(),
-            new ArrayDenormalizer(),
-            new PropertyNormalizerWrapper(null, new PropertyNameConverter(), new PhpDocExtractor()),
-            new EmptyDataNormalizer(),
-        ]);
+        $this->normalizer = new Serializer(
+            [
+                new MoneyNormalizer(),
+                new EnumNormalizer(),
+                new UnixTimeNormalizer(),
+                new ChatIdNormalizer(),
+                new UserIdNormalizer(),
+                new MessageIdNormalizer(),
+                new DateTimeNormalizer(['datetime_format' => 'c']),
+                new ArrayDenormalizer(),
+                new PropertyNormalizerWrapper(null, new PropertyNameConverter(), new PhpDocExtractor()),
+                new EmptyDataNormalizer(),
+            ]
+        );
     }
 
     /**

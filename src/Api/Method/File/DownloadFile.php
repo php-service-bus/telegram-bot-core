@@ -12,8 +12,8 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\File;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Download specified file.
@@ -22,7 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  * @property-read string $toDirectory
  * @property-read string $withName
  */
-final class DownloadFile implements BotCommand
+final class DownloadFile implements TelegramMethod
 {
     /**
      * Prepared file path.

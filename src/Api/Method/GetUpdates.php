@@ -13,13 +13,14 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method;
 
 use ServiceBus\TelegramBot\Api\Type\UpdateCollection;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
  *
  * @see https://core.telegram.org/bots/api#getupdates
  */
-final class GetUpdates implements BotCommand
+final class GetUpdates implements TelegramMethod
 {
     /**
      * Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of

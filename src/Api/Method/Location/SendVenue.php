@@ -143,7 +143,7 @@ final class SendVenue extends SendEntity
             'address'              => $this->address,
             'foursquare_id'        => $this->foursquareId,
             'foursquare_type'      => $this->foursquareType,
-            'disable_notification' => $this->disableNotification(),
+            'disable_notification' => $this->notificationStatus(),
             'reply_to_message_id'  => $this->replyToMessage(),
             'reply_markup'         => $this->replyMarkup(),
         ]);

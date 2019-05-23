@@ -14,6 +14,7 @@ namespace ServiceBus\TelegramBot\Api\Method\ChatManage;
 
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for
@@ -21,7 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#deletechatphoto
  */
-final class DeleteChatPhoto
+final class DeleteChatPhoto implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup or channel (in the format

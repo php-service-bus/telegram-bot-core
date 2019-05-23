@@ -13,19 +13,19 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method\Location;
 
 use function ServiceBus\TelegramBot\Serializer\jsonEncode;
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
 use ServiceBus\TelegramBot\Api\Type\Message\InlineMessageId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Stop updating a live location message before live_period expires.
  *
  * @see https://core.telegram.org/bots/api#stopmessagelivelocation
  */
-final class StopMessageLiveLocation implements BotCommand
+final class StopMessageLiveLocation implements TelegramMethod
 {
     /**
      * Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target

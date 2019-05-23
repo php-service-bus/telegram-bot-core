@@ -17,11 +17,12 @@ use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  *
  */
-abstract class SendEntity implements BotCommand
+abstract class SendEntity implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

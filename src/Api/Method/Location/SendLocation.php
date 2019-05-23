@@ -74,7 +74,7 @@ final class SendLocation extends SendEntity
             'latitude'             => $this->coordinates->latitude,
             'longitude'            => $this->coordinates->longitude,
             'live_period'          => $this->livePeriod,
-            'disable_notification' => $this->disableNotification(),
+            'disable_notification' => $this->notificationStatus(),
             'reply_to_message_id'  => $this->replyToMessage(),
             'reply_markup'         => $this->replyMarkup(),
         ]);

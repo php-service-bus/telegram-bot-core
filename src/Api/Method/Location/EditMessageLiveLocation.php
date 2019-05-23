@@ -13,13 +13,13 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method\Location;
 
 use function ServiceBus\TelegramBot\Serializer\jsonEncode;
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
 use ServiceBus\TelegramBot\Api\Type\Location\Location;
 use ServiceBus\TelegramBot\Api\Type\Message\InlineMessageId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Edit live location messages. A location can be edited until its live_period expires or editing is explicitly
@@ -27,7 +27,7 @@ use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
  *
  * @see https://core.telegram.org/bots/api#editmessagelivelocation
  */
-final class EditMessageLiveLocation implements BotCommand
+final class EditMessageLiveLocation implements TelegramMethod
 {
     /**
      * Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target

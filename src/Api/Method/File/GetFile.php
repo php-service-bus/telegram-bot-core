@@ -12,14 +12,14 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\File;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\File\FileInfo;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download
  * files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link.
  */
-final class GetFile implements BotCommand
+final class GetFile implements TelegramMethod
 {
     /**
      * File identifier to get info about.

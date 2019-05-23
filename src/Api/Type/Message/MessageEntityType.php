@@ -19,27 +19,27 @@ use ServiceBus\TelegramBot\Api\Type\Enum;
  */
 final class MessageEntityType implements Enum
 {
-    private const HASH_TAG     = 'hashtag';
+    private const HASH_TAG = 'hashtag';
 
-    private const CASH_TAG     = 'cashtag';
+    private const CASH_TAG = 'cashtag';
 
-    private const BOT_COMMAND  = 'bot_command';
+    private const BOT_COMMAND = 'bot_command';
 
-    private const URL          = 'url';
+    private const URL = 'url';
 
-    private const EMAIL        = 'email';
+    private const EMAIL = 'email';
 
     private const PHONE_NUMBER = 'phone_number';
 
-    private const BOLD         = 'bold';
+    private const BOLD = 'bold';
 
-    private const ITALIC       = 'italic';
+    private const ITALIC = 'italic';
 
-    private const CODE         = 'code';
+    private const CODE = 'code';
 
-    private const PRE          = 'pre';
+    private const PRE = 'pre';
 
-    private const TEXT_LINK    = 'text_link';
+    private const TEXT_LINK = 'text_link';
 
     private const TEXT_MENTION = 'text_mention';
 
@@ -74,6 +74,112 @@ final class MessageEntityType implements Enum
         }
 
         return new self($value);
+    }
+
+    /**
+     * @return self
+     */
+    public static function hashTag(): self
+    {
+        return new self(self::HASH_TAG);
+    }
+
+    /**
+     * @return self
+     */
+    public static function cashTag(): self
+    {
+        return new self(self::CASH_TAG);
+    }
+
+    /**
+     * @return self
+     */
+    public static function botCommand(): self
+    {
+        return new self(self::BOT_COMMAND);
+    }
+
+    /**
+     * @return self
+     */
+    public static function url(): self
+    {
+        return new self(self::URL);
+    }
+
+    /**
+     * @return self
+     */
+    public static function email(): self
+    {
+        return new self(self::EMAIL);
+    }
+
+    /**
+     * @return self
+     */
+    public static function phoneNumber(): self
+    {
+        return new self(self::PHONE_NUMBER);
+    }
+
+    /**
+     * @return self
+     */
+    public static function bold(): self
+    {
+        return new self(self::BOLD);
+    }
+
+    /**
+     * @return self
+     */
+    public static function italic(): self
+    {
+        return new self(self::ITALIC);
+    }
+
+    /**
+     * @return self
+     */
+    public static function core(): self
+    {
+        return new self(self::CODE);
+    }
+
+    /**
+     * @return self
+     */
+    public static function pre(): self
+    {
+        return new self(self::PRE);
+    }
+
+    /**
+     * @return self
+     */
+    public static function textLink(): self
+    {
+        return new self(self::TEXT_LINK);
+    }
+
+    /**
+     * @return self
+     */
+    public static function textMention(): self
+    {
+        return new self(self::TEXT_MENTION);
+    }
+
+    /**
+     * @param MessageEntityType $type
+     *
+     * @return bool
+     */
+    public function equals(MessageEntityType $type): bool
+    {
+        return $this->value === $type->value;
     }
 
     /**

@@ -1,0 +1,22 @@
+{
+  "update_id": 66120377,
+  "poll": {
+    "id": "5415706992910008322",
+    "question": "root",
+    "options": [
+      {
+        "text": "sss",
+        "voter_count": 1
+      },
+      {
+        "text": "ddd",
+        "voter_count": 1
+      },
+      {
+        "text": "hhh",
+        "voter_count": 0
+      }
+    ],
+    "is_closed": false
+  }
+}

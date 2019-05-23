@@ -12,15 +12,15 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatManage;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Method\Chat\ChatInviteLink;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in
  * the chat for this to work and must have the appropriate admin rights. Returns the new invite link.
  */
-final class ExportChatInviteLink implements BotCommand
+final class ExportChatInviteLink implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

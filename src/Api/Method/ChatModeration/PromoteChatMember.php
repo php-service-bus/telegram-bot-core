@@ -12,10 +12,10 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatModeration;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work
@@ -23,7 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserId;
  *
  * @see https://core.telegram.org/bots/api#promotechatmember
  */
-final class PromoteChatMember implements BotCommand
+final class PromoteChatMember implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

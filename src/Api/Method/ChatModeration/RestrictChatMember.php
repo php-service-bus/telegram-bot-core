@@ -12,10 +12,10 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatModeration;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have
@@ -23,7 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserId;
  *
  * @see https://core.telegram.org/bots/api#restrictchatmember
  */
-final class RestrictChatMember implements BotCommand
+final class RestrictChatMember implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup (in the format supergroupusername).

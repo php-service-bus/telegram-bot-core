@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Telegram Bot API.
+ *
+ * @author  Maksim Masiukevich <dev@async-php.com>
+ * @license MIT
+ * @license https://opensource.org/licenses/MIT
+ */
+
+declare(strict_types = 1);
+
+namespace ServiceBus\TelegramBot\Tests\Serializer;
+
+use function ServiceBus\TelegramBot\Serializer\jsonDecode;
+use PHPUnit\Framework\TestCase;
+use ServiceBus\TelegramBot\Api\Type\Poll\Poll;
+use ServiceBus\TelegramBot\Api\Type\Update;
+use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
+
+/**
+ *
+ */
+final class PollUpdatesTest extends TestCase
+{
+    /**
+     * @test
+     *
+     * @return void
+     */
+    public function pollInfo(): void
+    {
+        /** @var Update $update */
+        $update = (new SymfonySerializer())->decode(
+            jsonDecode(\file_get_contents(__DIR__ . '/stubs/polls/vote.json'), true),
+            Update::class
+        );
+
+        static::assertNotNull($update->poll);
+
+        /** @var Poll $poll */
+        $poll = $update->poll;
+
+        static::assertSame('root', $poll->question);
+        static::assertCount(3, $poll->options);
+    }
+}

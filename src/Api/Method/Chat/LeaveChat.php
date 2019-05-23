@@ -12,16 +12,16 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Chat;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Leave a group, supergroup or channel.
  *
  * @see https://core.telegram.org/bots/api#leavechat
  */
-final class LeaveChat implements BotCommand
+final class LeaveChat implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

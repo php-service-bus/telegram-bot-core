@@ -19,15 +19,15 @@ use ServiceBus\TelegramBot\Api\Type\Enum;
  */
 final class ChatType implements Enum
 {
-    private const PRIVATE     = 'private';
+    private const PRIVATE = 'private';
 
-    private const GROUP       = 'group';
+    private const GROUP = 'group';
 
     private const SUPER_GROUP = 'supergroup';
 
-    private const CHANNEL     = 'channel';
+    private const CHANNEL = 'channel';
 
-    private const LIST        = [
+    private const LIST    = [
         self::PRIVATE,
         self::GROUP,
         self::SUPER_GROUP,
@@ -50,6 +50,48 @@ final class ChatType implements Enum
         }
 
         return new self($value);
+    }
+
+    /**
+     * @return self
+     */
+    public static function group(): self
+    {
+        return new self(self::GROUP);
+    }
+
+    /**
+     * @return self
+     */
+    public static function superGroup(): self
+    {
+        return new self(self::SUPER_GROUP);
+    }
+
+    /**
+     * @return self
+     */
+    public static function private(): self
+    {
+        return new self(self::PRIVATE);
+    }
+
+    /**
+     * @return self
+     */
+    public static function channel(): self
+    {
+        return new self(self::CHANNEL);
+    }
+
+    /**
+     * @param ChatType $type
+     *
+     * @return bool
+     */
+    public function equals(ChatType $type): bool
+    {
+        return $this->value === $type->value;
     }
 
     /**

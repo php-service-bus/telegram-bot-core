@@ -12,16 +12,16 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatModeration;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Unpin a message in a group, a supergroup, or a channel.
  *
  * @see https://core.telegram.org/bots/api#unpinchatmessage
  */
-final class UnpinChatMessage implements BotCommand
+final class UnpinChatMessage implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

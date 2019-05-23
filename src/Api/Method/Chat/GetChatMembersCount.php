@@ -12,16 +12,16 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Chat;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatMembersCount;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Get the number of members in a chat.
  *
  * @see https://core.telegram.org/bots/api#getchatmemberscount
  */
-final class GetChatMembersCount implements BotCommand
+final class GetChatMembersCount implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup or channel (in the format

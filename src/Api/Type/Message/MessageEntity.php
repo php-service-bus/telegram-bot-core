@@ -61,4 +61,12 @@ final class MessageEntity
      * @var User|null
      */
     public $user;
+
+    /**
+     * @return bool
+     */
+    public function isCommand(): bool
+    {
+        return $this->type->equals(MessageEntityType::botCommand());
+    }
 }

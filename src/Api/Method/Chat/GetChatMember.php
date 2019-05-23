@@ -12,17 +12,17 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Chat;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatMember;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Get information about a member of a chat.
  *
  * @see https://core.telegram.org/bots/api#getchatmember
  */
-final class GetChatMember implements BotCommand
+final class GetChatMember implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup or channel (in the format

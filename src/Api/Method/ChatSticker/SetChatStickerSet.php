@@ -14,6 +14,7 @@ namespace ServiceBus\TelegramBot\Api\Method\ChatSticker;
 
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must
@@ -22,7 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#setchatstickerset
  */
-final class SetChatStickerSet
+final class SetChatStickerSet implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup (in the format supergroupusername).

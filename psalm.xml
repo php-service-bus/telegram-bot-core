@@ -20,5 +20,6 @@
 
     <issueHandlers>
         <PropertyNotSetInConstructor errorLevel="suppress"/>
+        <TooManyTemplateParams errorLevel="suppress"/>
     </issueHandlers>
 </psalm>

@@ -1,0 +1,21 @@
+{
+  "update_id": 66120359,
+  "message": {
+    "message_id": 3,
+    "from": {
+      "id": 288825898,
+      "is_bot": false,
+      "first_name": "Maksim",
+      "last_name": "Masiukevich",
+      "username": "desper1989"
+    },
+    "chat": {
+      "id": -341054026,
+      "title": "qwertyroot",
+      "type": "group",
+      "all_members_are_administrators": false
+    },
+    "date": 1558479899,
+    "text": "message text"
+  }
+}

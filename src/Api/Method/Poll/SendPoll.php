@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Poll;
 
+use function ServiceBus\TelegramBot\Serializer\jsonEncode;
 use ServiceBus\TelegramBot\Api\Method\SendEntity;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 
@@ -81,8 +82,8 @@ final class SendPoll extends SendEntity
         return \array_filter([
             'chat_id'              => $this->chatId(),
             'question'             => $this->question,
-            'options'              => $this->options,
-            'disable_notification' => $this->disableNotification(),
+            'options'              => jsonEncode($this->options),
+            'disable_notification' => $this->notificationStatus(),
             'reply_to_message_id'  => $this->replyToMessage(),
             'reply_markup'         => $this->replyMarkup(),
         ]);

@@ -12,10 +12,10 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatModeration;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be
@@ -24,7 +24,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserId;
  *
  * @see https://core.telegram.org/bots/api#kickchatmember
  */
-final class KickChatMember implements BotCommand
+final class KickChatMember implements TelegramMethod
 {
     /**
      * Unique identifier for the target group or username of the target supergroup or channel (in the format

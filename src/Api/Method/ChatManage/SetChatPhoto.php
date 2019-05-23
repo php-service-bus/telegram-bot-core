@@ -13,16 +13,16 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method\ChatManage;
 
 use ServiceBus\HttpClient\InputFilePath;
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Set a new profile photo for the chat.
  *
  * @see https://core.telegram.org/bots/api#setchatphoto
  */
-final class SetChatPhoto implements BotCommand
+final class SetChatPhoto implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup or channel (in the format

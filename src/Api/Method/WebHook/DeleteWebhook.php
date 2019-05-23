@@ -12,15 +12,15 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\WebHook;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Remove webhook integration if you decide to switch back to getUpdates.
  *
  * @see https://core.telegram.org/bots/api#deletewebhook
  */
-final class DeleteWebhook implements BotCommand
+final class DeleteWebhook implements TelegramMethod
 {
     /**
      * @return self

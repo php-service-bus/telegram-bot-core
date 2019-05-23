@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatManage;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Change the description of a supergroup or a channel. The bot must be an administrator in the chat for this to work
@@ -22,7 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#setchatdescription
  */
-final class SetChatDescription implements BotCommand
+final class SetChatDescription implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

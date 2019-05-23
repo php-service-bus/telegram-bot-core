@@ -12,17 +12,17 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Message;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Forward messages of any kind.
  *
  * @see https://core.telegram.org/bots/api#forwardmessage
  */
-final class ForwardMessage implements BotCommand
+final class ForwardMessage implements TelegramMethod
 {
     /**
      * Unique identifier for the chat where the original message was sent (or channel username in the format

@@ -12,16 +12,16 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\User;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\User\UserId;
 use ServiceBus\TelegramBot\Api\Type\User\UserProfilePhotos;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Get a list of profile pictures for a user.
  *
  * @see https://core.telegram.org/bots/api#getuserprofilephotos
  */
-final class GetUserProfilePhotos implements BotCommand
+final class GetUserProfilePhotos implements TelegramMethod
 {
     /**
      * Unique identifier of the target user.

@@ -13,8 +13,8 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method\WebHook;
 
 use ServiceBus\HttpClient\InputFilePath;
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
@@ -26,7 +26,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#setwebhook
  */
-final class SetWebhook implements BotCommand
+final class SetWebhook implements TelegramMethod
 {
     private const DEFAULT_MAX_CONNECTIONS = 40;
 

@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Chat;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for
@@ -22,7 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#sendchataction
  */
-final class SendChatAction implements BotCommand
+final class SendChatAction implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

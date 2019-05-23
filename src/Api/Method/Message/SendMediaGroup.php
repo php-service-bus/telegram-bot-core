@@ -13,18 +13,18 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Api\Method\Message;
 
 use function ServiceBus\TelegramBot\Serializer\jsonEncode;
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\InputMedia\InputMedia;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Send a group of photos or videos as an album.
  *
  * @see https://core.telegram.org/bots/api#sendmediagroup
  */
-final class SendMediaGroup implements BotCommand
+final class SendMediaGroup implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format channelusername).

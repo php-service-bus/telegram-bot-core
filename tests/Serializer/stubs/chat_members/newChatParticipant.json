@@ -1,0 +1,43 @@
+{
+  "update_id": 66120362,
+  "message": {
+    "message_id": 6,
+    "from": {
+      "id": 288825898,
+      "is_bot": false,
+      "first_name": "Maksim",
+      "last_name": "Masiukevich",
+      "username": "desper1989"
+    },
+    "chat": {
+      "id": -341054026,
+      "title": "qwertyroot",
+      "type": "group",
+      "all_members_are_administrators": false
+    },
+    "date": 1558516505,
+    "new_chat_participant": {
+      "id": 54324538,
+      "is_bot": false,
+      "first_name": "FirstName",
+      "last_name": "LastName",
+      "username": "Username"
+    },
+    "new_chat_member": {
+      "id": 54324538,
+      "is_bot": false,
+      "first_name": "FirstName",
+      "last_name": "LastName",
+      "username": "Username"
+    },
+    "new_chat_members": [
+      {
+        "id": 54324538,
+        "is_bot": false,
+        "first_name": "FirstName",
+        "last_name": "LastName",
+        "username": "Username"
+      }
+    ]
+  }
+}

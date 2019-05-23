@@ -12,8 +12,8 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\CallbackQuery;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a
@@ -21,7 +21,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#answercallbackquery
  */
-final class AnswerCallbackQuery implements BotCommand
+final class AnswerCallbackQuery implements TelegramMethod
 {
     /**
      * Unique identifier for the query to be answered.

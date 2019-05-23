@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\ChatSticker;
 
-use ServiceBus\TelegramBot\Api\Method\BotCommand;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
+use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 
 /**
  * Delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must
@@ -23,7 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
  *
  * @see https://core.telegram.org/bots/api#deletechatstickerset
  */
-final class DeleteChatStickerSet implements BotCommand
+final class DeleteChatStickerSet implements TelegramMethod
 {
     /**
      * Unique identifier for the target chat or username of the target supergroup (in the format supergroupusername).
