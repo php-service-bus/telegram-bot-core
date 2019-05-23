@@ -7,7 +7,6 @@
 
 use Amp\ByteStream\ResourceOutputStream;
 use Amp\Cluster\Cluster;
-use Amp\Delayed;
 use Amp\Log\StreamHandler;
 use Amp\Loop;
 use Monolog\Logger;
@@ -33,19 +32,6 @@ $config      = WebHooksConfig::create('https://google.com');
 $dispatcher = new TelegramUpdateDispatcher();
 
 $entryPoint = new EntryPoint($dispatcher, $logger);
-
-Loop::onSignal(
-    \SIGINT,
-    static function(string $watcherId, int $signalId) use ($entryPoint, $logger): \Generator
-    {
-        $logger->info('A signal "{signalId}" was received', ['signalId' => $signalId]);
-
-        yield $entryPoint->cancel();
-        yield new Delayed(5000);
-
-        Loop::stop();
-    }
-);
 
 Loop::run(
     static function() use ($credentials, $config, $entryPoint): \Generator
