@@ -188,6 +188,13 @@ final class LongPoolingUpdater implements Updater
         /** @var \ServiceBus\TelegramBot\Api\Type\Update $update */
         foreach ($updates as $update)
         {
+            if (true === empty($update->updateId))
+            {
+                $logger->error('Incorrect received update format');
+
+                continue;
+            }
+
             $dispatcher->dispatch($update)->onResolve(
                 static function(?\Throwable $throwable) use ($logger, $update): void
                 {

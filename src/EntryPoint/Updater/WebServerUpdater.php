@@ -183,6 +183,11 @@ final class WebServerUpdater implements Updater
                 /** @var Update $update */
                 $update = $serializer->decode($payload, Update::class);
 
+                if (true === empty($update->updateId))
+                {
+                    return new Response(Status::BAD_REQUEST);
+                }
+
                 yield $dispatcher->dispatch($update);
 
                 return new Response(Status::OK);

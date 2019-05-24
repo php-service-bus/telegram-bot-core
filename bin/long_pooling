@@ -1,17 +1,27 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * Usage: bin/long_pooling
+ */
+
 declare(strict_types = 1);
 
 use Amp\ByteStream\ResourceOutputStream;
 use Amp\Log\StreamHandler;
 use Amp\Loop;
+use Amp\Success;
+use Amp\Promise;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use ServiceBus\TelegramBot\EntryPoint\Configuration\LongPoolingConfig;
 use ServiceBus\TelegramBot\EntryPoint\EntryPoint;
 use ServiceBus\TelegramBot\EntryPoint\TelegramUpdateDispatcher;
+use ServiceBus\TelegramBot\EntryPoint\TelegramEventBus;
+use ServiceBus\TelegramBot\EntryPoint\Event\TelegramEvent;
 use ServiceBus\TelegramBot\TelegramCredentials;
 use Symfony\Component\Dotenv\Dotenv;
+use ServiceBus\TelegramBot\EntryPoint\TelegramEventProcessor;
 
 include __DIR__ . '/../vendor/autoload.php';
 
@@ -21,7 +31,28 @@ $logger      = new Logger('demo', [new StreamHandler(new ResourceOutputStream(\S
 $credentials = TelegramCredentials::apiToken((string) \getenv('API_TOKEN'));
 $config      = LongPoolingConfig::createDefault();
 
-$dispatcher = new TelegramUpdateDispatcher();
+$listener = new class($logger) implements TelegramEventProcessor
+{
+
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    public function process(TelegramEvent $event): Promise
+    {
+        $this->logger->info('Event received: {eventType}', ['eventType' => \get_class($event)]);
+
+        return new Success();
+    }
+};
+
+$bus = new TelegramEventBus();
+$bus->addListener(TelegramEvent::class, $listener);
+
+$dispatcher = new TelegramUpdateDispatcher($bus, $logger);
 
 $entryPoint = new EntryPoint($dispatcher, $logger);
 
