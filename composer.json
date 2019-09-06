@@ -32,28 +32,29 @@
     ]
   },
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.3",
     "ext-json": "*",
-    "php-service-bus/http-client": "^3.2",
-    "php-service-bus/mutex": "^3.2",
+    "php-service-bus/http-client": "v3.3.*",
+    "php-service-bus/mutex": "v3.3.*",
     "symfony/serializer-pack": "^v1",
-    "moneyphp/money": "^3.2",
-    "symfony/validator": "^v4.2",
-    "doctrine/annotations": "^1.0",
-    "doctrine/cache": "^1.0",
-    "amphp/log": "1.0.*",
-    "amphp/cluster": "dev-master",
-    "amphp/http-server": "^1.0"
+    "moneyphp/money": "v3.2.*",
+    "symfony/validator": "v4.3.*",
+    "doctrine/annotations": "v1.6.*",
+    "doctrine/cache": "v1.8.*",
+    "amphp/log": "^1",
+    "amphp/socket": "^1",
+    "amphp/http-server": "^2",
+    "amphp/cluster": "dev-master"
   },
   "require-dev": {
-    "php-service-bus/code-style-config": "^v0.1",
-    "phpunit/phpunit": "^8",
-    "vimeo/psalm": "^3",
-    "phpstan/phpstan": "^0.11.5",
-    "symfony/dotenv": "^v4.2"
+    "php-service-bus/code-style-config": "v0.1.*",
+    "phpunit/phpunit": "v8.3.*",
+    "vimeo/psalm": "v3.4.*",
+    "phpstan/phpstan": "v0.11.*",
+    "symfony/dotenv": "v4.2.*"
   },
   "prefer-stable": true,
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "scripts": {
     "psalm": "./vendor/bin/psalm --config=psalm.xml",
     "phpstan": "./vendor/bin/phpstan analyse src --level 7",
