@@ -45,4 +45,16 @@ final class KeyboardButton
      * @var bool
      */
     public $requestLocation = false;
+
+    /**
+     * @param string $text
+     * @param bool   $requestContact
+     * @param bool   $requestLocation
+     */
+    public function __construct(string $text, bool $requestContact = false, bool $requestLocation = false)
+    {
+        $this->text            = $text;
+        $this->requestContact  = $requestContact;
+        $this->requestLocation = $requestLocation;
+    }
 }

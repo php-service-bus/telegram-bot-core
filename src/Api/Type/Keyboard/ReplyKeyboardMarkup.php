@@ -60,4 +60,23 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
      * @var bool
      */
     public $selective = false;
+
+    public static function withButtons(KeyboardButton ...$buttons): self
+    {
+        return new self($buttons);
+    }
+
+    /**
+     * @param KeyboardButton[] $keyboard
+     * @param bool             $resizeKeyboard
+     * @param bool             $oneTimeKeyboard
+     * @param bool             $selective
+     */
+    public function __construct(array $keyboard, bool $resizeKeyboard = false, bool $oneTimeKeyboard = false, bool $selective = false)
+    {
+        $this->keyboard        = $keyboard;
+        $this->resizeKeyboard  = $resizeKeyboard;
+        $this->oneTimeKeyboard = $oneTimeKeyboard;
+        $this->selective       = $selective;
+    }
 }
