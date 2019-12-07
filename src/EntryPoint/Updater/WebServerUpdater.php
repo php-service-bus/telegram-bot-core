@@ -67,7 +67,8 @@ final class WebServerUpdater implements Updater
         TelegramUpdateDispatcher $updateDispatcher,
         TelegramSerializer $serializer,
         LoggerInterface $logger
-    ) {
+    )
+    {
         $this->updateDispatcher = $updateDispatcher;
         $this->serializer       = $serializer;
         $this->logger           = $logger;
@@ -87,8 +88,9 @@ final class WebServerUpdater implements Updater
         InteractionsProvider $interactionsProvider,
         TelegramCredentials $credentials,
         EntryPointConfig $config
-    ): Promise {
-        if (false === ($config instanceof WebHooksConfig))
+    ): Promise
+    {
+        if(false === ($config instanceof WebHooksConfig))
         {
             throw new \LogicException('Incorrect configuration specified');
         }
@@ -119,11 +121,11 @@ final class WebServerUpdater implements Updater
         return call(
             function(): \Generator
             {
-                if (null !== $this->server)
+                if(null !== $this->server)
                 {
                     yield $this->server->stop();
 
-                    if (true === Cluster::isWorker())
+                    if(true === Cluster::isWorker())
                     {
                         Loop::stop();
                     }
@@ -165,10 +167,11 @@ final class WebServerUpdater implements Updater
         TelegramUpdateDispatcher $dispatcher,
         TelegramSerializer $serializer,
         LoggerInterface $logger
-    ): callable {
+    ): callable
+    {
         return static function(Request $request) use ($serializer, $dispatcher, $logger): \Generator
         {
-            if ('POST' !== $request->getMethod())
+            if('POST' !== $request->getMethod())
             {
                 return new Response(Status::METHOD_NOT_ALLOWED);
             }
@@ -183,7 +186,7 @@ final class WebServerUpdater implements Updater
                 /** @var Update $update */
                 $update = $serializer->decode($payload, Update::class);
 
-                if (true === empty($update->updateId))
+                if(true === empty($update->updateId))
                 {
                     return new Response(Status::BAD_REQUEST);
                 }
@@ -192,7 +195,7 @@ final class WebServerUpdater implements Updater
 
                 return new Response(Status::OK);
             }
-            catch (\Throwable $throwable)
+            catch(\Throwable $throwable)
             {
                 $logger->error('Web hook processing error: {throwableMessage}', [
                     'throwableMessage' => $throwable->getMessage(),
@@ -220,23 +223,21 @@ final class WebServerUpdater implements Updater
         TelegramCredentials $credentials,
         WebHooksConfig $webHooksConfig,
         LoggerInterface $logger
-    ): \Generator {
-        if (false === Cluster::isWorker())
+    ): \Generator
+    {
+        /** @var \ServiceBus\TelegramBot\Interaction\Result\Result $result */
+        $result = yield $interactionsProvider->call(
+            SetWebhook::create($webHooksConfig->callbackUrl, $webHooksConfig->certificateFilePath),
+            $credentials
+        );
+
+        if($result instanceof Fail)
         {
-            /** @var \ServiceBus\TelegramBot\Interaction\Result\Result $result */
-            $result = yield $interactionsProvider->call(
-                SetWebhook::create($webHooksConfig->callbackUrl, $webHooksConfig->certificateFilePath),
-                $credentials
+            throw new \RuntimeException(
+                \sprintf('Cant set webhook details: %s', $result->errorMessage)
             );
-
-            if ($result instanceof Fail)
-            {
-                throw new \RuntimeException(
-                    \sprintf('Cant set webhook details: %s', $result->errorMessage)
-                );
-            }
-
-            $logger->info('Web hooks are enabled');
         }
+
+        $logger->info('Web hooks are enabled');
     }
 }
