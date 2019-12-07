@@ -19,10 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#shippingquery
  *
- * @property-read string          $id
- * @property-read User            $from
- * @property-read string          $invoicePayload
- * @property-read ShippingAddress $shippingAddress
+ * @psalm-readonly
  */
 final class ShippingQuery
 {

@@ -22,11 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $stickerFileId
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultCachedSticker implements InlineQueryResult
 {

@@ -17,8 +17,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
 /**
  * Represents joined members.
  *
- * @property-read Chat           $chat
- * @property-read UserCollection $members
+ * @psalm-readonly
  */
 final class JoinedChatMembers
 {

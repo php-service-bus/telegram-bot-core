@@ -20,12 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#precheckoutquery
  *
- * @property-read string         $id
- * @property-read User           $from
- * @property-read Money          $amount
- * @property-read string         $invoicePayload
- * @property-read string|null    $shippingOptionId
- * @property-read OrderInfo|null $orderInfo
+ * @psalm-readonly
  */
 final class PreCheckoutQuery
 {

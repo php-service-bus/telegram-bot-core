@@ -19,11 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inputvenuemessagecontent
  *
- * @property-read Location    $coordinates
- * @property-read string      $title
- * @property-read string      $address
- * @property-read string|null $foursquareId
- * @property-read string|null $foursquareType
+ * @psalm-readonly
  */
 final class InputVenueMessageContent implements InputMessageContent
 {

@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Changed (create/close/vote) poll information.
+ *
+ * @psalm-readonly
  */
 final class PollChanged implements TelegramEvent
 {
     /**
      * @var Poll
      */
-    private $pollInfo;
+    public $pollInfo;
 
     /**
      * {@inheritdoc}

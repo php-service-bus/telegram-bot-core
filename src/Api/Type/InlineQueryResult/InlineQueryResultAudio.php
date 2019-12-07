@@ -22,16 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultaudio
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $audioUrl
- * @property-read string                    $title
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read string|null               $performer
- * @property-read int|null                  $audioDuration
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultAudio implements InlineQueryResult
 {

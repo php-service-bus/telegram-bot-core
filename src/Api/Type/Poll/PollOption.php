@@ -17,8 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Poll;
  *
  * @see https://core.telegram.org/bots/api#polloption
  *
- * @property-read string $text
- * @property-read int    $voterCount
+ * @psalm-readonly
  */
 final class PollOption
 {

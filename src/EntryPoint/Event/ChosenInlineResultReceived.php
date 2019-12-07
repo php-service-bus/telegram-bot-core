@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Received result of an inline query that was chosen by the user and sent to their chat partner.
+ *
+ * @psalm-readonly
  */
 final class ChosenInlineResultReceived implements TelegramEvent
 {
     /**
      * @var ChosenInlineResult
      */
-    private $chosenInlineResult;
+    public $chosenInlineResult;
 
     /**
      * {@inheritdoc}

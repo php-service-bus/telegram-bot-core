@@ -19,13 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Game\CallbackGame;
  *
  * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
  *
- * @property-read string            $text
- * @property-read string|null       $url
- * @property-read string|null       $callbackData
- * @property-read string|null       $switchInlineQuery
- * @property-read string|null       $switchInlineQueryCurrentChat
- * @property-read CallbackGame|null $callbackGame
- * @property-read bool              $pay
+ * @psalm-readonly
  */
 final class InlineKeyboardButton
 {

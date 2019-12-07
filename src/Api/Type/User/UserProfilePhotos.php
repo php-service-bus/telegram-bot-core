@@ -19,8 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#userprofilephotos
  *
- * @property-read int         $totalCount
- * @property-read PhotoSize[] $photos
+ * @psalm-readonly
  */
 final class UserProfilePhotos
 {

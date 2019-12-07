@@ -17,10 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Voice;
  *
  * @see https://core.telegram.org/bots/api#voice
  *
- * @property-read string      $fileId
- * @property-read int         $duration
- * @property-read string|null $mimeType
- * @property-read int|null    $fileSize
+ * @psalm-readonly
  */
 final class Voice
 {

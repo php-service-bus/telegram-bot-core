@@ -17,10 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type;
  *
  * @see https://core.telegram.org/bots/api#maskposition
  *
- * @property-read MaskPositionType $point
- * @property-read float            $xShift
- * @property-read float            $yShift
- * @property-read float            $scale
+ * @psalm-readonly
  */
 final class MaskPosition
 {

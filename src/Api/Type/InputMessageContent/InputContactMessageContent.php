@@ -17,10 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\InputMessageContent;
  *
  * @see https://core.telegram.org/bots/api#inputcontactmessagecontent
  *
- * @property-read string      $phoneNumber
- * @property-read string      $firstName
- * @property-read string|null $lastName
- * @property-read string|null $vcard
+ * @psalm-readonly
  */
 final class InputContactMessageContent implements InputMessageContent
 {

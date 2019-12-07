@@ -25,13 +25,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  * @see https://core.telegram.org/bots/api#callbackquery
  * @see https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating
  *
- * @property-read string               $id
- * @property-read User                 $from
- * @property-read Message|null         $message
- * @property-read InlineMessageId|null $inlineMessageId
- * @property-read string               $chatInstance
- * @property-read string|null          $data
- * @property-read string|null          $gameShortName
+ * @psalm-readonly
  */
 final class CallbackQuery
 {

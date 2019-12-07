@@ -22,11 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  * @see https://core.telegram.org/bots/api#voice
  * @see https://core.telegram.org/bots/api#audio
  *
- * @property-read string         $fileId
- * @property-read PhotoSize|null $thumb
- * @property-read string|null    $fileName
- * @property-read string|null    $mimeType
- * @property-read int|null       $fileSize
+ * @psalm-readonly
  */
 final class Document
 {

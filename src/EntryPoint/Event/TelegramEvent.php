@@ -16,6 +16,8 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Incoming telegram event.
+ *
+ * @psalm-readonly
  */
 interface TelegramEvent
 {

@@ -14,6 +14,8 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
 
 /**
  * Chat members collection.
+ *
+ * @psalm-readonly
  */
 final class ChatMemberCollection implements \IteratorAggregate
 {

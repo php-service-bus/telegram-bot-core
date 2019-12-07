@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Received callback query from a callback button in an inline keyboard.
+ *
+ * @psalm-readonly
  */
 final class CallbackQueryReceived implements TelegramEvent
 {
     /**
      * @var CallbackQuery
      */
-    private $callbackQuery;
+    public $callbackQuery;
 
     /**
      * {@inheritdoc}

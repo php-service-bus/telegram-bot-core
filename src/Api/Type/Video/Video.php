@@ -19,13 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#video
  *
- * @property-read string         $fileId
- * @property-read int            $width
- * @property-read int            $height
- * @property-read int            $duration
- * @property-read PhotoSize|null $thumb
- * @property-read string|null    $mimeType
- * @property-read int|null       $fileSize
+ * @psalm-readonly
  */
 final class Video
 {

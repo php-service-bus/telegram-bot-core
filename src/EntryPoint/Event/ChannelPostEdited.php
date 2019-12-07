@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Channel post edited.
+ *
+ * @psalm-readonly
  */
 final class ChannelPostEdited implements TelegramEvent
 {
     /**
      * @var Message
      */
-    private $editedChannelPost;
+    public $editedChannelPost;
 
     /**
      * {@inheritdoc}

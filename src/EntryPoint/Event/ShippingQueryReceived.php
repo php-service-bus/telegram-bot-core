@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * New shipping query received.
+ *
+ * @psalm-readonly
  */
 final class ShippingQueryReceived implements TelegramEvent
 {
     /**
      * @var ShippingQuery
      */
-    private $shippingQuery;
+    public $shippingQuery;
 
     /**
      * {@inheritdoc}

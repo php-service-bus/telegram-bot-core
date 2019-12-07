@@ -21,17 +21,7 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcontact
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $phoneNumber
- * @property-read string                    $firstName
- * @property-read string|null               $lastName
- * @property-read string|null               $vcard
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
- * @property-read string|null               $thumbUrl
- * @property-read int|null                  $thumbWidth
- * @property-read int|null                  $thumbHeight
+ * @psalm-readonly
  */
 final class InlineQueryResultContact implements InlineQueryResult
 {

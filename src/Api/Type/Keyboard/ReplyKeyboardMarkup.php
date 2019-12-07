@@ -20,10 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
  * @see https://core.telegram.org/bots/api#replykeyboardmarkup
  * @see https://core.telegram.org/bots#keyboards
  *
- * @property-read KeyboardButton[] $keyboard
- * @property-read bool             $resizeKeyboard
- * @property-read bool             $oneTimeKeyboard
- * @property-read bool             $selective
+ * @psalm-readonly
  */
 final class ReplyKeyboardMarkup implements ReplayMarkup
 {

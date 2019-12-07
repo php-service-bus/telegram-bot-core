@@ -20,14 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#sticker
  *
- * @property-read string            $fileId
- * @property-read int               $width
- * @property-read int               $height
- * @property-read PhotoSize|null    $thumb
- * @property-read string|null       $emoji
- * @property-read string|null       $setName
- * @property-read MaskPosition|null $maskPosition
- * @property-read int|null          $fileSize
+ * @psalm-readonly
  */
 final class Sticker
 {

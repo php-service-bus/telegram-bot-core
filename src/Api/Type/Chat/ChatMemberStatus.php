@@ -16,6 +16,8 @@ use ServiceBus\TelegramBot\Api\Type\Enum;
 
 /**
  * The member's status in the chat.
+ *
+ * @psalm-readonly
  */
 final class ChatMemberStatus implements Enum
 {

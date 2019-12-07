@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * New pre-checkout query received.
+ *
+ * @psalm-readonly
  */
 final class PreCheckoutQueryReceived implements TelegramEvent
 {
     /**
      * @var PreCheckoutQuery
      */
-    private $preCheckoutQuery;
+    public $preCheckoutQuery;
 
     /**
      * {@inheritdoc}

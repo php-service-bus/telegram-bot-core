@@ -17,8 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
  *
  * @see https://core.telegram.org/bots/api#chatphoto
  *
- * @property-read string $smallFileId
- * @property-read string $bigFileId
+ * @psalm-readonly
  */
 final class ChatPhoto
 {

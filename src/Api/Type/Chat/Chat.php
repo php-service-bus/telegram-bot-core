@@ -19,19 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Message\Message;
  *
  * @see https://core.telegram.org/bots/api#chat
  *
- * @property-read ChatId         $id
- * @property-read ChatType       $type
- * @property-read string|null    $title
- * @property-read string|null    $username
- * @property-read string|null    $firstName
- * @property-read string|null    $lastName
- * @property-read bool           $allMembersAreAdministrators
- * @property-read ChatPhoto|null $photo
- * @property-read string|null    $description
- * @property-read string|null    $inviteLink
- * @property-read Message|null   $pinnedMessage
- * @property-read string|null    $stickerSetName
- * @property-read bool           $canSetStickerSet
+ * @psalm-readonly
  */
 final class Chat
 {

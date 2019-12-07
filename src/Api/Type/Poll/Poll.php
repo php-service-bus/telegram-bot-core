@@ -17,10 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Poll;
  *
  * @see https://core.telegram.org/bots/api#poll
  *
- * @property-read string       $id
- * @property-read string       $question
- * @property-read PollOption[] $options
- * @property-read bool         $isClosed
+ * @psalm-readonly
  */
 final class Poll
 {

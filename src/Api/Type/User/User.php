@@ -17,12 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\User;
  *
  * @see https://core.telegram.org/bots/api#user
  *
- * @property-read UserId      $id
- * @property-read bool        $isBot
- * @property-read string      $firstName
- * @property-read string|null $lastName
- * @property-read string|null $username
- * @property-read string|null $languageCode
+ * @psalm-readonly
  */
 final class User
 {

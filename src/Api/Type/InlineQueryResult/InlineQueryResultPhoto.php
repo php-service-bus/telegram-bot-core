@@ -22,18 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultphoto
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $photoUrl
- * @property-read string                    $thumbUrl
- * @property-read int|null                  $photoWidth
- * @property-read int|null                  $photoHeight
- * @property-read string|null               $title
- * @property-read string|null               $description
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultPhoto implements InlineQueryResult
 {

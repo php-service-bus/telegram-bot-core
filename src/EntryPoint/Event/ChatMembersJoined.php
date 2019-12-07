@@ -18,13 +18,15 @@ use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
 
 /**
  * A new members joined the chat.
+ *
+ * @psalm-readonly
  */
 final class ChatMembersJoined implements TelegramEvent
 {
     /**
      * @var JoinedChatMembers
      */
-    private $joinedChatMembers;
+    public $joinedChatMembers;
 
     /**
      * {@inheritdoc}

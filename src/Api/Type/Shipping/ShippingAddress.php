@@ -17,12 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Shipping;
  *
  * @see https://core.telegram.org/bots/api#shippingaddress
  *
- * @property-read string      $countryCode
- * @property-read string|null $state
- * @property-read string      $city
- * @property-read string      $streetLine1
- * @property-read string|null $streetLine2
- * @property-read string      $postCode
+ * @psalm-readonly
  */
 final class ShippingAddress
 {

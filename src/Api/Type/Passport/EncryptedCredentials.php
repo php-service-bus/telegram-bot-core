@@ -20,9 +20,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Passport;
  * @see https://core.telegram.org/bots/api#encryptedpassportelement
  * @see https://core.telegram.org/passport#receiving-information
  *
- * @property-read string $data
- * @property-read string $hash
- * @property-read string $secret
+ * @psalm-readonly
  */
 final class EncryptedCredentials
 {

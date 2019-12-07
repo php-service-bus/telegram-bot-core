@@ -19,11 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\User\UserId;
  *
  * @see https://core.telegram.org/bots/api#contact
  *
- * @property-read string      $phoneNumber
- * @property-read string      $firstName
- * @property-read string|null $lastName
- * @property-read UserId|null $userId
- * @property-read string|null $vcard
+ * @psalm-readonly
  */
 final class Contact
 {

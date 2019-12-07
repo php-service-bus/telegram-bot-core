@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Member left the chat.
+ *
+ * @psalm-readonly
  */
 final class ChatMemberLeft implements TelegramEvent
 {
     /**
      * @var LeftChatMember
      */
-    private $leftChatMember;
+    public $leftChatMember;
 
     /**
      * {@inheritdoc}

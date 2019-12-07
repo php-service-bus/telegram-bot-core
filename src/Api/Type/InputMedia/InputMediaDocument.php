@@ -20,11 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inputmediadocument
  *
- * @property-read string           $type
- * @property-read InputFilePath|string $media
- * @property-read InputFilePath|string $thumb
- * @property-read string|null      $caption
- * @property-read ParseMode|null   $parseMode
+ * @psalm-readonly
  */
 final class InputMediaDocument implements InputMedia
 {

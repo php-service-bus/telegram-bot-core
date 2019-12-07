@@ -19,9 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inputtextmessagecontent
  *
- * @property-read string         $messageText
- * @property-read ParseMode|null $parseMode
- * @property-read bool           $disableWebPagePreview
+ * @psalm-readonly
  */
 final class InputTextMessageContent implements InputMessageContent
 {

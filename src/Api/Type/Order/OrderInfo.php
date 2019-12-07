@@ -19,10 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Shipping\ShippingAddress;
  *
  * @see https://core.telegram.org/bots/api#orderinfo
  *
- * @property-read string|null          $name
- * @property-read string|null          $phoneNumber
- * @property-read string|null          $email
- * @property-read ShippingAddress|null $shippingAddress
+ * @psalm-readonly
  */
 final class OrderInfo
 {

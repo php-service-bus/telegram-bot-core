@@ -25,17 +25,7 @@ use ServiceBus\TelegramBot\Api\Type\Shipping\ShippingQuery;
  *
  * @see https://core.telegram.org/bots/api#update
  *
- * @property-read int                     $updateId
- * @property-read Message|null            $message
- * @property-read Message|null            $editedMessage
- * @property-read Message|null            $channelPost
- * @property-read Message|null            $editedChannelPost
- * @property-read InlineQuery|null        $inlineQuery
- * @property-read ChosenInlineResult|null $chosenInlineResult
- * @property-read CallbackQuery|null      $callbackQuery
- * @property-read ShippingQuery|null      $shippingQuery
- * @property-read PreCheckoutQuery|null   $preCheckoutQuery
- * @property-read Poll|null               $poll
+ * @psalm-readonly
  */
 final class Update
 {

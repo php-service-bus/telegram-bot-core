@@ -20,12 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Order\OrderInfo;
  *
  * @see https://core.telegram.org/bots/api#successfulpayment
  *
- * @property-read Money          $amount
- * @property-read string         $invoicePayload
- * @property-read string|null    $shippingOptionId
- * @property-read OrderInfo|null $orderInfo
- * @property-read string         $telegramPaymentChargeId
- * @property-read string         $providerPaymentChargeId
+ * @psalm-readonly
  */
 final class SuccessfulPayment
 {

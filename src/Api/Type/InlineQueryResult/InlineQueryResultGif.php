@@ -23,18 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultgif
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $gifUrl
- * @property-read int|null                  $gifWidth
- * @property-read int|null                  $gifHeight
- * @property-read int|null                  $gifDuration
- * @property-read string                    $thumbUrl
- * @property-read string|null               $title
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultGif implements InlineQueryResult
 {

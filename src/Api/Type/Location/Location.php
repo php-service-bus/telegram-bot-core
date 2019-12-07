@@ -17,8 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Location;
  *
  * @see https://core.telegram.org/bots/api#location
  *
- * @property-read float $longitude
- * @property-read float $latitude
+ * @psalm-readonly
  */
 final class Location
 {

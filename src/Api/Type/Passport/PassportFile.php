@@ -20,9 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
  *
  * @see https://core.telegram.org/bots/api#passportfile
  *
- * @property-read string   $fileId
- * @property-read int      $fileSize
- * @property-read UnixTime $fileDate
+ * @psalm-readonly
  */
 final class PassportFile
 {

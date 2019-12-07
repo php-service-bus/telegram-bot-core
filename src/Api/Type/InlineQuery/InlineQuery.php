@@ -21,11 +21,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#inlinequery
  *
- * @property-read string        $id
- * @property-read User          $from
- * @property-read Location|null $location
- * @property-read string        $query
- * @property-read string        $offset
+ * @psalm-readonly
  */
 final class InlineQuery
 {

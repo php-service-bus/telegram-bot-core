@@ -19,8 +19,7 @@ namespace ServiceBus\TelegramBot\Api\Type;
  *
  * @see https://core.telegram.org/bots/api#forcereply
  *
- * @property-read bool $forceReply
- * @property-read bool $selective
+ * @psalm-readonly
  */
 final class ForceReply implements ReplayMarkup
 {

@@ -19,10 +19,7 @@ use Money\Money;
  *
  * @see https://core.telegram.org/bots/api#invoice
  *
- * @property-read string $title
- * @property-read string $description
- * @property-read string $startParameter
- * @property-read Money  $amount
+ * @psalm-readonly
  */
 final class Invoice
 {

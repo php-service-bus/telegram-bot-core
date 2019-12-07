@@ -21,11 +21,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see  https://core.telegram.org/bots/api#choseninlineresult
  *
- * @property-read string               $resultId
- * @property-read User                 $from
- * @property-read Location|null        $location
- * @property-read InlineMessageId|null $inlineMessageId
- * @property-read string               $query
+ * @psalm-readonly
  */
 final class ChosenInlineResult
 {

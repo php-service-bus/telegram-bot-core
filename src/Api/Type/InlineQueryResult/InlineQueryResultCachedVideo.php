@@ -23,15 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $videoFileId
- * @property-read string                    $title
- * @property-read string|null               $description
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultCachedVideo implements InlineQueryResult
 {

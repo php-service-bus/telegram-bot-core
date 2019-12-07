@@ -23,14 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $mpeg4FileId
- * @property-read string|null               $title
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
 {

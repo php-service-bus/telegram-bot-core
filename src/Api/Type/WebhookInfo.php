@@ -17,13 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type;
  *
  * @see https://core.telegram.org/bots/api#webhookinfo
  *
- * @property-read string      $url
- * @property-read bool        $hasCustomCertificate
- * @property-read int         $pendingUpdateCount
- * @property-read int|null    $lastErrorDate
- * @property-read string|null $lastErrorMessage
- * @property-read int|null    $maxConnections
- * @property-read string[]    $allowedUpdates
+ * @psalm-readonly
  */
 final class WebhookInfo
 {

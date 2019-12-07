@@ -14,6 +14,8 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
 
 /**
  * @property-read int $value
+ *
+ * @psalm-readonly
  */
 final class ChatMembersCount
 {

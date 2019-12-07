@@ -20,7 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
  * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup
  * @see https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating
  *
- * @property-read InlineKeyboardButton[] $inlineKeyboard
+ * @psalm-readonly
  */
 final class InlineKeyboardMarkup implements ReplayMarkup
 {

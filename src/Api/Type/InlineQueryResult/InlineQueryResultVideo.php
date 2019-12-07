@@ -23,20 +23,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultvideo
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $videoUrl
- * @property-read string                    $mimeType
- * @property-read string                    $thumbUrl
- * @property-read string                    $title
- * @property-read string|null               $caption
- * @property-read ParseMode|null            $parseMode
- * @property-read int|null                  $videoWidth
- * @property-read int|null                  $videoHeight
- * @property-read int|null                  $videoDuration
- * @property-read string|null               $description
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
+ * @psalm-readonly
  */
 final class InlineQueryResultVideo implements InlineQueryResult
 {

@@ -18,9 +18,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Keyboard;
  *
  * @see https://core.telegram.org/bots/api#keyboardbutton
  *
- * @property-read string $text
- * @property-read bool   $requestContact
- * @property-read bool   $requestLocation
+ * @psalm-readonly
  */
 final class KeyboardButton
 {

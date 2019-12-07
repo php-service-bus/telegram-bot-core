@@ -17,8 +17,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
 /**
  * Represents left user.
  *
- * @property-read Chat $chat
- * @property-read User $user
+ * @psalm-readonly
  */
 final class LeftChatMember
 {

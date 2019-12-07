@@ -21,12 +21,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#game
  *
- * @property-read string          $title
- * @property-read string          $description
- * @property-read PhotoSize[]     $photo
- * @property-read string|null     $text
- * @property-read MessageEntity[] $textEntities
- * @property-read Animation|null  $animation
+ * @psalm-readonly
  */
 final class Game
 {

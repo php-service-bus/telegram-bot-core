@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * Received new inline query.
+ *
+ * @psalm-readonly
  */
 final class InlineQueryReceived implements TelegramEvent
 {
     /**
      * @var InlineQuery
      */
-    private $query;
+    public $query;
 
     /**
      * {@inheritdoc}

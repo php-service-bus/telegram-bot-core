@@ -19,11 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#messageentity
  *
- * @property-read MessageEntityType $type
- * @property-read int               $offset
- * @property-read int               $length
- * @property-read string|null       $url
- * @property-read User|null         $user
+ * @psalm-readonly
  */
 final class MessageEntity
 {

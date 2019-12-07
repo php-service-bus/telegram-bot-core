@@ -20,17 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultarticle
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $title
- * @property-read InputTextMessageContent   $inputMessageContent
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read string|null               $url
- * @property-read bool                      $hideUrl
- * @property-read string|null               $description
- * @property-read string|null               $thumbUrl
- * @property-read int|null                  $thumbWidth
- * @property-read int|null                  $thumbHeight
+ * @psalm-readonly
  */
 final class InlineQueryResultArticle implements InlineQueryResult
 {

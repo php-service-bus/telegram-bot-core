@@ -18,10 +18,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Photo;
  * @see https://core.telegram.org/bots/api#document
  * @see https://core.telegram.org/bots/api#sticker
  *
- * @property-read string   $fileId
- * @property-read int      $width
- * @property-read int      $height
- * @property-read int|null $fileSize
+ * @psalm-readonly
  */
 final class PhotoSize
 {

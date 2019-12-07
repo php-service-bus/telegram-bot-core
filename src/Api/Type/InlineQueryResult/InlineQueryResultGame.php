@@ -20,10 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  * @see https://core.telegram.org/bots/api#inlinequeryresultgame
  * @see https://core.telegram.org/bots/api#games
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read string                    $gameShortName
- * @property-read InlineKeyboardMarkup|null $replyMarkup
+ * @psalm-readonly
  */
 final class InlineQueryResultGame implements InlineQueryResult
 {

@@ -20,9 +20,7 @@ namespace ServiceBus\TelegramBot\Api\Type\File;
  * @see https://core.telegram.org/bots/api#file
  * @see https://core.telegram.org/bots/api#getfile
  *
- * @property-read string      $fileId
- * @property-read int|null    $fileSize
- * @property-read string|null $filePath
+ * @psalm-readonly
  */
 final class FileInfo
 {

@@ -17,11 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Location;
  *
  * @see https://core.telegram.org/bots/api#venue
  *
- * @property-read Location    $location
- * @property-read string      $title
- * @property-read string      $address
- * @property-read string|null $foursquareId
- * @property-read string|null $foursquareType
+ * @psalm-readonly
  */
 final class Venue
 {

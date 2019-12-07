@@ -19,13 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#audio
  *
- * @property-read string         $fileId
- * @property-read int            $duration
- * @property-read string|null    $performer
- * @property-read string|null    $title
- * @property-read string|null    $mimeType
- * @property-read int|null       $fileSize
- * @property-read PhotoSize|null $thumb
+ * @psalm-readonly
  */
 final class Audio
 {

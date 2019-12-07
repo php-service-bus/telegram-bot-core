@@ -19,11 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#videonote
  *
- * @property-read string         $fileId
- * @property-read int            $length
- * @property-read int            $duration
- * @property-read PhotoSize|null $thumb
- * @property-read int|null       $fileSize
+ * @psalm-readonly
  */
 final class VideoNote
 {

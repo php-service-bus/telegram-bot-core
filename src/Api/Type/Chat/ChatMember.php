@@ -20,23 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#chatmember
  *
- * @property-read User             $user
- * @property-read ChatMemberStatus $status
- * @property-read UnixTime|null    $untilDate
- * @property-read bool             $canBeEdited
- * @property-read bool             $canChangeInfo
- * @property-read bool             $canPostMessages
- * @property-read bool             $canEditMessages
- * @property-read bool             $canDeleteMessages
- * @property-read bool             $canInviteUsers
- * @property-read bool             $canRestrictMembers
- * @property-read bool             $canPinMessages
- * @property-read bool             $canPromoteMembers
- * @property-read bool             $isMember
- * @property-read bool             $canSendMessages
- * @property-read bool             $canSendMediaMessages
- * @property-read bool             $canSendOtherMessages
- * @property-read bool             $canAddWebPagePreviews
+ * @psalm-readonly
  */
 final class ChatMember
 {

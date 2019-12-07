@@ -17,13 +17,15 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 
 /**
  * New message received.
+ *
+ * @psalm-readonly
  */
 final class MessageReceived implements TelegramEvent
 {
     /**
      * @var Message
      */
-    private $message;
+    public $message;
 
     /**
      * {@inheritdoc}

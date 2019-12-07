@@ -22,16 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultlocation
  *
- * @property-read string                    $type
- * @property-read string                    $id
- * @property-read Location                  $coordinates
- * @property-read string                    $title
- * @property-read int|null                  $livePeriod
- * @property-read InlineKeyboardMarkup|null $replyMarkup
- * @property-read InputMessageContent|null  $inputMessageContent
- * @property-read string|null               $thumbUrl
- * @property-read int|null                  $thumbWidth
- * @property-read int|null                  $thumbHeight
+ * @psalm-readonly
  */
 final class InlineQueryResultLocation implements InlineQueryResult
 {

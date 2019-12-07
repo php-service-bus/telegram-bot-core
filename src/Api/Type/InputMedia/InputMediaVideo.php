@@ -20,15 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inputmediavideo
  *
- * @property-read string           $type
- * @property-read InputFilePath|string $media
- * @property-read InputFilePath|string $thumb
- * @property-read string|null      $caption
- * @property-read ParseMode|null   $parseMode
- * @property-read int|null         $width
- * @property-read int|null         $height
- * @property-read int|null         $duration
- * @property-read bool             $supportsStreaming
+ * @psalm-readonly
  */
 final class InputMediaVideo implements InputMedia
 {

@@ -20,14 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inputmediaaudio
  *
- * @property-read string           $type
- * @property-read InputFilePath|string $media
- * @property-read InputFilePath|string $thumb
- * @property-read string|null      $caption
- * @property-read ParseMode|null   $parseMode
- * @property-read int|null         $duration
- * @property-read string|null      $performer
- * @property-read string|null      $title
+ * @psalm-readonly
  */
 final class InputMediaAudio implements InputMedia
 {

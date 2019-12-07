@@ -38,52 +38,7 @@ use ServiceBus\TelegramBot\Api\Type\Voice\Voice;
  *
  * @see https://core.telegram.org/bots/api#message
  *
- * @property-read MessageId              $messageId
- * @property-read User|null              $from
- * @property-read UnixTime               $date
- * @property-read Chat                   $chat
- * @property-read User|null              $forwardFrom
- * @property-read Chat|null              $forwardFromChat
- * @property-read MessageId|null         $forwardFromMessageId
- * @property-read string|null            $forwardSignature
- * @property-read string|null            $forwardSenderName
- * @property-read UnixTime|null          $forwardDate
- * @property-read Message|null           $replyToMessage
- * @property-read UnixTime|null          $editDate
- * @property-read string|null            $mediaGroupId
- * @property-read string|null            $authorSignature
- * @property-read string|null            $text
- * @property-read MessageEntity[]        $entities
- * @property-read MessageEntity[]        $captionEntities
- * @property-read Audio|null             $audio
- * @property-read Document|null          $document
- * @property-read Animation|null         $animation
- * @property-read Game|null              $game
- * @property-read PhotoSize[]            $photo
- * @property-read Sticker|null           $sticker
- * @property-read Video|null             $video
- * @property-read Voice|null             $voice
- * @property-read VideoNote|null         $videoNote
- * @property-read string|null            $caption
- * @property-read Contact|null           $contact
- * @property-read Location|null          $location
- * @property-read Venue|null             $venue
- * @property-read Poll|null              $poll
- * @property-read User[]                 $newChatMembers
- * @property-read User|null              $leftChatMember
- * @property-read string|null            $newChatTitle
- * @property-read PhotoSize[]            $newChatPhoto
- * @property-read bool                   $deleteChatPhoto
- * @property-read bool                   $groupChatCreated
- * @property-read bool                   $supergroupChatCreated
- * @property-read bool                   $channelChatCreated
- * @property-read ChatId|null            $migrateToChatId
- * @property-read ChatId|null            $migrateFromChatId
- * @property-read Message|null           $pinnedMessage
- * @property-read Invoice|null           $invoice
- * @property-read SuccessfulPayment|null $successfulPayment
- * @property-read string|null            $connectedWebsite
- * @property-read PassportData|null      $passportData
+ * @psalm-readonly
  */
 final class Message
 {

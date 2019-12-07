@@ -16,6 +16,8 @@ namespace ServiceBus\TelegramBot\Api\Type;
  * Updates collection.
  *
  * @see Update
+ *
+ * @psalm-readonly
  */
 final class UpdateCollection implements \IteratorAggregate
 {

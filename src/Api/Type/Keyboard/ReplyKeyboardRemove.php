@@ -22,8 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
  *
  * @see https://core.telegram.org/bots/api#replykeyboardremove
  *
- * @property-read bool $removeKeyboard
- * @property-read bool $selective
+ * @psalm-readonly
  */
 final class ReplyKeyboardRemove implements ReplayMarkup
 {

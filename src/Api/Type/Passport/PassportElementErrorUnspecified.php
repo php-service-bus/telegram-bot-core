@@ -17,10 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Passport;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorunspecified
  *
- * @property-read string $source
- * @property-read string $type
- * @property-read string $elementHash
- * @property-read string $message
+ * @psalm-readonly
  */
 final class PassportElementErrorUnspecified
 {

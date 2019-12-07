@@ -14,6 +14,8 @@ namespace ServiceBus\TelegramBot\Api\Type\User;
 
 /**
  * Users.
+ *
+ * @psalm-readonly
  */
 final class UserCollection implements \IteratorAggregate
 {

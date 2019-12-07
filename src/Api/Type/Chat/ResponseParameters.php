@@ -17,8 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
  *
  * @see https://core.telegram.org/bots/api#responseparameters
  *
- * @property-read ChatId|null $migrateToChatId
- * @property-read int|null    $retryAfter
+ * @psalm-readonly
  */
 final class ResponseParameters
 {

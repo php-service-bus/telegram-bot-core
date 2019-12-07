@@ -19,8 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inputlocationmessagecontent
  *
- * @property-read Location $coordinates
- * @property-read int|null $livePeriod
+ * @psalm-readonly
  */
 final class InputLocationMessageContent implements InputMessageContent
 {
