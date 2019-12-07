@@ -27,7 +27,7 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
     /**
      * Array of button rows, each represented by an Array of KeyboardButton objects.
      *
-     * @var KeyboardButton[]
+     * @var KeyboardButton[][]
      */
     public $keyboard = [];
 
@@ -63,11 +63,11 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
 
     public static function withButtons(KeyboardButton ...$buttons): self
     {
-        return new self($buttons);
+        return new self([$buttons]);
     }
 
     /**
-     * @param KeyboardButton[] $keyboard
+     * @param KeyboardButton[][] $keyboard
      * @param bool             $resizeKeyboard
      * @param bool             $oneTimeKeyboard
      * @param bool             $selective
