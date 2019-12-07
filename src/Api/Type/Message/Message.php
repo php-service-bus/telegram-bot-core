@@ -389,4 +389,17 @@ final class Message
      * @var PassportData|null
      */
     public $passportData;
+
+    public function isCommand(): bool
+    {
+        foreach($this->entities as $entity)
+        {
+            if($entity->isCommand() === true)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
