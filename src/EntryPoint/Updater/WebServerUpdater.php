@@ -181,6 +181,11 @@ final class WebServerUpdater implements Updater
                 /** @var string $jsonBody */
                 $jsonBody = yield $request->getBody()->read();
 
+                $logger->debug(
+                    'Notification request: {notificationPayload}',
+                    ['notificationPayload' => $jsonBody]
+                );
+
                 $payload = jsonDecode($jsonBody, true);
 
                 /** @var Update $update */
