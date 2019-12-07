@@ -15,7 +15,7 @@ namespace ServiceBus\TelegramBot;
 /**
  * Telegram bot api credentials.
  *
- * @property-read string $token
+ * @psalm-readonly
  */
 final class TelegramCredentials
 {
@@ -32,11 +32,8 @@ final class TelegramCredentials
      * @param string $token
      *
      * @throws \InvalidArgumentException Invalid api token
-     *
-     * @return self
-     *
      */
-    public static function apiToken(string $token): self
+    public function __construct(string $token)
     {
         if ('' === $token)
         {
@@ -48,14 +45,6 @@ final class TelegramCredentials
             throw new \InvalidArgumentException('Invalid bot api token (via regular expression "/(\d+)\:[\w\-]+/")');
         }
 
-        return new self($token);
-    }
-
-    /**
-     * @param string $token
-     */
-    private function __construct(string $token)
-    {
         $this->token = $token;
     }
 }

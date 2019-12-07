@@ -15,7 +15,7 @@ namespace ServiceBus\TelegramBot;
 /**
  * TelegramBot data.
  *
- * @property-read string $username
+ * @psalm-readonly
  */
 final class TelegramBot
 {
@@ -29,9 +29,9 @@ final class TelegramBot
     /**
      * @param string $username
      *
-     * @return self
+     * @throws \InvalidArgumentException
      */
-    public static function create(string $username): self
+    public function __construct(string $username)
     {
         if ('' === $username)
         {
@@ -47,14 +47,6 @@ final class TelegramBot
             );
         }
 
-        return new self($username);
-    }
-
-    /**
-     * @param string $username
-     */
-    private function __construct(string $username)
-    {
         $this->username = $username;
     }
 }

@@ -15,9 +15,7 @@ namespace ServiceBus\TelegramBot\EntryPoint\Configuration;
 /**
  * Receive updates (long pooling) config.
  *
- * @property-read int      $interval
- * @property-read int      $limit
- * @property-read int|null $offset
+ * @psalm-readonly
  */
 final class LongPoolingConfig implements EntryPointConfig
 {
@@ -57,18 +55,16 @@ final class LongPoolingConfig implements EntryPointConfig
     public $offset;
 
     /**
-     * @param int      $interval
-     * @param int      $limit
-     * @param int|null $offset
-     *
-     * @return self
+     * @throws \InvalidArgumentException
      */
-    public static function create(int $interval, int $limit, ?int $offset): self
+    public function __construct(int $interval, int $limit, ?int $offset)
     {
         self::validateInterval($interval);
         self::validateLimit($limit);
 
-        return new self($interval, $limit, $offset);
+        $this->interval = $interval;
+        $this->limit    = $limit;
+        $this->offset   = $offset;
     }
 
     /**
@@ -126,17 +122,5 @@ final class LongPoolingConfig implements EntryPointConfig
                 )
             );
         }
-    }
-
-    /**
-     * @param int      $interval
-     * @param int      $limit
-     * @param int|null $offset
-     */
-    private function __construct(int $interval, int $limit, ?int $offset)
-    {
-        $this->interval = $interval;
-        $this->limit    = $limit;
-        $this->offset   = $offset;
     }
 }

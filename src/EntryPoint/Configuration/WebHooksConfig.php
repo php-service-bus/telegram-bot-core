@@ -15,10 +15,7 @@ namespace ServiceBus\TelegramBot\EntryPoint\Configuration;
 /**
  * Webhooks configuration.
  *
- * @property-read string      $listenHost
- * @property-read int         $listenPort
- * @property-read string      $callbackUrl
- * @property-read string|null $certificateFilePath
+ * @psalm-readonly
  */
 final class WebHooksConfig implements EntryPointConfig
 {
@@ -61,51 +58,37 @@ final class WebHooksConfig implements EntryPointConfig
     public $certificateFilePath;
 
     /**
-     * @param string      $callbackUrl
-     * @param string|null $listenHost
-     * @param int|null    $listenPort
-     * @param string|null $certificateFilePath
-     *
      * @throws \InvalidArgumentException Incorrect callback URL url
      * @throws \InvalidArgumentException Incorrect listening host
      * @throws \InvalidArgumentException Incorrect listening port
      * @throws \InvalidArgumentException Incorrect certificate file
-     *
-     * @return self
-     *
      */
-    public static function create(
-        string $callbackUrl,
-        ?string $listenHost = null,
-        ?int $listenPort = null,
-        ?string $certificateFilePath = null
-    ): self {
+    public function __construct(string $listenHost, int $listenPort, string $callbackUrl, ?string $certificateFilePath)
+    {
         $listenHost = $listenHost ?? self::DEFAULT_LISTEN_HOST;
         $listenPort = $listenPort ?? self::DEFAULT_LISTEN_PORT;
 
         self::validateCallbackUrl($callbackUrl);
 
-        if (null !== $certificateFilePath)
+        if($certificateFilePath !== null)
         {
             self::validateSslCertificateFilePath($certificateFilePath);
         }
 
-        if ('' === $listenHost)
+        if($listenHost === '')
         {
             throw new \InvalidArgumentException('Listen host can\'t be empty');
         }
 
-        if (0 >= $listenPort)
+        if($listenPort <= 0)
         {
             throw new \InvalidArgumentException('Listen port must be greater than zero');
         }
 
-        return new self(
-            $listenHost,
-            $listenPort,
-            \rtrim($callbackUrl, '/'),
-            $certificateFilePath
-        );
+        $this->listenHost          = $listenHost;
+        $this->listenPort          = $listenPort;
+        $this->callbackUrl         = \rtrim($callbackUrl, '/');
+        $this->certificateFilePath = $certificateFilePath;
     }
 
     /**
@@ -118,24 +101,24 @@ final class WebHooksConfig implements EntryPointConfig
      */
     private static function validateCallbackUrl(string $callbackUrl): void
     {
-        if ('' === $callbackUrl)
+        if('' === $callbackUrl)
         {
             throw new \InvalidArgumentException('Callback URL must be specifier');
         }
 
         $parts = \parse_url($callbackUrl);
 
-        if (false === \is_array($parts))
+        if(false === \is_array($parts))
         {
             throw new \InvalidArgumentException('Can\'at parse callback URL address');
         }
 
-        if (false === isset($parts['scheme']) || 'https' !== $parts['scheme'])
+        if(false === isset($parts['scheme']) || 'https' !== $parts['scheme'])
         {
             throw new \InvalidArgumentException('Callback URL scheme can only be "https"');
         }
 
-        if (true === isset($parts['port']) && false === \in_array($parts['port'], self::SUPPORTED_NOTIFICATION_URL_PORTS, true))
+        if(true === isset($parts['port']) && false === \in_array($parts['port'], self::SUPPORTED_NOTIFICATION_URL_PORTS, true))
         {
             throw new \InvalidArgumentException(
                 \sprintf(
@@ -156,32 +139,18 @@ final class WebHooksConfig implements EntryPointConfig
      */
     private static function validateSslCertificateFilePath(string $sslCertificateFilePath): void
     {
-        if (false === \file_exists($sslCertificateFilePath))
+        if(false === \file_exists($sslCertificateFilePath))
         {
             throw new \InvalidArgumentException(
                 \sprintf('The specified certificate file ("%s") was not found', $sslCertificateFilePath)
             );
         }
 
-        if (false === \is_readable($sslCertificateFilePath))
+        if(false === \is_readable($sslCertificateFilePath))
         {
             throw new \InvalidArgumentException(
                 \sprintf('The specified certificate file ("%s") is not readable', $sslCertificateFilePath)
             );
         }
-    }
-
-    /**
-     * @param string      $listenHost
-     * @param int         $listenPort
-     * @param string      $callbackUrl
-     * @param string|null $certificateFilePath
-     */
-    private function __construct(string $listenHost, int $listenPort, string $callbackUrl, ?string $certificateFilePath)
-    {
-        $this->listenHost          = $listenHost;
-        $this->listenPort          = $listenPort;
-        $this->callbackUrl         = $callbackUrl;
-        $this->certificateFilePath = $certificateFilePath;
     }
 }
