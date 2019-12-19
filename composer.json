@@ -34,7 +34,7 @@
   "require": {
     "php": ">=7.3",
     "ext-json": "*",
-    "php-service-bus/http-client": "v4.0.*",
+    "php-service-bus/http-client": "v4.1.*",
     "php-service-bus/mutex": "v4.0.*",
     "phpdocumentor/reflection-docblock": "v4.3.*",
     "symfony/property-access": "v5.0.*",

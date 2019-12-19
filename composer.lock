@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8b728dbd1a87c395837b5c3f130315c",
+    "content-hash": "98d840459dbc74f5b488192540359d22",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1651,16 +1651,16 @@
         },
         {
             "name": "php-service-bus/http-client",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-service-bus/http-client.git",
-                "reference": "96e7126b475b049e380877418e7b8433b021415f"
+                "reference": "f35464c4ed310873b0c962abff364f4793019db4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-service-bus/http-client/zipball/96e7126b475b049e380877418e7b8433b021415f",
-                "reference": "96e7126b475b049e380877418e7b8433b021415f",
+                "url": "https://api.github.com/repos/php-service-bus/http-client/zipball/f35464c4ed310873b0c962abff364f4793019db4",
+                "reference": "f35464c4ed310873b0c962abff364f4793019db4",
                 "shasum": ""
             },
             "require": {
@@ -1703,7 +1703,7 @@
                 "command-bus",
                 "messaging"
             ],
-            "time": "2019-12-18T13:13:34+00:00"
+            "time": "2019-12-19T16:16:34+00:00"
         },
         {
             "name": "php-service-bus/mutex",
@@ -5230,16 +5230,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201"
+                "reference": "82437719dab1e6bdd28726af14cb345c2ec816d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
+                "url": "https://api.github.com/repos/symfony/console/zipball/82437719dab1e6bdd28726af14cb345c2ec816d0",
+                "reference": "82437719dab1e6bdd28726af14cb345c2ec816d0",
                 "shasum": ""
             },
             "require": {
@@ -5302,7 +5302,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-01T10:06:17+00:00"
+            "time": "2019-12-17T10:32:23+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -5363,7 +5363,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -5541,7 +5541,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
