@@ -41,10 +41,7 @@
     "symfony/validator": "v5.0.*",
     "doctrine/annotations": "v1.8.*",
     "doctrine/cache": "v1.10.*",
-    "amphp/log": "^1",
-    "amphp/socket": "^1",
-    "amphp/http-server": "^2",
-    "amphp/cluster": "dev-master"
+    "amphp/log": "^1"
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v0.1.*",

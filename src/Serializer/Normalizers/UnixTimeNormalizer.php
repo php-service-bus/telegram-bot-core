@@ -24,7 +24,7 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): int
+    public function normalize($object, string $format = null, array $context = []): int
     {
         /** @var UnixTime $object */
 
@@ -34,7 +34,7 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof UnixTime;
     }
@@ -47,7 +47,7 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
      * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
-    public function denormalize($data, $class, $format = null, array $context = []): ?UnixTime
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?UnixTime
     {
         if (null !== $data)
         {
@@ -60,7 +60,7 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return UnixTime::class === $type;
     }

@@ -30,7 +30,7 @@ final class TelegramCredentialsTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('API token can\'t be empty');
 
-        TelegramCredentials::apiToken('');
+        new TelegramCredentials('');
     }
 
     /**
@@ -43,7 +43,7 @@ final class TelegramCredentialsTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid bot api token (via regular expression "/(\d+)\:[\w\-]+/")');
 
-        TelegramCredentials::apiToken(__METHOD__);
+        new TelegramCredentials(__METHOD__);
     }
 
     /**
@@ -55,7 +55,7 @@ final class TelegramCredentialsTest extends TestCase
     {
         static::assertSame(
             '25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o',
-            TelegramCredentials::apiToken('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o')->token
+            (new  TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o'))->token
         );
     }
 }

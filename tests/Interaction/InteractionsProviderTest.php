@@ -38,7 +38,7 @@ final class InteractionsProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->credentials = TelegramCredentials::apiToken('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o');
+        $this->credentials = new TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o');
     }
 
     /**

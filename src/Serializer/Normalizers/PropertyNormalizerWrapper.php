@@ -23,8 +23,6 @@ final class PropertyNormalizerWrapper extends PropertyNormalizer
 {
     /**
      * @psalm-var array<string, array<array-key, string>>
-     *
-     * @var array
      */
     private $localStorage = [];
 
@@ -46,20 +44,60 @@ final class PropertyNormalizerWrapper extends PropertyNormalizer
 
     /**
      * {@inheritdoc}
-     *
-     * @param object      $object
-     * @param string|null $format
-     * @param array       $context
      */
-    protected function extractAttributes($object, $format = null, array $context = []): array
+    protected function extractAttributes(object $object, string $format = null, array $context = []): array
     {
         $class = \get_class($object);
 
-        if (false === isset($this->localStorage[$class]))
+        if (\array_key_exists($class, $this->localStorage) === false)
         {
             $this->localStorage[$class] = parent::extractAttributes($object, $format, $context);
         }
 
         return $this->localStorage[$class];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Error
+     */
+    protected function getAttributeValue(object $object, string $attribute, string $format = null, array $context = [])
+    {
+        if (isset($object->{$attribute}) === true)
+        {
+            return $object->{$attribute};
+        }
+
+        try
+        {
+            return parent::getAttributeValue($object, $attribute, $format, $context);
+        }
+        catch (\Error $error)
+        {
+            if (\strpos($error->getMessage(), 'must not be accessed before initialization') !== false)
+            {
+                return null;
+            }
+
+            throw $error;
+        }
+    }
+
+    /**
+     * @psalm-param mixed $value
+     *
+     * {@inheritdoc}
+     */
+    protected function setAttributeValue(object $object, string $attribute, $value, string $format = null, array $context = []): void
+    {
+        if (isset($object->{$attribute}) === true)
+        {
+            $object->{$attribute} = $value;
+
+            return;
+        }
+
+        parent::setAttributeValue($object, $attribute, $value, $format, $context);
     }
 }

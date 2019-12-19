@@ -12,75 +12,50 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Serializer;
 
-define('JSON_ERRORS_MAPPING', [
-    \JSON_ERROR_DEPTH                 => 'The maximum stack depth has been exceeded',
-    \JSON_ERROR_STATE_MISMATCH        => 'Invalid or malformed JSON',
-    \JSON_ERROR_CTRL_CHAR             => 'Control character error, possibly incorrectly encoded',
-    \JSON_ERROR_SYNTAX                => 'Syntax error',
-    \JSON_ERROR_UTF8                  => 'Malformed UTF-8 characters, possibly incorrectly encoded',
-    \JSON_ERROR_RECURSION             => 'One or more recursive references in the value to be encoded',
-    \JSON_ERROR_INF_OR_NAN            => 'One or more NAN or INF values in the value to be encoded',
-    \JSON_ERROR_UNSUPPORTED_TYPE      => 'A value of a type that cannot be encoded was given',
-    \JSON_ERROR_INVALID_PROPERTY_NAME => 'A property name that cannot be encoded was given',
-    \JSON_ERROR_UTF16                 => 'Malformed UTF-16 characters, possibly incorrectly encoded',
-]);
-
 /**
  * @param string $json
  * @param bool   $assoc
- * @param int    $depth
- * @param int    $options
  *
  * @return array
+ *
+ * @throws \RuntimeException
  */
-function jsonDecode(string $json, bool $assoc = false, int $depth = 512, int $options = 0): array
+function jsonDecode(string $json, bool $assoc = false): array
 {
-    /** Clear last error */
-    \json_last_error();
-
-    /** @psalm-var array<string, string|int|float|null> $decoded */
-    $decoded = \json_decode($json, $assoc, $depth, $options);
-
-    $lastResultCode = \json_last_error();
-
-    if (\JSON_ERROR_NONE === $lastResultCode)
+    try
     {
+        /**
+         * @psalm-var array<string, string|int|float|null> $decoded
+         * @var array $decoded
+         */
+        $decoded = \json_decode($json, $assoc, 512, \JSON_THROW_ON_ERROR);
+
         return $decoded;
     }
-
-    throw new \RuntimeException(
-        \sprintf(
-            'JSON unserialize failed: %s',
-            (string) (JSON_ERRORS_MAPPING[$lastResultCode] ?? 'Unknown error')
-        )
-    );
+    catch(\Throwable $throwable)
+    {
+        throw new \RuntimeException($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
+    }
 }
 
 /**
  * @param array|object $value
- * @param int          $options
- * @param int          $depth
  *
  * @return string
+ *
+ * @throws \RuntimeException
  */
-function jsonEncode($value, int $options = 0, int $depth = 512): string
+function jsonEncode($value): string
 {
-    /** Clear last error */
-    \json_last_error();
-
-    $encoded = \json_encode($value, $options, $depth);
-
-    $lastResultCode = \json_last_error();
-
-    if (false !== $encoded && \JSON_ERROR_NONE === $lastResultCode)
+    try
     {
+        /** @var string $encoded */
+        $encoded = \json_encode($value, \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
+
         return $encoded;
     }
-
-    throw new \RuntimeException(
-        \sprintf(
-            'JSON serialize failed: %s',
-            (string) (JSON_ERRORS_MAPPING[$lastResultCode] ?? 'Unknown error')
-        )
-    );
+    catch(\Throwable $throwable)
+    {
+        throw new \RuntimeException($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
+    }
 }
