@@ -42,20 +42,23 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      *
+     * @psalm-param    string $data
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Enum
     {
-        if('' !== (string) $data)
+        if('' !== $data)
         {
             /**
-             * @psalm-var    class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $type
-             *
              * @noinspection PhpUndefinedMethodInspection
+             *
+             * @psalm-var class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $type
              *
              * @var Enum $enum
              */
-            $enum = $type::create((string) $data);
+            $enum = $type::create($data);
 
             return $enum;
         }

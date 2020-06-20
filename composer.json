@@ -31,15 +31,15 @@
     "php-service-bus/common": "v4.1.*",
     "php-service-bus/http-client": "v4.1.*",
     "php-service-bus/mutex": "v4.1.*",
-    "symfony/serializer-pack": "^v1",
+    "phpdocumentor/reflection-docblock": "v5.1.*",
+    "symfony/property-access": "v5.1.*",
+    "symfony/property-info":  "v5.1.*",
+    "symfony/serializer":  "v5.1.*",
     "moneyphp/money": "v3.3.*",
     "symfony/validator": "v5.1.*",
     "doctrine/annotations": "v1.10.*",
     "doctrine/cache": "v1.10.*",
-    "amphp/log": "^1",
-    "amphp/socket": "^1",
-    "amphp/http-server": "^2",
-    "amphp/cluster": "dev-master"
+    "amphp/log": "^1"
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v0.1.*",

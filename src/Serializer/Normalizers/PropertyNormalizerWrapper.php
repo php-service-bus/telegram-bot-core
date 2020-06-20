@@ -28,8 +28,6 @@ final class PropertyNormalizerWrapper extends PropertyNormalizer
 
     /**
      * {@inheritdoc}
-     *
-     * @psalm-suppress MissingParamType Cannot specify data type
      */
     protected function instantiateObject(
         array &$data,

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.0/phpunit.xsd"
          backupGlobals="false"
-         backupStaticAttributes="false"
-         beStrictAboutTestsThatDoNotTestAnything="false"
          colors="true"
-         verbose="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         bootstrap="vendor/autoload.php"
          failOnRisky="true"
          failOnWarning="true"
-         stopOnFailure="false">
+         beStrictAboutTestsThatDoNotTestAnything="false">
     <php>
         <ini name="error_reporting" value="-1"/>
         <env name="TEST_POSTGRES_DSN" value="pgsql://postgres:123456789@localhost:5432/test"/>
@@ -18,7 +16,11 @@
 
     <testsuites>
 
-        <testsuite name="Telegram bot core">
+        <testsuite name="Common storage parts">
+            <directory>./vendor/php-service-bus/storage-common/tests</directory>
+        </testsuite>
+
+        <testsuite name="SQL databases adapters implementation">
             <directory>./tests/</directory>
         </testsuite>
 
@@ -26,9 +28,10 @@
 
     <filter>
         <whitelist>
-            <directory>./src</directory>
+            <directory>./</directory>
             <exclude>
                 <directory>./tests</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>

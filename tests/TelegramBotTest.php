@@ -43,7 +43,7 @@ final class TelegramBotTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('TelegramBot username must end in `TelegramBot` (Like this, for example: TetrisBot or tetris_bot)');
 
-        new TelegramBot(__METHOD__);
+        new  TelegramBot(__METHOD__);
     }
 
     /**

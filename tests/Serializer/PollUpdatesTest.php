@@ -32,7 +32,7 @@ final class PollUpdatesTest extends TestCase
     {
         /** @var Update $update */
         $update = (new SymfonySerializer())->decode(
-            jsonDecode(\file_get_contents(__DIR__ . '/stubs/polls/vote.json'), true),
+            jsonDecode(\file_get_contents(__DIR__ . '/stubs/polls/vote.json')),
             Update::class
         );
 

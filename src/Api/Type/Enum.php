@@ -23,8 +23,6 @@ interface Enum
      * @throws \InvalidArgumentException
      *
      * @return static
-     *
-     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     public static function create(string $value);
 

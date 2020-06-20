@@ -35,7 +35,7 @@ final class MessagesUpdateTest extends TestCase
     {
         /** @var Update $update */
         $update = (new SymfonySerializer())->decode(
-            jsonDecode(\file_get_contents(__DIR__ . '/stubs/messages/messageReceived.json'), true),
+            jsonDecode(\file_get_contents(__DIR__ . '/stubs/messages/messageReceived.json')),
             Update::class
         );
 
@@ -47,6 +47,7 @@ final class MessagesUpdateTest extends TestCase
         $message = $update->message;
         /** @var User $user */
         $user = $message->from;
+
         $chat = $message->chat;
 
         static::assertSame('3', $message->messageId->toString());

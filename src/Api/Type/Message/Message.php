@@ -66,7 +66,7 @@ final class Message
     /**
      * Conversation the message belongs to.
      *
-     * @var Chat|null
+     * @var Chat
      */
     public $chat;
 

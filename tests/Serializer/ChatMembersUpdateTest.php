@@ -36,7 +36,7 @@ final class ChatMembersUpdateTest extends TestCase
     {
         /** @var Update $update */
         $update = (new SymfonySerializer())->decode(
-            jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/newChatParticipant.json'), true),
+            jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/newChatParticipant.json')),
             Update::class
         );
 
@@ -73,7 +73,7 @@ final class ChatMembersUpdateTest extends TestCase
     {
         /** @var Update $update */
         $update = (new SymfonySerializer())->decode(
-            jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/leftChatParticipant.json'), true),
+            jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/leftChatParticipant.json')),
             Update::class
         );
 
