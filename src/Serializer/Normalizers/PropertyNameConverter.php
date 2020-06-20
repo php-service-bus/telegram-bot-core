@@ -23,8 +23,6 @@ final class PropertyNameConverter implements NameConverterInterface
      * Local cache.
      *
      * @psalm-var array<string, string>
-     *
-     * @var array
      */
     private $localStorage;
 
@@ -41,11 +39,11 @@ final class PropertyNameConverter implements NameConverterInterface
      */
     public function denormalize(string $propertyName): string
     {
-        if (false === isset($this->localStorage[$propertyName]))
+        if (isset($this->localStorage[$propertyName]) === false)
         {
             $joinedString = \preg_replace_callback(
                 '/_(.?)/',
-                static function(array $matches): string
+                static function (array $matches): string
                 {
                     return \ucfirst((string) $matches[1]);
                 },

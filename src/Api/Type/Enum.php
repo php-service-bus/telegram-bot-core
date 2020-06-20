@@ -24,6 +24,7 @@ interface Enum
      *
      * @return static
      *
+     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     public static function create(string $value);
 

@@ -49,7 +49,7 @@ final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterfa
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?ChatId
     {
-        if ('' !== (string) $data)
+        if('' !== (string) $data)
         {
             return new ChatId((string) $data);
         }

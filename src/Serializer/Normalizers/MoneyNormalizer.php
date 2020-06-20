@@ -53,13 +53,13 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Money
     {
-        if (isset($data['currency'], $data['total_amount']))
+        if(isset($data['currency'], $data['total_amount']))
         {
             try
             {
                 return new Money($data['total_amount'], new Currency($data['currency']));
             }
-            catch (\Throwable $throwable)
+            catch(\Throwable $throwable)
             {
             }
         }
