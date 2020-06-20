@@ -19,6 +19,7 @@ use GuzzleHttp\Psr7\Response as Psr7Response;
 use ServiceBus\HttpClient\Exception\HttpClientException;
 use ServiceBus\HttpClient\HttpClient;
 use ServiceBus\HttpClient\HttpRequest;
+use ServiceBus\HttpClient\RequestContext;
 
 /**
  *
@@ -73,7 +74,7 @@ final class TestHttpClient implements HttpClient
     /**
      * {@inheritdoc}
      */
-    public function execute(HttpRequest $requestData): Promise
+    public function execute(HttpRequest $requestData, ?RequestContext $context = null): Promise
     {
         return null === $this->expectedFailMessage
             ? new Success(new Psr7Response($this->expectedStatusCode, [], $this->expectedPayload))
@@ -83,7 +84,7 @@ final class TestHttpClient implements HttpClient
     /**
      * {@inheritdoc}
      */
-    public function download(string $filePath, string $destinationDirectory, string $fileName): Promise
+    public function download(string $filePath, string $destinationDirectory, string $fileName, ?RequestContext $context = null): Promise
     {
         return null === $this->expectedFailMessage
             ? new Success(__FILE__)

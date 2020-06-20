@@ -54,19 +54,15 @@ final class TelegramUpdateDispatcher
      */
     private $logger;
 
-    /**
-     * @psalm-param array<array-key, class-string<Event\TelegramEvent>> $customEvents
-     *
-     * @param TelegramEventBus $bus
-     * @param LoggerInterface  $logger
-     * @param string           ...$customEvents
-     */
     public function __construct(TelegramEventBus $bus, LoggerInterface $logger, string ... $customEvents)
     {
         $this->bus    = $bus;
         $this->logger = $logger;
-        /** @psalm-suppress PropertyTypeCoercion */
-        $this->events = \array_merge($customEvents, self::DEFAULT_EVENTS);
+
+        /** @psalm-var array<array-key, class-string<Event\TelegramEvent>> $events */
+        $events = \array_merge($customEvents, self::DEFAULT_EVENTS);
+
+        $this->events = $events;
     }
 
     /**

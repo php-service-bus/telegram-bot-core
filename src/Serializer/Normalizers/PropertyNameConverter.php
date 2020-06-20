@@ -31,7 +31,7 @@ final class PropertyNameConverter implements NameConverterInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($propertyName): string
+    public function normalize(string $propertyName): string
     {
         return $propertyName;
     }
@@ -39,7 +39,7 @@ final class PropertyNameConverter implements NameConverterInterface
     /**
      * {@inheritdoc}
      */
-    public function denormalize($propertyName): string
+    public function denormalize(string $propertyName): string
     {
         if (false === isset($this->localStorage[$propertyName]))
         {

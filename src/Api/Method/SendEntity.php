@@ -12,12 +12,12 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method;
 
-use function ServiceBus\TelegramBot\Serializer\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+use function ServiceBus\Common\jsonEncode;
 
 /**
  *
@@ -160,6 +160,6 @@ abstract class SendEntity implements TelegramMethod
      */
     final protected function replyMarkup(): ?string
     {
-        return null !== $this->replyMarkup ? jsonEncode($this->replyMarkup) : null;
+        return null !== $this->replyMarkup ? jsonEncode(\get_object_vars($this->replyMarkup)) : null;
     }
 }

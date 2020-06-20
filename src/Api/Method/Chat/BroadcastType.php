@@ -60,7 +60,7 @@ final class BroadcastType implements Enum
     /**
      * {@inheritdoc}
      */
-    public static function create(string $value)
+    public static function create(string $value): self
     {
         if (false === \in_array($value, self::LIST, true))
         {

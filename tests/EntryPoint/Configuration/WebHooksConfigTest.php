@@ -30,7 +30,7 @@ final class WebHooksConfigTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Callback URL must be specifier');
 
-        WebHooksConfig::create('');
+        new WebHooksConfig('example.org', 80, '');
     }
 
     /**
@@ -41,9 +41,9 @@ final class WebHooksConfigTest extends TestCase
     public function invalidDomain(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Can\'at parse callback URL address');
+        $this->expectExceptionMessage('Listen host can\'t be empty');
 
-        WebHooksConfig::create('///example.org:80');
+        new WebHooksConfig('', 80, 'https://example.org');
     }
 
     /**
@@ -56,7 +56,7 @@ final class WebHooksConfigTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Callback URL scheme can only be "https"');
 
-        WebHooksConfig::create('http://google.com');
+        new WebHooksConfig('example.org', 80, 'http://example.org');
     }
 
     /**
@@ -69,7 +69,7 @@ final class WebHooksConfigTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Incorrect callback URL port specified ("1331"). Available choices: 443, 80, 88, 8443');
 
-        WebHooksConfig::create('https://google.com:1331');
+        new WebHooksConfig('example.org', 80, 'https://example.org:1331');
     }
 
     /**
@@ -82,20 +82,7 @@ final class WebHooksConfigTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The specified certificate file ("~/abube.gif") was not found');
 
-        WebHooksConfig::create('https://google.com', null, null, '~/abube.gif');
-    }
-
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function emptyListenHost(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Listen host can\'t be empty');
-
-        WebHooksConfig::create('https://google.com', '');
+        new WebHooksConfig('https://google.com', 80, 'https://google.com', '~/abube.gif');
     }
 
     /**
@@ -108,6 +95,6 @@ final class WebHooksConfigTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Listen port must be greater than zero');
 
-        WebHooksConfig::create('https://google.com', '[::]', -100);
+        new WebHooksConfig('example.org', -80, 'https://example.org');
     }
 }

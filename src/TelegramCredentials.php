@@ -40,7 +40,7 @@ final class TelegramCredentials
             throw new \InvalidArgumentException('API token can\'t be empty');
         }
 
-        if (false === (bool) \preg_match('/(\d+)\:[\w\-]+/', $token))
+        if (false === (bool) \preg_match('/(\d+):[\w\-]+/', $token))
         {
             throw new \InvalidArgumentException('Invalid bot api token (via regular expression "/(\d+)\:[\w\-]+/")');
         }

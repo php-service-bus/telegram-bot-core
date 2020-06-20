@@ -12,15 +12,14 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
-use function ServiceBus\TelegramBot\Serializer\jsonDecode;
 use PHPUnit\Framework\TestCase;
-use ServiceBus\TelegramBot\Api\Type\Chat\Chat;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatType;
 use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
 use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
+use function ServiceBus\Common\jsonDecode;
 
 /**
  *
@@ -48,7 +47,6 @@ final class MessagesUpdateTest extends TestCase
         $message = $update->message;
         /** @var User $user */
         $user = $message->from;
-        /** @var Chat $chat */
         $chat = $message->chat;
 
         static::assertSame('3', $message->messageId->toString());

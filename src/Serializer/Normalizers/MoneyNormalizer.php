@@ -25,7 +25,7 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): array
+    public function normalize($object, string $format = null, array $context = []): array
     {
         /** @var Money $object */
 
@@ -38,7 +38,7 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Money;
     }
@@ -51,7 +51,7 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
      * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
-    public function denormalize($data, $class, $format = null, array $context = []): ?Money
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?Money
     {
         if (isset($data['currency'], $data['total_amount']))
         {
@@ -70,7 +70,7 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return Money::class === $type;
     }

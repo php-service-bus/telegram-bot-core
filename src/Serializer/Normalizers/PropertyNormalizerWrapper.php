@@ -35,7 +35,7 @@ final class PropertyNormalizerWrapper extends PropertyNormalizer
      */
     protected function instantiateObject(
         array &$data,
-        $class,
+        string $class,
         array &$context,
         \ReflectionClass $reflectionClass,
         $allowedAttributes,
@@ -51,7 +51,7 @@ final class PropertyNormalizerWrapper extends PropertyNormalizer
      * @param string|null $format
      * @param array       $context
      */
-    protected function extractAttributes($object, $format = null, array $context = []): array
+    protected function extractAttributes(object $object, string $format = null, array $context = []): array
     {
         $class = \get_class($object);
 

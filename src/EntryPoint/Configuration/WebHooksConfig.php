@@ -14,16 +14,10 @@ namespace ServiceBus\TelegramBot\EntryPoint\Configuration;
 
 /**
  * Webhooks configuration.
- *
- * @psalm-readonly
  */
 final class WebHooksConfig implements EntryPointConfig
 {
     private const SUPPORTED_NOTIFICATION_URL_PORTS = [443, 80, 88, 8443];
-
-    private const DEFAULT_LISTEN_HOST = '[::]';
-
-    private const DEFAULT_LISTEN_PORT = 1331;
 
     /**
      * WebServer listen host.
@@ -63,11 +57,8 @@ final class WebHooksConfig implements EntryPointConfig
      * @throws \InvalidArgumentException Incorrect listening port
      * @throws \InvalidArgumentException Incorrect certificate file
      */
-    public function __construct(string $listenHost, int $listenPort, string $callbackUrl, ?string $certificateFilePath)
+    public function __construct(string $listenHost, int $listenPort, string $callbackUrl, ?string $certificateFilePath = null)
     {
-        $listenHost = $listenHost ?? self::DEFAULT_LISTEN_HOST;
-        $listenPort = $listenPort ?? self::DEFAULT_LISTEN_PORT;
-
         self::validateCallbackUrl($callbackUrl);
 
         if($certificateFilePath !== null)

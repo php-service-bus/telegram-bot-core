@@ -24,7 +24,7 @@ final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterfa
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize($object, string $format = null, array $context = []): string
     {
         /** @var ChatId $object */
 
@@ -34,7 +34,7 @@ final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterfa
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof ChatId;
     }
@@ -47,7 +47,7 @@ final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterfa
      * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
-    public function denormalize($data, $class, $format = null, array $context = []): ?ChatId
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?ChatId
     {
         if ('' !== (string) $data)
         {
@@ -60,7 +60,7 @@ final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterfa
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return ChatId::class === $type;
     }

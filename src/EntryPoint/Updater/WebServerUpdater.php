@@ -13,7 +13,6 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\EntryPoint\Updater;
 
 use function Amp\call;
-use function ServiceBus\TelegramBot\Serializer\jsonDecode;
 use Amp\Cluster\Cluster;
 use Amp\Http\Server\Request;
 use Amp\Http\Server\RequestHandler\CallableRequestHandler;
@@ -32,6 +31,7 @@ use ServiceBus\TelegramBot\Interaction\InteractionsProvider;
 use ServiceBus\TelegramBot\Interaction\Result\Fail;
 use ServiceBus\TelegramBot\Serializer\TelegramSerializer;
 use ServiceBus\TelegramBot\TelegramCredentials;
+use function ServiceBus\Common\jsonDecode;
 
 /**
  * @internal
@@ -186,7 +186,7 @@ final class WebServerUpdater implements Updater
                     ['notificationPayload' => $jsonBody]
                 );
 
-                $payload = jsonDecode($jsonBody, true);
+                $payload = jsonDecode($jsonBody);
 
                 /** @var Update $update */
                 $update = $serializer->decode($payload, Update::class);

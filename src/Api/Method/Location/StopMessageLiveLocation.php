@@ -12,13 +12,13 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Location;
 
-use function ServiceBus\TelegramBot\Serializer\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
 use ServiceBus\TelegramBot\Api\Type\Message\InlineMessageId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+use function ServiceBus\Common\jsonEncode;
 
 /**
  * Stop updating a live location message before live_period expires.
@@ -124,7 +124,7 @@ final class StopMessageLiveLocation implements TelegramMethod
             'chat_id'           => null !== $this->chatId ? $this->chatId->toString() : null,
             'message_id'        => null !== $this->messageId ? $this->messageId->toString() : null,
             'inline_message_id' => null !== $this->inlineMessageId ? $this->inlineMessageId->toString() : null,
-            'reply_markup'      => null !== $this->replyMarkup ? jsonEncode($this->replyMarkup) : null,
+            'reply_markup'      => null !== $this->replyMarkup ? jsonEncode(\get_object_vars($this->replyMarkup)) : null,
         ]);
     }
 

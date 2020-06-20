@@ -1,8 +1,7 @@
 parameters:
-	ignoreErrors:
-		-
-			message: '#callback of function Amp\\call expects callable#'
-			path: %currentWorkingDirectory%/src
-		-
-			message: '#return contains unresolvable type#'
-			path: %currentWorkingDirectory%/src
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        -
+            message: '#Unable to resolve the template type#'
+            path: %currentWorkingDirectory%/src

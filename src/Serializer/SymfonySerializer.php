@@ -66,7 +66,10 @@ final class SymfonySerializer implements TelegramSerializer
                 $payload = ['list' => $payload];
             }
 
-            return $this->normalizer->denormalize($payload, $toClass, null, ['enable_max_depth' => true]);
+            /** @var object $object */
+            $object = $this->normalizer->denormalize($payload, $toClass, null, ['enable_max_depth' => true]);
+
+            return $object;
         }
         catch (\Throwable $throwable)
         {

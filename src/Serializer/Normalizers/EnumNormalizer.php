@@ -24,7 +24,7 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize($object, string $format = null, array $context = []): string
     {
         /** @var Enum $object */
 
@@ -34,7 +34,7 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Enum;
     }
@@ -42,22 +42,20 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      *
-     * @psalm-param    string $data
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
-    public function denormalize($data, $class, $format = null, array $context = []): ?Enum
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?Enum
     {
-        if ('' !== $data)
+        if('' !== (string) $data)
         {
             /**
+             * @psalm-var    class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $type
+             *
              * @noinspection PhpUndefinedMethodInspection
-             * @psalm-var class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $class
              *
              * @var Enum $enum
              */
-            $enum = $class::create($data);
+            $enum = $type::create((string) $data);
 
             return $enum;
         }
@@ -68,7 +66,7 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return \is_a($type, Enum::class, true);
     }

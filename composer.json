@@ -18,28 +18,23 @@
   "autoload": {
     "psr-4": {
       "ServiceBus\\TelegramBot\\": "src/"
-    },
-    "files": [
-      "src/Serializer/functions.php"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {
       "ServiceBus\\TelegramBot\\Tests\\": "tests/"
-    },
-    "files": [
-      "src/Serializer/functions.php"
-    ]
+    }
   },
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.4",
     "ext-json": "*",
-    "php-service-bus/http-client": "v4.0.*",
-    "php-service-bus/mutex": "v4.0.*",
+    "php-service-bus/common": "v4.1.*",
+    "php-service-bus/http-client": "v4.1.*",
+    "php-service-bus/mutex": "v4.1.*",
     "symfony/serializer-pack": "^v1",
-    "moneyphp/money": "v3.2.*",
-    "symfony/validator": "v5.0.*",
-    "doctrine/annotations": "v1.8.*",
+    "moneyphp/money": "v3.3.*",
+    "symfony/validator": "v5.1.*",
+    "doctrine/annotations": "v1.10.*",
     "doctrine/cache": "v1.10.*",
     "amphp/log": "^1",
     "amphp/socket": "^1",
@@ -48,10 +43,10 @@
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v0.1.*",
-    "phpunit/phpunit": "v8.3.*",
-    "vimeo/psalm": "v3.4.*",
-    "phpstan/phpstan": "v0.11.*",
-    "symfony/dotenv": "v4.2.*"
+    "phpunit/phpunit": "v9.1.*",
+    "vimeo/psalm": "v3.11.*",
+    "phpstan/phpstan": "v0.12.*",
+    "symfony/dotenv": "v5.1.*"
   },
   "prefer-stable": true,
   "minimum-stability": "dev",

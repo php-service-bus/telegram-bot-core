@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\EntryPoint;
 
+use ServiceBus\Mutex\InMemory\InMemoryMutexFactory;
 use function Amp\call;
 use Amp\Promise;
 use Amp\Success;
@@ -19,7 +20,6 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use ServiceBus\HttpClient\Artax\ArtaxHttpClient;
 use ServiceBus\HttpClient\HttpClient;
-use ServiceBus\Mutex\InMemoryMutexFactory;
 use ServiceBus\Mutex\MutexFactory;
 use ServiceBus\TelegramBot\EntryPoint\Configuration\EntryPointConfig;
 use ServiceBus\TelegramBot\EntryPoint\Configuration\LongPoolingConfig;
@@ -80,7 +80,7 @@ final class EntryPoint
     ) {
         $this->dispatcher   = $dispatcher;
         $this->logger       = $logger ?? new NullLogger();
-        $this->httpClient   = $httpClient ?? new ArtaxHttpClient(null, null, $this->logger);
+        $this->httpClient   = $httpClient ?? new ArtaxHttpClient(null,  $this->logger);
         $this->serializer   = $serializer ?? new SymfonySerializer();
         $this->mutexFactory = $mutexFactory ?? new InMemoryMutexFactory();
     }

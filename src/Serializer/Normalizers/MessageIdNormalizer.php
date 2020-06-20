@@ -24,7 +24,7 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize($object, string $format = null, array $context = []): string
     {
         /** @var MessageId $object */
 
@@ -34,7 +34,7 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof MessageId;
     }
@@ -47,7 +47,7 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
      * @psalm-suppress MoreSpecificImplementedParamType
      * @psalm-suppress ImplementedReturnTypeMismatch
      */
-    public function denormalize($data, $class, $format = null, array $context = []): ?MessageId
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?MessageId
     {
         if ('' !== (string) $data)
         {
@@ -60,7 +60,7 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return MessageId::class === $type;
     }

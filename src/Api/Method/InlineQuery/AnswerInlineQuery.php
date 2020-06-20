@@ -12,10 +12,10 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\InlineQuery;
 
-use function ServiceBus\TelegramBot\Serializer\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\InlineQueryResult\InlineQueryResult;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+use function ServiceBus\Common\jsonEncode;
 
 /**
  * Send answers to an inline query. No more than 50 results per query are allowed.
