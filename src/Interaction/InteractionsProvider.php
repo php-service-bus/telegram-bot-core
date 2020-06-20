@@ -13,6 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\TelegramBot\Interaction;
 
 use function Amp\call;
+use function ServiceBus\Common\jsonDecode;
 use Amp\Promise;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
@@ -28,7 +29,6 @@ use ServiceBus\TelegramBot\Serializer\TelegramSerializer;
 use ServiceBus\TelegramBot\TelegramCredentials;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
-use function ServiceBus\Common\jsonDecode;
 
 /**
  *

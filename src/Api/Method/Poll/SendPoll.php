@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Poll;
 
+use function ServiceBus\Common\jsonEncode;
 use ServiceBus\TelegramBot\Api\Method\SendEntity;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
-use function ServiceBus\Common\jsonEncode;
 
 /**
  * Send a native poll.

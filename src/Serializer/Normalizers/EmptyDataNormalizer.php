@@ -40,14 +40,14 @@ final class EmptyDataNormalizer implements NormalizerInterface, DenormalizerInte
      */
     public function supportsNormalization($data, string $format = null): bool
     {
-        if (\is_object($data) === true)
+        if (true === \is_object($data))
         {
             $class = \get_class($data);
 
-            if (isset($this->localStorage[$class]) === false)
+            if (false === isset($this->localStorage[$class]))
             {
                 $this->localStorage[$class] = \array_map(
-                    static function (\ReflectionProperty $property): string
+                    static function(\ReflectionProperty $property): string
                     {
                         return (string) $property->name;
                     },

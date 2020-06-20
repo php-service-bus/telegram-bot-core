@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
+use function ServiceBus\Common\jsonDecode;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatType;
 use ServiceBus\TelegramBot\Api\Type\Chat\JoinedChatMembers;
@@ -20,7 +21,6 @@ use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
 use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
 use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
-use function ServiceBus\Common\jsonDecode;
 
 /**
  *

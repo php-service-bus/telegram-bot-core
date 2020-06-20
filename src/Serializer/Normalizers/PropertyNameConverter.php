@@ -39,11 +39,11 @@ final class PropertyNameConverter implements NameConverterInterface
      */
     public function denormalize(string $propertyName): string
     {
-        if (isset($this->localStorage[$propertyName]) === false)
+        if (false === isset($this->localStorage[$propertyName]))
         {
             $joinedString = \preg_replace_callback(
                 '/_(.?)/',
-                static function (array $matches): string
+                static function(array $matches): string
                 {
                     return \ucfirst((string) $matches[1]);
                 },

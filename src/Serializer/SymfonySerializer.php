@@ -61,7 +61,7 @@ final class SymfonySerializer implements TelegramSerializer
     {
         try
         {
-            if(true === \is_a($toClass, \IteratorAggregate::class, true))
+            if (true === \is_a($toClass, \IteratorAggregate::class, true))
             {
                 $payload = ['list' => $payload];
             }
@@ -71,7 +71,7 @@ final class SymfonySerializer implements TelegramSerializer
 
             return $object;
         }
-        catch(\Throwable $throwable)
+        catch (\Throwable $throwable)
         {
             throw new SerializationFailed($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
         }

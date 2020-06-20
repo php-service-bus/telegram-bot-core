@@ -12,11 +12,11 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
+use function ServiceBus\Common\jsonDecode;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Poll\Poll;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
-use function ServiceBus\Common\jsonDecode;
 
 /**
  *

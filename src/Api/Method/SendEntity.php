@@ -12,12 +12,12 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method;
 
+use function ServiceBus\Common\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
-use function ServiceBus\Common\jsonEncode;
 
 /**
  *

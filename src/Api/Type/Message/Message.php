@@ -392,9 +392,9 @@ final class Message
 
     public function isCommand(): bool
     {
-        foreach($this->entities as $entity)
+        foreach ($this->entities as $entity)
         {
-            if($entity->isCommand() === true)
+            if (true === $entity->isCommand())
             {
                 return true;
             }

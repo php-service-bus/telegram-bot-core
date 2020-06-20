@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace ServiceBus\TelegramBot\Api\Method\Location;
 
+use function ServiceBus\Common\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
 use ServiceBus\TelegramBot\Api\Type\Location\Location;
@@ -19,7 +20,6 @@ use ServiceBus\TelegramBot\Api\Type\Message\InlineMessageId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
-use function ServiceBus\Common\jsonEncode;
 
 /**
  * Edit live location messages. A location can be edited until its live_period expires or editing is explicitly

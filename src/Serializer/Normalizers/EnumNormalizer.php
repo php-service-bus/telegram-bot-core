@@ -49,7 +49,7 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Enum
     {
-        if('' !== $data)
+        if ('' !== $data)
         {
             /**
              * @noinspection PhpUndefinedMethodInspection
