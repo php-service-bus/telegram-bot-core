@@ -3,7 +3,6 @@
 [Telegram Bot API](https://core.telegram.org/bots/api) implementation
 
 **WIP**
-## Documentation
 
 ## Contributing
 Contributions are welcome! Please read [CONTRIBUTING](CONTRIBUTING.md) for details.
