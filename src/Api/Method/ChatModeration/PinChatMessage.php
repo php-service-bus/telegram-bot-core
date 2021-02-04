@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -46,12 +46,6 @@ final class PinChatMessage implements TelegramMethod
      */
     private $disableNotification = true;
 
-    /**
-     * @param ChatId    $chatId
-     * @param MessageId $messageId
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, MessageId $messageId): self
     {
         $self = new self();
@@ -62,9 +56,6 @@ final class PinChatMessage implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function notifyMembers(): self
     {
         $this->disableNotification = false;
@@ -72,9 +63,6 @@ final class PinChatMessage implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function disallowMembersNotification(): self
     {
         $this->disableNotification = true;
@@ -82,25 +70,16 @@ final class PinChatMessage implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'pinChatMessage';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -110,9 +89,6 @@ final class PinChatMessage implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,12 +22,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  * @see https://core.telegram.org/bots/api#voice
  * @see https://core.telegram.org/bots/api#audio
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Document
 {
     /**
      * Unique file identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -36,12 +38,16 @@ final class Document
     /**
      * Optional. Document thumbnail as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var PhotoSize|null
      */
     public $thumb;
 
     /**
      * Optional. Original filename as defined by sender.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -50,12 +56,16 @@ final class Document
     /**
      * Optional. MIME type of the file as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $mimeType;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

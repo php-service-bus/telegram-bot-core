@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#audio
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Audio
 {
     /**
-     * Unique identifier for this file.
+     * Unique identifier for this file
+     *
+     * @psalm-readonly .
      *
      * @var string
      */
@@ -33,12 +35,16 @@ final class Audio
     /**
      * Duration of the audio in seconds as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $duration;
 
     /**
      * Optional. Performer of the audio as defined by sender or by audio tags.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -47,12 +53,16 @@ final class Audio
     /**
      * Optional. Title of the audio as defined by sender or by audio tags.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $title;
 
     /**
      * Optional. MIME type of the file as defined by sender.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -61,12 +71,16 @@ final class Audio
     /**
      * Optional. File size.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $fileSize;
 
     /**
      * Optional. Thumbnail of the album cover to which the music file belongs.
+     *
+     * @psalm-readonly
      *
      * @var PhotoSize|null
      */

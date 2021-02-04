@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -40,11 +40,11 @@ final class ChatType implements Enum
     private $value;
 
     /**
-     * {@inheritdoc}
+     * @psalm-suppress MoreSpecificReturnType
      */
-    public static function create(string $value): self
+    public static function create(string $value): static
     {
-        if (false === \in_array($value, self::LIST, true))
+        if (\in_array($value, self::LIST, true) === false)
         {
             throw new \InvalidArgumentException(\sprintf('Incorrect chat type: %s', $value));
         }
@@ -52,59 +52,36 @@ final class ChatType implements Enum
         return new self($value);
     }
 
-    /**
-     * @return self
-     */
     public static function group(): self
     {
         return new self(self::GROUP);
     }
 
-    /**
-     * @return self
-     */
     public static function superGroup(): self
     {
         return new self(self::SUPER_GROUP);
     }
 
-    /**
-     * @return self
-     */
     public static function private(): self
     {
         return new self(self::PRIVATE);
     }
 
-    /**
-     * @return self
-     */
     public static function channel(): self
     {
         return new self(self::CHANNEL);
     }
 
-    /**
-     * @param ChatType $type
-     *
-     * @return bool
-     */
     public function equals(ChatType $type): bool
     {
         return $this->value === $type->value;
     }
 
-    /**
-     * @return string
-     */
     public function toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     */
     private function __construct(string $value)
     {
         $this->value = $value;

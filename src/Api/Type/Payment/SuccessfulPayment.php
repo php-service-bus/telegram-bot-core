@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\Order\OrderInfo;
  *
  * @see https://core.telegram.org/bots/api#successfulpayment
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class SuccessfulPayment
 {
     /**
      * Total price.
+     *
+     * @psalm-readonly
      *
      * @var Money
      */
@@ -34,12 +36,16 @@ final class SuccessfulPayment
     /**
      * Bot specified invoice payload.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $invoicePayload;
 
     /**
      * Optional. Identifier of the shipping option chosen by the user.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -48,6 +54,8 @@ final class SuccessfulPayment
     /**
      * Optional. Order info provided by the user.
      *
+     * @psalm-readonly
+     *
      * @var OrderInfo|null
      */
     public $orderInfo;
@@ -55,12 +63,16 @@ final class SuccessfulPayment
     /**
      * Telegram payment identifier.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $telegramPaymentChargeId;
 
     /**
      * Provider payment identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */

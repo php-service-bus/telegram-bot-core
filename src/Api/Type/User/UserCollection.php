@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,12 +15,14 @@ namespace ServiceBus\TelegramBot\Api\Type\User;
 /**
  * Users.
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class UserCollection implements \IteratorAggregate
 {
     /**
      * Members collection.
+     *
+     * @psalm-readonly
      *
      * @var User[]
      */
@@ -28,20 +30,15 @@ final class UserCollection implements \IteratorAggregate
 
     /**
      * @param User[] $list
-     *
-     * @return self
      */
     public static function create(array $list): self
     {
         return new self($list);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getIterator(): \Generator
     {
-        return yield from $this->list;
+        yield from $this->list;
     }
 
     /**

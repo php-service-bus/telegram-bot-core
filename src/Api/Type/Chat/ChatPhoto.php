@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
  *
  * @see https://core.telegram.org/bots/api#chatphoto
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ChatPhoto
 {
     /**
      * Unique file identifier of small (160x160) chat photo. This file_id can be used only for photo download.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -30,6 +32,8 @@ final class ChatPhoto
 
     /**
      * Unique file identifier of big (640x640) chat photo. This file_id can be used only for photo download.
+     *
+     * @psalm-readonly
      *
      * @var string
      */

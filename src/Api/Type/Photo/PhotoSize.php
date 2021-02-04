@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -18,12 +18,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Photo;
  * @see https://core.telegram.org/bots/api#document
  * @see https://core.telegram.org/bots/api#sticker
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PhotoSize
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -32,6 +34,8 @@ final class PhotoSize
     /**
      * Photo width.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $width;
@@ -39,12 +43,16 @@ final class PhotoSize
     /**
      * Photo height.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $height;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

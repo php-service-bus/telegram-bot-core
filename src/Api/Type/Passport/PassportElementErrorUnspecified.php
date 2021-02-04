@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Passport;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorunspecified
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PassportElementErrorUnspecified
 {
     /**
      * Error source, must be unspecified.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -31,6 +33,8 @@ final class PassportElementErrorUnspecified
     /**
      * Type of element of the user's Telegram Passport which has the issue.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $type;
@@ -38,12 +42,16 @@ final class PassportElementErrorUnspecified
     /**
      * Base64-encoded element hash.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $elementHash;
 
     /**
      * Error message.
+     *
+     * @psalm-readonly
      *
      * @var string
      */

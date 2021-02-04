@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -50,16 +50,9 @@ final class SendContact extends SendEntity
      */
     private $vcard;
 
-    /**
-     * @param ChatId $chatId
-     * @param string $phoneNumber
-     * @param string $firstName
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, string $phoneNumber, string $firstName): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->phoneNumber = $phoneNumber;
         $self->firstName   = $firstName;
@@ -67,17 +60,11 @@ final class SendContact extends SendEntity
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendContact';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([

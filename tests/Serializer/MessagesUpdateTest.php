@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,7 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
-use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
+use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
 
 /**
  *
@@ -34,7 +34,7 @@ final class MessagesUpdateTest extends TestCase
     public function messageReceived(): void
     {
         /** @var Update $update */
-        $update = (new SymfonySerializer())->decode(
+        $update = (new WrappedSymfonySerializer())->decode(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/messages/messageReceived.json')),
             Update::class
         );

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Poll;
  *
  * @see https://core.telegram.org/bots/api#polloption
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PollOption
 {
     /**
      * Option text, 1-100 characters.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -30,6 +32,8 @@ final class PollOption
 
     /**
      * Number of users that voted for this option.
+     *
+     * @psalm-readonly
      *
      * @var int
      */

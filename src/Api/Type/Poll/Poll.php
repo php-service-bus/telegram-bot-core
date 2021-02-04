@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Poll;
  *
  * @see https://core.telegram.org/bots/api#poll
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Poll
 {
     /**
      * Unique poll identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -31,6 +33,8 @@ final class Poll
     /**
      * Poll question, 1-255 characters.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $question;
@@ -38,12 +42,16 @@ final class Poll
     /**
      * List of poll options.
      *
+     * @psalm-readonly
+     *
      * @var PollOption[]
      */
     public $options = [];
 
     /**
      * True, if the poll is closed.
+     *
+     * @psalm-readonly
      *
      * @var bool
      */

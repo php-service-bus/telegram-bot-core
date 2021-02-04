@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ namespace ServiceBus\TelegramBot\Api\Type;
  *
  * @see https://core.telegram.org/bots/api#forcereply
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ForceReply implements ReplayMarkup
 {
     /**
      * Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'.
+     *
+     * @psalm-readonly
      *
      * @var bool
      */
@@ -35,6 +37,8 @@ final class ForceReply implements ReplayMarkup
      *
      * @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id),
      *            sender of the original message.
+     *
+     * @psalm-readonly
      *
      * @var bool
      */

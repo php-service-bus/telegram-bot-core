@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -64,12 +64,6 @@ final class AnswerCallbackQuery implements TelegramMethod
      */
     private $cacheTime = 0;
 
-    /**
-     * @param string      $callbackQueryId
-     * @param string|null $text
-     *
-     * @return self
-     */
     public static function create(string $callbackQueryId, ?string $text): self
     {
         $self = new self();
@@ -80,9 +74,6 @@ final class AnswerCallbackQuery implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function showAlert(): self
     {
         $this->showAlert = true;
@@ -90,11 +81,6 @@ final class AnswerCallbackQuery implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return $this
-     */
     public function appendUrl(string $url): self
     {
         $this->url = $url;
@@ -102,11 +88,6 @@ final class AnswerCallbackQuery implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param int $ttl
-     *
-     * @return $this
-     */
     public function changeCacheTtl(int $ttl): self
     {
         $this->cacheTime = $ttl;
@@ -114,25 +95,16 @@ final class AnswerCallbackQuery implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'answerCallbackQuery';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
@@ -144,9 +116,6 @@ final class AnswerCallbackQuery implements TelegramMethod
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

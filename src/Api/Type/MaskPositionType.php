@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -38,11 +38,11 @@ final class MaskPositionType implements Enum
     private $value;
 
     /**
-     * {@inheritdoc}
+     * @psalm-suppress MoreSpecificReturnType
      */
-    public static function create(string $value): self
+    public static function create(string $value): static
     {
-        if (false === \in_array($value, self::LIST, true))
+        if (\in_array($value, self::LIST, true) === false)
         {
             throw new \InvalidArgumentException(\sprintf('Incorrect mask position type: %s', $value));
         }
@@ -50,17 +50,11 @@ final class MaskPositionType implements Enum
         return new self($value);
     }
 
-    /**
-     * @return string
-     */
     public function toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     */
     private function __construct(string $value)
     {
         $this->value = $value;

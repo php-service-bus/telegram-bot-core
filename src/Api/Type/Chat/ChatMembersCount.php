@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,12 +15,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
 /**
  * @property-read int $value
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ChatMembersCount
 {
     /**
      * Chat members count.
+     *
+     * @psalm-readonly
      *
      * @var int
      */

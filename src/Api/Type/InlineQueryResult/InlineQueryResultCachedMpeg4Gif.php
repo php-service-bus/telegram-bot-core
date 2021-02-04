@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
 {
     /**
      * Type of the result, must be mpeg4_gif.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid file identifier for the MP4 file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,12 +57,16 @@ final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
     /**
      * Optional. Title for the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $title;
 
     /**
      * Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -66,6 +76,8 @@ final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
@@ -73,12 +85,16 @@ final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the video animation.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
  * @see https://core.telegram.org/bots/api#replykeyboardmarkup
  * @see https://core.telegram.org/bots#keyboards
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ReplyKeyboardMarkup implements ReplayMarkup
 {
     /**
      * Array of button rows, each represented by an Array of KeyboardButton objects.
+     *
+     * @psalm-readonly
      *
      * @var KeyboardButton[][]
      */
@@ -36,6 +38,8 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
      * there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same
      * height as the app's standard keyboard.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $resizeKeyboard = false;
@@ -44,6 +48,8 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
      * Optional. Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available,
      * but clients will automatically display the usual letter-keyboard in the chat – the user can press a special
      * button in the input field to see the custom keyboard again. Defaults to false.
+     *
+     * @psalm-readonly
      *
      * @var bool
      */
@@ -57,6 +63,8 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
      * Example: A user requests to change the bot‘s language, bot replies to the request with a keyboard to select the
      * new language. Other users in the group don’t see the keyboard.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $selective = false;
@@ -68,12 +76,13 @@ final class ReplyKeyboardMarkup implements ReplayMarkup
 
     /**
      * @param KeyboardButton[][] $keyboard
-     * @param bool               $resizeKeyboard
-     * @param bool               $oneTimeKeyboard
-     * @param bool               $selective
      */
-    public function __construct(array $keyboard, bool $resizeKeyboard = false, bool $oneTimeKeyboard = false, bool $selective = false)
-    {
+    public function __construct(
+        array $keyboard,
+        bool $resizeKeyboard = false,
+        bool $oneTimeKeyboard = false,
+        bool $selective = false
+    ) {
         $this->keyboard        = $keyboard;
         $this->resizeKeyboard  = $resizeKeyboard;
         $this->oneTimeKeyboard = $oneTimeKeyboard;

@@ -4,7 +4,8 @@
         useDocblockTypes="true"
         useDocblockPropertyTypes="true"
         allowPhpStormGenerics="true"
-        requireVoidReturnType="true"
+        strictBinaryOperands="true"
+        findUnusedPsalmSuppress="true"
         ignoreInternalFunctionFalseReturn="false"
         ignoreInternalFunctionNullReturn="false"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,6 +21,5 @@
 
     <issueHandlers>
         <PropertyNotSetInConstructor errorLevel="suppress"/>
-        <TooManyTemplateParams errorLevel="suppress"/>
     </issueHandlers>
 </psalm>

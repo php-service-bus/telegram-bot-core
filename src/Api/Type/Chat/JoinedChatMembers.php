@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
 /**
  * Represents joined members.
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class JoinedChatMembers
 {
     /**
      * Chat info.
+     *
+     * @psalm-readonly
      *
      * @var Chat
      */
@@ -31,25 +33,17 @@ final class JoinedChatMembers
     /**
      * Joined members.
      *
+     * @psalm-readonly
+     *
      * @var UserCollection
      */
     public $members;
 
-    /**
-     * @param Chat           $chat
-     * @param UserCollection $members
-     *
-     * @return self
-     */
     public static function create(Chat $chat, UserCollection $members): self
     {
         return new self($chat, $members);
     }
 
-    /**
-     * @param Chat           $chat
-     * @param UserCollection $members
-     */
     private function __construct(Chat $chat, UserCollection $members)
     {
         $this->chat    = $chat;

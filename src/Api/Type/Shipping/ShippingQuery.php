@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#shippingquery
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ShippingQuery
 {
     /**
      * Unique query identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -33,6 +35,8 @@ final class ShippingQuery
     /**
      * User who sent the query.
      *
+     * @psalm-readonly
+     *
      * @var User
      */
     public $from;
@@ -40,12 +44,16 @@ final class ShippingQuery
     /**
      * Bot specified invoice payload.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $invoicePayload;
 
     /**
      * User specified shipping address.
+     *
+     * @psalm-readonly
      *
      * @var ShippingAddress
      */

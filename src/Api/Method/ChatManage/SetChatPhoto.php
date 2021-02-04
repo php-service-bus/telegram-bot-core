@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -39,12 +39,6 @@ final class SetChatPhoto implements TelegramMethod
      */
     private $photo;
 
-    /**
-     * @param ChatId        $chatId
-     * @param InputFilePath $photo
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, InputFilePath $photo): self
     {
         $self = new self();
@@ -55,25 +49,16 @@ final class SetChatPhoto implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'setChatPhoto';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -82,9 +67,6 @@ final class SetChatPhoto implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

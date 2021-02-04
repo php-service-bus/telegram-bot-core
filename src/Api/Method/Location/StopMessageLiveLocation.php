@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -56,13 +56,6 @@ final class StopMessageLiveLocation implements TelegramMethod
      */
     private $replyMarkup;
 
-    /**
-     * @param ChatId|null          $chatId
-     * @param MessageId|null       $messageId
-     * @param InlineMessageId|null $inlineMessageId
-     *
-     * @return self
-     */
     public static function create(
         ?ChatId $chatId = null,
         ?MessageId $messageId = null,
@@ -77,11 +70,6 @@ final class StopMessageLiveLocation implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @param InlineKeyboardMarkup $replyMarkup
-     *
-     * @return $this
-     */
     public function setupReplayMarkup(InlineKeyboardMarkup $replyMarkup): self
     {
         $this->replyMarkup = $replyMarkup;
@@ -89,9 +77,6 @@ final class StopMessageLiveLocation implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function removeReplayMarkup(): self
     {
         $this->replyMarkup = null;
@@ -99,32 +84,23 @@ final class StopMessageLiveLocation implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'stopMessageLiveLocation';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
-            'chat_id'           => null !== $this->chatId ? $this->chatId->toString() : null,
-            'message_id'        => null !== $this->messageId ? $this->messageId->toString() : null,
-            'inline_message_id' => null !== $this->inlineMessageId ? $this->inlineMessageId->toString() : null,
-            'reply_markup'      => null !== $this->replyMarkup ? jsonEncode(\get_object_vars($this->replyMarkup)) : null,
+            'chat_id'           => $this->chatId?->toString(),
+            'message_id'        => $this->messageId?->toString(),
+            'inline_message_id' => $this->inlineMessageId?->toString(),
+            'reply_markup'      => $this->replyMarkup ? jsonEncode(\get_object_vars($this->replyMarkup)) : null,
         ]);
     }
 

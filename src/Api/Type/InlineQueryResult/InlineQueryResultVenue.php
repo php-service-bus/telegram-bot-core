@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,12 +22,14 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultvenue
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultVenue implements InlineQueryResult
 {
     /**
      * Type of the result, must be venue.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -36,12 +38,16 @@ final class InlineQueryResultVenue implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 Bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * Coordinates.
+     *
+     * @psalm-readonly
      *
      * @var Location
      */
@@ -50,6 +56,8 @@ final class InlineQueryResultVenue implements InlineQueryResult
     /**
      * Title of the venue.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
@@ -57,12 +65,16 @@ final class InlineQueryResultVenue implements InlineQueryResult
     /**
      * Address of the venue.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $address;
 
     /**
      * Optional. Foursquare identifier of the venue if known.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -72,12 +84,16 @@ final class InlineQueryResultVenue implements InlineQueryResult
      * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
      * “arts_entertainment/aquarium” or “food/icecream”.).
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $foursquareType;
 
     /**
      * Optional. Inline keyboard attached to the message.
+     *
+     * @psalm-readonly
      *
      * @var InlineKeyboardMarkup|null
      */
@@ -86,12 +102,16 @@ final class InlineQueryResultVenue implements InlineQueryResult
     /**
      * Optional. Content of the message to be sent instead of the venue.
      *
+     * @psalm-readonly
+     *
      * @var InputMessageContent|null
      */
     public $inputMessageContent;
 
     /**
      * Optional. Url of the thumbnail for the result.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -100,12 +120,16 @@ final class InlineQueryResultVenue implements InlineQueryResult
     /**
      * Optional. Thumbnail width.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $thumbWidth;
 
     /**
      * Optional. Thumbnail height.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

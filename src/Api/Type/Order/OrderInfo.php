@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Shipping\ShippingAddress;
  *
  * @see https://core.telegram.org/bots/api#orderinfo
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class OrderInfo
 {
     /**
      * Optional. User name.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -33,6 +35,8 @@ final class OrderInfo
     /**
      * Optional. User's phone number.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $phoneNumber;
@@ -40,12 +44,16 @@ final class OrderInfo
     /**
      * Optional. User email.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $email;
 
     /**
      * Optional. User shipping address.
+     *
+     * @psalm-readonly
      *
      * @var ShippingAddress|null
      */

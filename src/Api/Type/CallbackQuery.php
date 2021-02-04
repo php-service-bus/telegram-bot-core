@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -25,12 +25,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  * @see https://core.telegram.org/bots/api#callbackquery
  * @see https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class CallbackQuery
 {
     /**
      * Unique identifier for this query.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -38,6 +40,8 @@ final class CallbackQuery
 
     /**
      * Sender.
+     *
+     * @psalm-readonly
      *
      * @var User
      */
@@ -47,12 +51,16 @@ final class CallbackQuery
      * Optional. Message with the callback button that originated the query. Note that message content and message date
      * will not be available if the message is too old.
      *
+     * @psalm-readonly
+     *
      * @var Message|null
      */
     public $message;
 
     /**
      * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
+     *
+     * @psalm-readonly
      *
      * @var InlineMessageId|null
      */
@@ -61,6 +69,8 @@ final class CallbackQuery
     /**
      * Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent.
      * Useful for high scores in games.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#games
      *
@@ -72,12 +82,16 @@ final class CallbackQuery
      * Optional. Data associated with the callback button. Be aware that a bad client can send arbitrary data in this
      * field.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $data;
 
     /**
      * Optional. Short name of a Game to be returned, serves as the unique identifier for the game.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#games
      *

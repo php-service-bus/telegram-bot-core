@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Game\CallbackGame;
  *
  * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineKeyboardButton
 {
     /**
      * Label text on the button.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -33,12 +35,16 @@ final class InlineKeyboardButton
     /**
      * Optional. HTTP or tg:// url to be opened when button is pressed.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $url;
 
     /**
      * Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#callbackquery
      *
@@ -55,6 +61,8 @@ final class InlineKeyboardButton
      * private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be
      * automatically returned to the chat they switched from, skipping the chat selection screen.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/inline
      *
      * @var string|null
@@ -68,6 +76,8 @@ final class InlineKeyboardButton
      * This offers a quick way for the user to open your bot in inline mode in the same chat – good for selecting
      * something from multiple options.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $switchInlineQueryCurrentChat;
@@ -77,6 +87,8 @@ final class InlineKeyboardButton
      *
      * NOTE: This type of button must always be the first button in the first row.
      *
+     * @psalm-readonly
+     *
      * @var CallbackGame|null
      */
     public $callbackGame;
@@ -85,6 +97,8 @@ final class InlineKeyboardButton
      * Optional. Specify True, to send a Pay button.
      *
      * NOTE: This type of button must always be the first button in the first row.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#payments
      *

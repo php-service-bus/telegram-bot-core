@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
  *
  * @see https://core.telegram.org/bots/api#passportfile
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PassportFile
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,12 +36,16 @@ final class PassportFile
     /**
      * File size.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $fileSize;
 
     /**
      * Unix time when the file was uploaded.
+     *
+     * @psalm-readonly
      *
      * @var UnixTime
      */

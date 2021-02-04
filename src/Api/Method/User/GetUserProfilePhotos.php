@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -44,13 +44,6 @@ final class GetUserProfilePhotos implements TelegramMethod
      */
     private $limit;
 
-    /**
-     * @param UserId $userId
-     * @param int    $offset
-     * @param int    $limit
-     *
-     * @return self
-     */
     public static function create(UserId $userId, int $offset = 0, int $limit = 100): self
     {
         $self = new self();
@@ -62,25 +55,16 @@ final class GetUserProfilePhotos implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'getUserProfilePhotos';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -90,9 +74,6 @@ final class GetUserProfilePhotos implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return UserProfilePhotos::class;

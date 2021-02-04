@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -40,6 +40,8 @@ interface TelegramMethod
 
     /**
      * Receive response type class namespace.
+     *
+     * @psalm-return class-string
      *
      * @return string
      */

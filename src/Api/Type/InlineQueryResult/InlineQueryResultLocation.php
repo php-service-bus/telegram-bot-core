@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,12 +22,14 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultlocation
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultLocation implements InlineQueryResult
 {
     /**
      * Type of the result, must be location.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -36,12 +38,16 @@ final class InlineQueryResultLocation implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 Bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * Coordinates.
+     *
+     * @psalm-readonly
      *
      * @var Location
      */
@@ -50,12 +56,16 @@ final class InlineQueryResultLocation implements InlineQueryResult
     /**
      * Location title.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -64,12 +74,16 @@ final class InlineQueryResultLocation implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the location.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */
@@ -78,6 +92,8 @@ final class InlineQueryResultLocation implements InlineQueryResult
     /**
      * Optional. Url of the thumbnail for the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $thumbUrl;
@@ -85,12 +101,16 @@ final class InlineQueryResultLocation implements InlineQueryResult
     /**
      * Optional. Thumbnail width.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $thumbWidth;
 
     /**
      * Optional. Thumbnail height.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

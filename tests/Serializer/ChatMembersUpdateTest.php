@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,7 +20,7 @@ use ServiceBus\TelegramBot\Api\Type\Chat\LeftChatMember;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
 use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
-use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
+use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
 
 /**
  *
@@ -35,7 +35,7 @@ final class ChatMembersUpdateTest extends TestCase
     public function newChatParticipant(): void
     {
         /** @var Update $update */
-        $update = (new SymfonySerializer())->decode(
+        $update = (new WrappedSymfonySerializer())->decode(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/newChatParticipant.json')),
             Update::class
         );
@@ -72,7 +72,7 @@ final class ChatMembersUpdateTest extends TestCase
     public function leftChatParticipant(): void
     {
         /** @var Update $update */
-        $update = (new SymfonySerializer())->decode(
+        $update = (new WrappedSymfonySerializer())->decode(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/leftChatParticipant.json')),
             Update::class
         );

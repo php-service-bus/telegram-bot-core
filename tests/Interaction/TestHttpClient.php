@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -84,7 +84,7 @@ final class TestHttpClient implements HttpClient
     /**
      * {@inheritdoc}
      */
-    public function download(string $filePath, string $destinationDirectory, string $fileName, ?RequestContext $context = null): Promise
+    public function download(string $fileUrl, string $destinationDirectory, string $fileName, ?RequestContext $context = null): Promise
     {
         return null === $this->expectedFailMessage
             ? new Success(__FILE__)

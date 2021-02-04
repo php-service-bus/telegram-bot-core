@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,12 +21,14 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcontact
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultContact implements InlineQueryResult
 {
     /**
      * Type of the result, must be contact.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -35,12 +37,16 @@ final class InlineQueryResultContact implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 Bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * Contact's phone number.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -49,12 +55,16 @@ final class InlineQueryResultContact implements InlineQueryResult
     /**
      * Contact's first name.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $firstName;
 
     /**
      * Optional. Contact's last name.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -63,12 +73,16 @@ final class InlineQueryResultContact implements InlineQueryResult
     /**
      * Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $vcard;
 
     /**
      * Optional. Inline keyboard attached to the message.
+     *
+     * @psalm-readonly
      *
      * @var InlineKeyboardMarkup|null
      */
@@ -77,12 +91,16 @@ final class InlineQueryResultContact implements InlineQueryResult
     /**
      * Optional. Content of the message to be sent instead of the contact.
      *
+     * @psalm-readonly
+     *
      * @var InputMessageContent|null
      */
     public $inputMessageContent;
 
     /**
      * Optional. Url of the thumbnail for the result.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -91,12 +109,16 @@ final class InlineQueryResultContact implements InlineQueryResult
     /**
      * Optional. Thumbnail width.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $thumbWidth;
 
     /**
      * Optional. Thumbnail height.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

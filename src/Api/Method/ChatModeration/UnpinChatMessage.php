@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -30,11 +30,6 @@ final class UnpinChatMessage implements TelegramMethod
      */
     private $chatId;
 
-    /**
-     * @param ChatId $chatId
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId): self
     {
         $self = new self();
@@ -44,25 +39,16 @@ final class UnpinChatMessage implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'unpinChatMessage';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -70,9 +56,6 @@ final class UnpinChatMessage implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

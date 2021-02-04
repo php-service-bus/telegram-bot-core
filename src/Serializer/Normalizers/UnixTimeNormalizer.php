@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,9 +21,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function normalize($object, string $format = null, array $context = []): int
     {
         /** @var UnixTime $object */
@@ -31,21 +28,15 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
         return $object->extract();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof UnixTime;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @psalm-param    int|null $data
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-suppress ImplementedReturnTypeMismatch
+     *
+     * @psalm-param  int|null $data
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?UnixTime
     {
@@ -56,12 +47,8 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
 
         return null;
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function supportsDenormalization($data, string $type, string $format = null): bool
     {
-        return UnixTime::class === $type;
+        return $type === UnixTime::class;
     }
 }

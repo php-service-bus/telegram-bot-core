@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -18,16 +18,11 @@ namespace ServiceBus\TelegramBot\Api\Type;
 interface Enum
 {
     /**
-     * @param string $value
-     *
      * @throws \InvalidArgumentException
      *
      * @return static
      */
-    public static function create(string $value);
+    public static function create(string $value): static;
 
-    /**
-     * @return string
-     */
     public function toString(): string;
 }

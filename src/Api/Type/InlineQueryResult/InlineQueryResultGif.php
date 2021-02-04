@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultgif
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultGif implements InlineQueryResult
 {
     /**
      * Type of the result, must be gif.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultGif implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid URL for the GIF file. File size must not exceed 1MB.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,12 +57,16 @@ final class InlineQueryResultGif implements InlineQueryResult
     /**
      * Optional. Width of the GIF.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $gifWidth;
 
     /**
      * Optional. Height of the GIF.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -65,12 +75,16 @@ final class InlineQueryResultGif implements InlineQueryResult
     /**
      * Optional. Duration of the GIF.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $gifDuration;
 
     /**
      * URL of the static thumbnail for the result (jpeg or gif).
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -79,12 +93,16 @@ final class InlineQueryResultGif implements InlineQueryResult
     /**
      * Optional. Title for the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $title;
 
     /**
      * Optional. Caption of the GIF file to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -94,6 +112,8 @@ final class InlineQueryResultGif implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
@@ -101,12 +121,16 @@ final class InlineQueryResultGif implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the GIF animation.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

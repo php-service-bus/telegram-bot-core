@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,12 +21,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see  https://core.telegram.org/bots/api#choseninlineresult
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ChosenInlineResult
 {
     /**
      * The unique identifier for the result that was chosen.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -35,12 +37,16 @@ final class ChosenInlineResult
     /**
      * The user that chose the result.
      *
+     * @psalm-readonly
+     *
      * @var User
      */
     public $from;
 
     /**
      * Optional. Sender location, only for bots that require user location.
+     *
+     * @psalm-readonly
      *
      * @var Location|null
      */
@@ -50,12 +56,16 @@ final class ChosenInlineResult
      * Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the
      * message. Will be also received in callback queries and can be used to edit the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineMessageId|null
      */
     public $inlineMessageId;
 
     /**
      * The query that was used to obtain the result.
+     *
+     * @psalm-readonly
      *
      * @var string
      */

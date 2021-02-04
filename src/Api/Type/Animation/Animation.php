@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#animation
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Animation
 {
     /**
      * Unique file identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -33,12 +35,16 @@ final class Animation
     /**
      * Video width as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $width;
 
     /**
      * Video height as defined by sender.
+     *
+     * @psalm-readonly
      *
      * @var int
      */
@@ -47,12 +53,16 @@ final class Animation
     /**
      * Duration of the video in seconds as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $duration;
 
     /**
      * Optional. Animation thumbnail as defined by sender.
+     *
+     * @psalm-readonly
      *
      * @var PhotoSize|null
      */
@@ -61,6 +71,8 @@ final class Animation
     /**
      * Optional. Original animation filename as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $fileName;
@@ -68,12 +80,16 @@ final class Animation
     /**
      * Optional. MIME type of the file as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $mimeType;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

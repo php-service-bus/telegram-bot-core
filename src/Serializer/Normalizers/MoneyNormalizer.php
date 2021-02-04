@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,9 +22,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function normalize($object, string $format = null, array $context = []): array
     {
         /** @var Money $object */
@@ -35,21 +32,15 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Money;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @psalm-param    array{currency: string, total_amount: string} $data
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-suppress ImplementedReturnTypeMismatch
+     *
+     * @psalm-param array{currency: string, total_amount: string} $data
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Money
     {
@@ -59,7 +50,7 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
             {
                 return new Money($data['total_amount'], new Currency($data['currency']));
             }
-            catch (\Throwable $throwable)
+            catch (\Throwable)
             {
             }
         }
@@ -67,11 +58,8 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsDenormalization($data, string $type, string $format = null): bool
     {
-        return Money::class === $type;
+        return $type === Money::class;
     }
 }

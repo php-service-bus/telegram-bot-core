@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -18,14 +18,14 @@ use ServiceBus\TelegramBot\Interaction\TelegramMethod;
 /**
  * Download specified file.
  *
- * @property-read string $filePath
- * @property-read string $toDirectory
- * @property-read string $withName
+ * @psalm-immutable
  */
 final class DownloadFile implements TelegramMethod
 {
     /**
      * Prepared file path.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,6 +34,8 @@ final class DownloadFile implements TelegramMethod
     /**
      * Destination directory.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $toDirectory;
@@ -41,59 +43,37 @@ final class DownloadFile implements TelegramMethod
     /**
      * Expected file name.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $withName;
 
-    /**
-     * @param string $filePath
-     * @param string $toDirectory
-     * @param string $withName
-     *
-     * @return self
-     */
     public static function create(string $filePath, string $toDirectory, string $withName): self
     {
         return new self($filePath, $toDirectory, $withName);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;
     }
 
-    /**
-     * @param string $filePath
-     * @param string $toDirectory
-     * @param string $withName
-     */
     private function __construct(string $filePath, string $toDirectory, string $withName)
     {
         $this->filePath    = $filePath;

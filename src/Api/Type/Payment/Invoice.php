@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use Money\Money;
  *
  * @see https://core.telegram.org/bots/api#invoice
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Invoice
 {
     /**
      * Product name.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -33,6 +35,8 @@ final class Invoice
     /**
      * Product description.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $description;
@@ -40,12 +44,16 @@ final class Invoice
     /**
      * Unique bot deep-linking parameter that can be used to generate this invoice.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $startParameter;
 
     /**
      * Total price.
+     *
+     * @psalm-readonly
      *
      * @var Money
      */

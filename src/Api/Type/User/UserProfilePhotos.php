@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#userprofilephotos
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class UserProfilePhotos
 {
     /**
      * Total number of profile pictures the target user has.
+     *
+     * @psalm-readonly
      *
      * @var int
      */
@@ -32,6 +34,8 @@ final class UserProfilePhotos
 
     /**
      * Requested profile pictures (in up to 4 sizes each).
+     *
+     * @psalm-readonly
      *
      * @var PhotoSize[]
      */

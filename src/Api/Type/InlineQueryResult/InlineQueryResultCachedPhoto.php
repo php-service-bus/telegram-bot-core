@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultCachedPhoto implements InlineQueryResult
 {
     /**
      * Type of the result, must be photo.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultCachedPhoto implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid file identifier of the photo.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,6 +57,8 @@ final class InlineQueryResultCachedPhoto implements InlineQueryResult
     /**
      * Optional. Title for the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $title;
@@ -58,12 +66,16 @@ final class InlineQueryResultCachedPhoto implements InlineQueryResult
     /**
      * Optional. Short description of the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $description;
 
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -73,6 +85,8 @@ final class InlineQueryResultCachedPhoto implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
@@ -80,12 +94,16 @@ final class InlineQueryResultCachedPhoto implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the photo.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

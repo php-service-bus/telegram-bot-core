@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -75,12 +75,6 @@ final class SetWebhook implements TelegramMethod
      */
     private $allowedUpdates = self::DEFAULT_ALLOWED_UPDATES;
 
-    /**
-     * @param string $url
-     * @param string $certificateFilePath
-     *
-     * @return self
-     */
     public static function create(string $url, string $certificateFilePath = null): self
     {
         $self = new self();
@@ -91,54 +85,31 @@ final class SetWebhook implements TelegramMethod
         return $self;
     }
 
-    /**
-     * Setup max connections.
-     *
-     * @param int $maxConnections
-     *
-     * @return void
-     */
     public function setupMaxConnections(int $maxConnections): void
     {
         $this->maxConnections = $maxConnections;
     }
 
-    /**
-     * Setup allowed methods.
-     *
-     * @param array $allowedUpdates
-     *
-     * @return void
-     */
     public function replaceAllowedUpdates(array $allowedUpdates): void
     {
         $this->allowedUpdates = $allowedUpdates;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'setWebhook';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
             'url'             => $this->url,
-            'certificate'     => '' !== (string) $this->certificateFilePath
+            'certificate'     =>  (string) $this->certificateFilePath !== ''
                 ? new InputFilePath((string) $this->certificateFilePath)
                 : null,
             'max_connections' => $this->maxConnections,
@@ -146,9 +117,6 @@ final class SetWebhook implements TelegramMethod
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

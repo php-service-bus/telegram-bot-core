@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,32 +15,32 @@ namespace ServiceBus\TelegramBot;
 /**
  * TelegramBot data.
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class TelegramBot
 {
     /**
      * TelegramBot username.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $username;
 
     /**
-     * @param string $username
-     *
      * @throws \InvalidArgumentException
      */
     public function __construct(string $username)
     {
-        if ('' === $username)
+        if ($username === '')
         {
             throw new \InvalidArgumentException('TelegramBot username can\'t be empty');
         }
 
         $username = \sprintf('@%s', \ltrim($username, '@'));
 
-        if ('bot' !== \strtolower((string) \substr($username, -3)))
+        if (\strtolower(\substr($username, -3)) !== 'bot')
         {
             throw new \InvalidArgumentException(
                 'TelegramBot username must end in `TelegramBot` (Like this, for example: TetrisBot or tetris_bot)'

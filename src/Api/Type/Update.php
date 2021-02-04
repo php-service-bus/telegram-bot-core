@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -25,7 +25,7 @@ use ServiceBus\TelegramBot\Api\Type\Shipping\ShippingQuery;
  *
  * @see https://core.telegram.org/bots/api#update
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Update
 {
@@ -35,12 +35,16 @@ final class Update
      * updates or to restore the correct update sequence, should they get out of order. If there are no new updates for
      * at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $updateId;
 
     /**
      * Optional. New incoming message of any kind — text, photo, sticker, etc.
+     *
+     * @psalm-readonly
      *
      * @var Message|null
      */
@@ -49,12 +53,16 @@ final class Update
     /**
      * Optional. New version of a message that is known to the bot and was edited.
      *
+     * @psalm-readonly
+     *
      * @var Message|null
      */
     public $editedMessage;
 
     /**
      * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
+     *
+     * @psalm-readonly
      *
      * @var Message|null
      */
@@ -63,12 +71,16 @@ final class Update
     /**
      * Optional. New version of a channel post that is known to the bot and was edited.
      *
+     * @psalm-readonly
+     *
      * @var Message|null
      */
     public $editedChannelPost;
 
     /**
      * Optional. New incoming inline query.
+     *
+     * @psalm-readonly
      *
      * @var InlineQuery|null
      */
@@ -78,6 +90,8 @@ final class Update
      * Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see our
      * documentation on the feedback collecting for details on how to enable these updates for your bot.
      *
+     * @psalm-readonly
+     *
      * @var ChosenInlineResult|null
      */
     public $chosenInlineResult;
@@ -85,15 +99,19 @@ final class Update
     /**
      * Optional. New incoming callback query.
      *
+     * @psalm-readonly
+     *
      * @var CallbackQuery|null
      */
     public $callbackQuery;
 
     /**
      * Optional. New incoming shipping query. Only for invoices with flexible price
-     * pre_checkout_query    PreCheckoutQuery    Optional. New incoming pre-checkout query. Contains full information
-     * about checkout poll    Poll    Optional. New poll state. Bots receive only updates about polls, which are sent
+     * pre_checkout_query PreCheckoutQuery Optional. New incoming pre-checkout query. Contains full information
+     * about checkout poll Poll Optional. New poll state. Bots receive only updates about polls, which are sent
      * or stopped by the bot.
+     *
+     * @psalm-readonly
      *
      * @var ShippingQuery|null
      */
@@ -102,12 +120,16 @@ final class Update
     /**
      * Optional. New incoming pre-checkout query. Contains full information about checkout.
      *
+     * @psalm-readonly
+     *
      * @var PreCheckoutQuery|null
      */
     public $preCheckoutQuery;
 
     /**
      * Optional. New poll state. Bots receive only updates about polls, which are sent or stopped by the bot.
+     *
+     * @psalm-readonly
      *
      * @var Poll|null
      */

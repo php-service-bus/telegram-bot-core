@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -81,16 +81,9 @@ final class SendAnimation extends SendEntity
      */
     private $parseMode;
 
-    /**
-     * @param ChatId        $chatId
-     * @param InputFilePath $file
-     * @param string|null   $caption
-     *
-     * @return self
-     */
     public static function uploadFile(ChatId $chatId, InputFilePath $file, ?string $caption = null): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->animation = $file;
         $self->caption   = $caption;
@@ -99,23 +92,16 @@ final class SendAnimation extends SendEntity
     }
 
     /**
-     * @param ChatId      $chatId
-     * @param string      $fileId
-     * @param string|null $caption
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
-     *
      */
     public static function withUploadedFile(ChatId $chatId, string $fileId, ?string $caption = null): self
     {
-        if ('' === $fileId)
+        if ($fileId === '')
         {
             throw new \InvalidArgumentException('Audio file_id to send must be specified');
         }
 
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->animation = $fileId;
         $self->caption   = $caption;
@@ -123,11 +109,6 @@ final class SendAnimation extends SendEntity
         return $self;
     }
 
-    /**
-     * @param InputFilePath $thumb
-     *
-     * @return self
-     */
     public function uploadThumbFile(InputFilePath $thumb): self
     {
         $this->thumb = $thumb;
@@ -135,17 +116,9 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @param string $thumbFileId
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     *
-     */
     public function useUploadedThumb(string $thumbFileId): self
     {
-        if ('' === $thumbFileId)
+        if ($thumbFileId === '')
         {
             throw new \InvalidArgumentException('Thumb file_id must be specified');
         }
@@ -155,9 +128,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function removeThumb(): self
     {
         $this->thumb = null;
@@ -165,9 +135,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function useMarkdown(): self
     {
         $this->parseMode = ParseMode::markdown();
@@ -175,9 +142,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function useHtml(): self
     {
         $this->parseMode = ParseMode::html();
@@ -185,11 +149,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @param int $duration
-     *
-     * @return $this
-     */
     public function setupDuration(int $duration): self
     {
         $this->duration = $duration;
@@ -197,9 +156,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function unsetDuration(): self
     {
         $this->duration = null;
@@ -207,12 +163,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @param int $width
-     * @param int $height
-     *
-     * @return $this
-     */
     public function setupSize(int $width, int $height): self
     {
         $this->width  = $width;
@@ -221,9 +171,6 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function unsetSize(): self
     {
         $this->width  = null;
@@ -232,24 +179,18 @@ final class SendAnimation extends SendEntity
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendAnimation';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
             'chat_id'              => $this->chatId(),
             'disable_notification' => $this->notificationStatus(),
             'reply_to_message_id'  => $this->replyToMessage(),
-            'parse_mode'           => null !== $this->parseMode ? $this->parseMode->toString() : null,
+            'parse_mode'           => $this->parseMode?->toString(),
             'reply_markup'         => $this->replyMarkup(),
             'animation'            => $this->animation,
             'thumb'                => $this->thumb,

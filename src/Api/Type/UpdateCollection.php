@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,20 +17,19 @@ namespace ServiceBus\TelegramBot\Api\Type;
  *
  * @see Update
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class UpdateCollection implements \IteratorAggregate
 {
     /**
      * List of updates.
      *
+     * @psalm-readonly
+     *
      * @var Update[]
      */
     public $list = [];
 
-    /**
-     * {@inheritdoc}
-     */
     public function getIterator(): \Generator
     {
         yield from $this->list;

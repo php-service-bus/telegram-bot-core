@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultvideo
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultVideo implements InlineQueryResult
 {
     /**
      * Type of the result, must be video.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid URL for the embedded video player or video file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,12 +57,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Mime type of the content of video url, “text/html” or “video/mp4”.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $mimeType;
 
     /**
      * URL of the thumbnail (jpeg only) for the video.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -65,12 +75,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Title for the result.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Optional. Caption of the video to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -80,12 +94,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
 
     /**
      * Optional. Video width.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -94,12 +112,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Optional. Video height.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $videoHeight;
 
     /**
      * Optional. Video duration in seconds.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -108,12 +130,16 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Optional. Short description of the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $description;
 
     /**
      * Optional. Inline keyboard attached to the message.
+     *
+     * @psalm-readonly
      *
      * @var InlineKeyboardMarkup|null
      */
@@ -122,6 +148,8 @@ final class InlineQueryResultVideo implements InlineQueryResult
     /**
      * Optional. Content of the message to be sent instead of the video. This field is required if
      * InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

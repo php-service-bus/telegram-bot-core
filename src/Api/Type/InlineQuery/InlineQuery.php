@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,12 +21,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#inlinequery
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQuery
 {
     /**
      * Unique identifier for this query.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -35,12 +37,16 @@ final class InlineQuery
     /**
      * Sender.
      *
+     * @psalm-readonly
+     *
      * @var User
      */
     public $from;
 
     /**
      * Optional. Sender location, only for bots that request user location.
+     *
+     * @psalm-readonly
      *
      * @var Location|null
      */
@@ -49,12 +55,16 @@ final class InlineQuery
     /**
      * Text of the query (up to 512 characters).
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $query;
 
     /**
      * Offset of the results to be returned, can be controlled by the bot.
+     *
+     * @psalm-readonly
      *
      * @var string
      */

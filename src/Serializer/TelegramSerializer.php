@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,8 +20,9 @@ interface TelegramSerializer
     /**
      * Decode received message.
      *
-     * @param array $payload
-     * @param string $toClass
+     * @template T
+     * @psalm-param class-string<T> $toClass
+     * @psalm-return T
      *
      * @throws \ServiceBus\TelegramBot\Serializer\SerializationFailed
      *

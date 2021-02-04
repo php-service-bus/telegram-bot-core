@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\InputMessageContent;
  *
  * @see https://core.telegram.org/bots/api#inputcontactmessagecontent
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InputContactMessageContent implements InputMessageContent
 {
     /**
      * Contact's phone number.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -31,6 +33,8 @@ final class InputContactMessageContent implements InputMessageContent
     /**
      * Contact's first name.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $firstName;
@@ -38,12 +42,16 @@ final class InputContactMessageContent implements InputMessageContent
     /**
      * Optional. Contact's last name.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $lastName;
 
     /**
      * Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes.
+     *
+     * @psalm-readonly
      *
      * @see https://en.wikipedia.org/wiki/VCard
      *

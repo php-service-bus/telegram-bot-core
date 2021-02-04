@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\User;
  *
  * @see https://core.telegram.org/bots/api#user
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class User
 {
     /**
      * Unique identifier for this user or bot.
+     *
+     * @psalm-readonly
      *
      * @var UserId
      */
@@ -31,12 +33,16 @@ final class User
     /**
      * True, if this user is a bot.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $isBot;
 
     /**
      * User‘s or bot’s first name.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -45,6 +51,8 @@ final class User
     /**
      * Optional. User‘s or bot’s last name.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $lastName;
@@ -52,12 +60,16 @@ final class User
     /**
      * Optional. User‘s or bot’s username.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $username;
 
     /**
      * Optional. IETF language tag of the user's language.
+     *
+     * @psalm-readonly
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag
      *

@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,12 +15,14 @@ namespace ServiceBus\TelegramBot;
 /**
  * Telegram bot api credentials.
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class TelegramCredentials
 {
     /**
      * TelegramBot api token.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#authorizing-your-bot
      *
@@ -29,18 +31,16 @@ final class TelegramCredentials
     public $token;
 
     /**
-     * @param string $token
-     *
      * @throws \InvalidArgumentException Invalid api token
      */
     public function __construct(string $token)
     {
-        if ('' === $token)
+        if ($token === '')
         {
             throw new \InvalidArgumentException('API token can\'t be empty');
         }
 
-        if (false === (bool) \preg_match('/(\d+):[\w\-]+/', $token))
+        if ((bool) \preg_match('/(\d+):[\w\-]+/', $token) === false)
         {
             throw new \InvalidArgumentException('Invalid bot api token (via regular expression "/(\d+)\:[\w\-]+/")');
         }

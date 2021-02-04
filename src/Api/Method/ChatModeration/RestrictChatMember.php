@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -76,13 +76,6 @@ final class RestrictChatMember implements TelegramMethod
      */
     private $canAddWebPagePreviews = false;
 
-    /**
-     * @param ChatId                  $chatId
-     * @param UserId                  $userId
-     * @param \DateTimeImmutable|null $untilDate
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, UserId $userId, ?\DateTimeImmutable $untilDate): self
     {
         $self = new self();
@@ -94,13 +87,6 @@ final class RestrictChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @param ChatId                  $chatId
-     * @param UserId                  $userId
-     * @param \DateTimeImmutable|null $untilDate
-     *
-     * @return self
-     */
     public static function restrictAll(ChatId $chatId, UserId $userId, ?\DateTimeImmutable $untilDate): self
     {
         $self = new self();
@@ -116,9 +102,6 @@ final class RestrictChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function allowSendMessages(): self
     {
         $this->canSendMessages = true;
@@ -126,9 +109,6 @@ final class RestrictChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowSendMediaMessages(): self
     {
         $this->canSendMediaMessages = true;
@@ -136,9 +116,6 @@ final class RestrictChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowSendOtherMessages(): self
     {
         $this->canSendOtherMessages = true;
@@ -146,9 +123,6 @@ final class RestrictChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowAddWebPagePreviews(): self
     {
         $this->canAddWebPagePreviews = true;
@@ -156,31 +130,22 @@ final class RestrictChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'restrictChatMember';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
             'chat_id'                   => $this->chatId->toString(),
             'user_id'                   => $this->userId->toString(),
-            'until_date'                => null !== $this->untilDate ? $this->untilDate->getTimestamp() : null,
+            'until_date'                => $this->untilDate?->getTimestamp(),
             'can_send_messages'         => $this->canSendMessages,
             'can_send_media_messages'   => $this->canSendMediaMessages,
             'can_send_other_messages'   => $this->canSendOtherMessages,
@@ -188,9 +153,6 @@ final class RestrictChatMember implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

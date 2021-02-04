@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -48,24 +48,15 @@ final class SendMessage extends SendEntity
      */
     private $disableWebPagePreview = false;
 
-    /**
-     * @param ChatId $chatId
-     * @param string $text
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, string $text): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->text = $text;
 
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function disableWebPagePreview(): self
     {
         $this->disableWebPagePreview = true;
@@ -73,9 +64,6 @@ final class SendMessage extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function enableWebPagePreview(): self
     {
         $this->disableWebPagePreview = true;
@@ -83,9 +71,6 @@ final class SendMessage extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function useMarkdown(): self
     {
         $this->parseMode = ParseMode::markdown();
@@ -93,9 +78,6 @@ final class SendMessage extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function useHtml(): self
     {
         $this->parseMode = ParseMode::html();
@@ -103,17 +85,11 @@ final class SendMessage extends SendEntity
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendMessage';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter(
@@ -123,7 +99,7 @@ final class SendMessage extends SendEntity
                 'disable_web_page_preview' => $this->disableWebPagePreview,
                 'disable_notification'     => $this->notificationStatus(),
                 'reply_to_message_id'      => $this->replyToMessage(),
-                'parse_mode'               => null !== $this->parseMode ? $this->parseMode->toString() : null,
+                'parse_mode'               => $this->parseMode?->toString(),
                 'reply_markup'             => $this->replyMarkup(),
             ]
         );

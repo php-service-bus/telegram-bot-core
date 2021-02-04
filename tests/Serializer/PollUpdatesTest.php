@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -16,7 +16,7 @@ use function ServiceBus\Common\jsonDecode;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Poll\Poll;
 use ServiceBus\TelegramBot\Api\Type\Update;
-use ServiceBus\TelegramBot\Serializer\SymfonySerializer;
+use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
 
 /**
  *
@@ -31,7 +31,7 @@ final class PollUpdatesTest extends TestCase
     public function pollInfo(): void
     {
         /** @var Update $update */
-        $update = (new SymfonySerializer())->decode(
+        $update = (new WrappedSymfonySerializer())->decode(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/polls/vote.json')),
             Update::class
         );

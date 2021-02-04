@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -53,17 +53,11 @@ abstract class SendEntity implements TelegramMethod
      */
     private $replyMarkup;
 
-    /**
-     * @param ChatId $chatId
-     */
     final protected function __construct(ChatId $chatId)
     {
         $this->chatId = $chatId;
     }
 
-    /**
-     * @return $this
-     */
     final public function disableNotification(): self
     {
         $this->disableNotification = true;
@@ -71,9 +65,6 @@ abstract class SendEntity implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     final public function enableNotification(): self
     {
         $this->disableNotification = false;
@@ -81,11 +72,6 @@ abstract class SendEntity implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param ReplayMarkup $replyMarkup
-     *
-     * @return $this
-     */
     final public function setupReplayMarkup(ReplayMarkup $replyMarkup): self
     {
         $this->replyMarkup = $replyMarkup;
@@ -93,9 +79,6 @@ abstract class SendEntity implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     final public function removeReplayMarkup(): self
     {
         $this->replyMarkup = null;
@@ -103,11 +86,6 @@ abstract class SendEntity implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param MessageId $messageId
-     *
-     * @return $this
-     */
     final public function replyTo(MessageId $messageId): self
     {
         $this->replyToMessageId = $messageId;
@@ -115,49 +93,31 @@ abstract class SendEntity implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     final public function typeClass(): string
     {
         return Message::class;
     }
 
-    /**
-     * @return string
-     */
     final protected function chatId(): string
     {
         return $this->chatId->toString();
     }
 
-    /**
-     * @return bool
-     */
     final protected function notificationStatus(): bool
     {
         return $this->disableNotification;
     }
 
-    /**
-     * @return string|null
-     */
     final protected function replyToMessage(): ?string
     {
         return null !== $this->replyToMessageId ? $this->replyToMessageId->toString() : null;
     }
 
-    /**
-     * @return string|null
-     */
     final protected function replyMarkup(): ?string
     {
         return null !== $this->replyMarkup ? jsonEncode(\get_object_vars($this->replyMarkup)) : null;

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -39,12 +39,6 @@ final class UnbanChatMember implements TelegramMethod
      */
     private $userId;
 
-    /**
-     * @param ChatId $chatId
-     * @param UserId $userId
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, UserId $userId): self
     {
         $self = new self();
@@ -55,25 +49,16 @@ final class UnbanChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'unbanChatMember';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -82,9 +67,6 @@ final class UnbanChatMember implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

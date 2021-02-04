@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#sticker
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Sticker
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,12 +36,16 @@ final class Sticker
     /**
      * Sticker width.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $width;
 
     /**
      * Sticker height.
+     *
+     * @psalm-readonly
      *
      * @var int
      */
@@ -48,12 +54,16 @@ final class Sticker
     /**
      * Optional. Sticker thumbnail in the .webp or .jpg format.
      *
+     * @psalm-readonly
+     *
      * @var PhotoSize|null
      */
     public $thumb;
 
     /**
      * Optional. Emoji associated with the sticker.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -62,6 +72,8 @@ final class Sticker
     /**
      * Optional. Name of the sticker set to which the sticker belongs.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $setName;
@@ -69,12 +81,16 @@ final class Sticker
     /**
      * Optional. For mask stickers, the position where the mask should be placed.
      *
+     * @psalm-readonly
+     *
      * @var MaskPosition|null
      */
     public $maskPosition;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

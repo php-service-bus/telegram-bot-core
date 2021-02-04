@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -38,12 +38,6 @@ final class SendChatAction implements TelegramMethod
      */
     private $action;
 
-    /**
-     * @param ChatId        $chatId
-     * @param BroadcastType $action
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, BroadcastType $action): self
     {
         $self = new self();
@@ -54,25 +48,16 @@ final class SendChatAction implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendChatAction';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -81,9 +66,6 @@ final class SendChatAction implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

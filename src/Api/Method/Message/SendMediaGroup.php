@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -55,10 +55,7 @@ final class SendMediaGroup implements TelegramMethod
     private $replyToMessageId;
 
     /**
-     * @param ChatId       $chatId
      * @param InputMedia[] $media
-     *
-     * @return  self
      */
     public static function create(ChatId $chatId, array $media): self
     {
@@ -70,11 +67,6 @@ final class SendMediaGroup implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @param InputMedia $media
-     *
-     * @return $this
-     */
     public function addMedia(InputMedia $media): self
     {
         $this->media[] = $media;
@@ -82,9 +74,6 @@ final class SendMediaGroup implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function disableNotification(): self
     {
         $this->disableNotification = true;
@@ -92,9 +81,6 @@ final class SendMediaGroup implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function enableNotification(): self
     {
         $this->disableNotification = false;
@@ -102,11 +88,6 @@ final class SendMediaGroup implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param MessageId $messageId
-     *
-     * @return $this
-     */
     public function replyTo(MessageId $messageId): self
     {
         $this->replyToMessageId = $messageId;
@@ -114,32 +95,23 @@ final class SendMediaGroup implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendMediaGroup';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
             'chat_id'              => $this->chatId->toString(),
             'media'                => jsonEncode($this->media),
             'disable_notification' => $this->disableNotification,
-            'reply_to_message_id'  => null !== $this->replyToMessageId ? $this->replyToMessageId->toString() : null,
+            'reply_to_message_id'  => $this->replyToMessageId?->toString(),
         ]);
     }
 

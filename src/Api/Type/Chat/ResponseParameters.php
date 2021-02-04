@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,7 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
  *
  * @see https://core.telegram.org/bots/api#responseparameters
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class ResponseParameters
 {
@@ -27,6 +27,8 @@ final class ResponseParameters
      * smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
      * identifier.
      *
+     * @psalm-readonly
+     *
      * @var ChatId|null
      */
     public $migrateToChatId;
@@ -34,6 +36,8 @@ final class ResponseParameters
     /**
      * Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be
      * repeated.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

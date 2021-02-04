@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -16,11 +16,15 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
  * Operation failed.
+ *
+ * @psalm-immutable
  */
 final class Fail implements Result
 {
     /**
      * Error caused by invalid request parameters?
+     *
+     * @psalm-readonly
      *
      * @var bool
      */
@@ -29,6 +33,8 @@ final class Fail implements Result
     /**
      * If the error occurred due to request parameters, contains a list of violations.
      *
+     * @psalm-readonly
+     *
      * @var array
      */
     public $violations;
@@ -36,15 +42,12 @@ final class Fail implements Result
     /**
      * Error description.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $errorMessage;
 
-    /**
-     * @param ConstraintViolationListInterface $violationList
-     *
-     * @return self
-     */
     public static function validationFailed(ConstraintViolationListInterface $violationList): self
     {
         $violations = [];
@@ -58,21 +61,11 @@ final class Fail implements Result
         return new self(true, $violations, 'Validation failed');
     }
 
-    /**
-     * @param string $reason
-     *
-     * @return self
-     */
     public static function error(string $reason): self
     {
         return new self(false, [], $reason);
     }
 
-    /**
-     * @param bool   $isValidationFailed
-     * @param array  $violations
-     * @param string $errorMessage
-     */
     private function __construct(bool $isValidationFailed, array $violations, string $errorMessage)
     {
         $this->isValidationFailed = $isValidationFailed;

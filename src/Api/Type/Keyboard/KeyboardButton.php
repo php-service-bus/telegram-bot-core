@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -18,13 +18,15 @@ namespace ServiceBus\TelegramBot\Api\Type\Keyboard;
  *
  * @see https://core.telegram.org/bots/api#keyboardbutton
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class KeyboardButton
 {
     /**
      * Text of the button. If none of the optional fields are used, it will be sent as a message when the button is
      * pressed.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,6 +36,8 @@ final class KeyboardButton
      * Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in
      * private chats only.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $requestContact = false;
@@ -42,15 +46,12 @@ final class KeyboardButton
      * Optional. If True, the user's current location will be sent when the button is pressed. Available in private
      * chats only.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $requestLocation = false;
 
-    /**
-     * @param string $text
-     * @param bool   $requestContact
-     * @param bool   $requestLocation
-     */
     public function __construct(string $text, bool $requestContact = false, bool $requestLocation = false)
     {
         $this->text            = $text;

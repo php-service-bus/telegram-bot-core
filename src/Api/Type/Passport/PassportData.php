@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Passport;
  *
  * @see https://core.telegram.org/bots/api#passportdata
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PassportData
 {
     /**
      * Array with information about documents and other Telegram Passport elements that was shared with the bot.
+     *
+     * @psalm-readonly
      *
      * @var EncryptedPassportElement[]
      */
@@ -30,6 +32,8 @@ final class PassportData
 
     /**
      * Encrypted credentials required to decrypt the data.
+     *
+     * @psalm-readonly
      *
      * @var EncryptedCredentials
      */

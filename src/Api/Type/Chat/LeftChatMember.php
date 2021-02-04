@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
 /**
  * Represents left user.
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class LeftChatMember
 {
     /**
      * Chat info.
+     *
+     * @psalm-readonly
      *
      * @var Chat
      */
@@ -31,25 +33,17 @@ final class LeftChatMember
     /**
      * User info.
      *
+     * @psalm-readonly
+     *
      * @var User
      */
     public $user;
 
-    /**
-     * @param Chat $chat
-     * @param User $user
-     *
-     * @return self
-     */
     public static function create(Chat $chat, User $user): self
     {
         return new self($chat, $user);
     }
 
-    /**
-     * @param Chat $chat
-     * @param User $user
-     */
     private function __construct(Chat $chat, User $user)
     {
         $this->chat = $chat;

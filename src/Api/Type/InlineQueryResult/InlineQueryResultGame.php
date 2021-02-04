@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  * @see https://core.telegram.org/bots/api#inlinequeryresultgame
  * @see https://core.telegram.org/bots/api#games
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultGame implements InlineQueryResult
 {
     /**
      * Type of the result, must be game.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,6 +36,8 @@ final class InlineQueryResultGame implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
@@ -41,12 +45,16 @@ final class InlineQueryResultGame implements InlineQueryResult
     /**
      * Short name of the game.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $gameShortName;
 
     /**
      * Optional. Inline keyboard attached to the message.
+     *
+     * @psalm-readonly
      *
      * @var InlineKeyboardMarkup|null
      */

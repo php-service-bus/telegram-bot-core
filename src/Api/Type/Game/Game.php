@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,12 +21,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#game
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Game
 {
     /**
      * Title of the game.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -35,12 +37,16 @@ final class Game
     /**
      * Description of the game.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $description;
 
     /**
      * Photo that will be displayed in the game message in chats.
+     *
+     * @psalm-readonly
      *
      * @var PhotoSize[]
      */
@@ -50,6 +56,8 @@ final class Game
      * Optional. Brief description of the game or high scores included in the game message. Can be automatically edited
      * to include current high scores for the game when the bot calls setGameScore, or manually edited using
      * editMessageText. 0-4096 characters.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#setgamescore
      * @see https://core.telegram.org/bots/api#editmessagetext
@@ -61,12 +69,16 @@ final class Game
     /**
      * Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
      *
+     * @psalm-readonly
+     *
      * @var MessageEntity[]
      */
     public $textEntities = [];
 
     /**
      * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.
+     *
+     * @psalm-readonly
      *
      * @var Animation|null
      */

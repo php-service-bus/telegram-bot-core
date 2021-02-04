@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultvoice
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultVoice implements InlineQueryResult
 {
     /**
      * Type of the result, must be voice.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultVoice implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid URL for the voice recording.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,12 +57,16 @@ final class InlineQueryResultVoice implements InlineQueryResult
     /**
      * Recording title.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Optional. Caption of the document to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -66,12 +76,16 @@ final class InlineQueryResultVoice implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
 
     /**
      * Optional. Recording duration in seconds.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -80,12 +94,16 @@ final class InlineQueryResultVoice implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the voice recording.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

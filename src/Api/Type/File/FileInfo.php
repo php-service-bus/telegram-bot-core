@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ namespace ServiceBus\TelegramBot\Api\Type\File;
  * @see https://core.telegram.org/bots/api#file
  * @see https://core.telegram.org/bots/api#getfile
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class FileInfo
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,12 +36,16 @@ final class FileInfo
     /**
      * Optional. File size, if known.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $fileSize;
 
     /**
      * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */

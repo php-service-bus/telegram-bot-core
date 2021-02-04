@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inputmediavideo
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InputMediaVideo implements InputMedia
 {
     /**
      * Type of the result, must be video.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -35,6 +37,8 @@ final class InputMediaVideo implements InputMedia
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL
      * for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using
      * multipart/form-data under <file_attach_name> name.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#sending-files
      *
@@ -49,6 +53,8 @@ final class InputMediaVideo implements InputMedia
      * and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was
      * uploaded using multipart/form-data under <file_attach_name>.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#sending-files
      *
      * @var InputFilePath|string
@@ -58,6 +64,8 @@ final class InputMediaVideo implements InputMedia
     /**
      * Optional. Caption of the video to be sent, 0-1024 characters.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $caption;
@@ -66,12 +74,16 @@ final class InputMediaVideo implements InputMedia
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
 
     /**
      * Optional. Video width.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */
@@ -80,6 +92,8 @@ final class InputMediaVideo implements InputMedia
     /**
      * Optional. Video height.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $height;
@@ -87,12 +101,16 @@ final class InputMediaVideo implements InputMedia
     /**
      * Optional. Video duration.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $duration;
 
     /**
      * Optional. Pass True, if the uploaded video is suitable for streaming.
+     *
+     * @psalm-readonly
      *
      * @var bool
      */

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -57,7 +57,7 @@ final class SendPhoto extends SendEntity
      */
     public static function uploadFile(ChatId $chatId, InputFilePath $file, ?string $caption = null): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->photo   = $file;
         $self->caption = $caption;
@@ -66,23 +66,16 @@ final class SendPhoto extends SendEntity
     }
 
     /**
-     * @param ChatId      $chatId
-     * @param string      $fileId
-     * @param string|null $caption
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
-     *
      */
     public static function withUploadedFile(ChatId $chatId, string $fileId, ?string $caption = null): self
     {
-        if ('' === $fileId)
+        if ($fileId === '')
         {
             throw new \InvalidArgumentException('Photo file_id to send must be specified');
         }
 
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->photo   = $fileId;
         $self->caption = $caption;
@@ -90,9 +83,6 @@ final class SendPhoto extends SendEntity
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function useMarkdown(): self
     {
         $this->parseMode = ParseMode::markdown();
@@ -100,9 +90,6 @@ final class SendPhoto extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function useHtml(): self
     {
         $this->parseMode = ParseMode::html();
@@ -110,24 +97,18 @@ final class SendPhoto extends SendEntity
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendPhoto';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
             'chat_id'              => $this->chatId(),
             'disable_notification' => $this->notificationStatus(),
             'reply_to_message_id'  => $this->replyToMessage(),
-            'parse_mode'           => null !== $this->parseMode ? $this->parseMode->toString() : null,
+            'parse_mode'           => $this->parseMode?->toString(),
             'reply_markup'         => $this->replyMarkup(),
             'photo'                => $this->photo,
             'caption'              => $this->caption,

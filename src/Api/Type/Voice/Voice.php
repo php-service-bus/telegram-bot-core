@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Voice;
  *
  * @see https://core.telegram.org/bots/api#voice
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Voice
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -31,6 +33,8 @@ final class Voice
     /**
      * Duration of the audio in seconds as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $duration;
@@ -38,12 +42,16 @@ final class Voice
     /**
      * Optional. MIME type of the file as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $mimeType;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

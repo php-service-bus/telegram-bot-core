@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\User\User;
  *
  * @see https://core.telegram.org/bots/api#precheckoutquery
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class PreCheckoutQuery
 {
     /**
      * Unique query identifier.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -34,12 +36,16 @@ final class PreCheckoutQuery
     /**
      * User who sent the query.
      *
+     * @psalm-readonly
+     *
      * @var User
      */
     public $from;
 
     /**
      * Total price.
+     *
+     * @psalm-readonly
      *
      * @var Money
      */
@@ -48,6 +54,8 @@ final class PreCheckoutQuery
     /**
      * Bot specified invoice payload.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $invoicePayload;
@@ -55,12 +63,16 @@ final class PreCheckoutQuery
     /**
      * Optional. Identifier of the shipping option chosen by the user.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $shippingOptionId;
 
     /**
      * Optional. Order info provided by the user.
+     *
+     * @psalm-readonly
      *
      * @var OrderInfo|null
      */

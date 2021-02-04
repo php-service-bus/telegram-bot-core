@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -53,13 +53,6 @@ final class ForwardMessage implements TelegramMethod
      */
     private $disableNotification = true;
 
-    /**
-     * @param ChatId    $fromChatId
-     * @param ChatId    $toChatId
-     * @param MessageId $messageId
-     *
-     * @return self
-     */
     public static function create(ChatId $fromChatId, ChatId $toChatId, MessageId $messageId): self
     {
         $self = new self();
@@ -71,9 +64,6 @@ final class ForwardMessage implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function disableNotification(): self
     {
         $this->disableNotification = true;
@@ -81,9 +71,6 @@ final class ForwardMessage implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function enableNotification(): self
     {
         $this->disableNotification = false;
@@ -91,25 +78,16 @@ final class ForwardMessage implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'forwardMessage';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -97,12 +97,6 @@ final class PromoteChatMember implements TelegramMethod
      */
     private $canPromoteMembers = false;
 
-    /**
-     * @param ChatId $chatId
-     * @param UserId $userId
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, UserId $userId): self
     {
         $self = new self();
@@ -113,12 +107,6 @@ final class PromoteChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @param ChatId $chatId
-     * @param UserId $userId
-     *
-     * @return self
-     */
     public static function grantAll(ChatId $chatId, UserId $userId): self
     {
         $self = new self();
@@ -137,9 +125,6 @@ final class PromoteChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function allowPromoteMembers(): self
     {
         $this->canPromoteMembers = true;
@@ -147,9 +132,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowPinMessages(): self
     {
         $this->canPinMessages = true;
@@ -157,9 +139,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowRestrictMembers(): self
     {
         $this->canRestrictMembers = true;
@@ -167,9 +146,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowInviteUsers(): self
     {
         $this->canInviteUsers = true;
@@ -177,9 +153,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowDeleteMessages(): self
     {
         $this->canDeleteMessages = true;
@@ -187,9 +160,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowEditMessages(): self
     {
         $this->canEditMessages = true;
@@ -197,9 +167,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowPostMessages(): self
     {
         $this->canPostMessages = true;
@@ -207,9 +174,6 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function allowChangeInfo(): self
     {
         $this->canChangeInfo = true;
@@ -217,25 +181,16 @@ final class PromoteChatMember implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'promoteChatMember';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -252,9 +207,6 @@ final class PromoteChatMember implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

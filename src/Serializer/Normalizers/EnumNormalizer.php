@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,9 +21,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function normalize($object, string $format = null, array $context = []): string
     {
         /** @var Enum $object */
@@ -31,25 +28,19 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
         return $object->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Enum;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @psalm-param    string $data
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-suppress ImplementedReturnTypeMismatch
+     *
+     * @psalm-param string $data
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Enum
     {
-        if ('' !== $data)
+        if ($data !== '')
         {
             /**
              * @noinspection PhpUndefinedMethodInspection
@@ -66,9 +57,6 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsDenormalization($data, string $type, string $format = null): bool
     {
         return \is_a($type, Enum::class, true);

@@ -3,5 +3,8 @@ parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
         -
-            message: '#Unable to resolve the template type#'
+            message: '#with type mixed is not subtype of native type object#'
+            path: %currentWorkingDirectory%/src
+        -
+            message: '#should return stati#'
             path: %currentWorkingDirectory%/src

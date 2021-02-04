@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -38,15 +38,11 @@ final class SendPoll extends SendEntity
     private $options;
 
     /**
-     * @param ChatId   $chatId
-     * @param string   $question
-     * @param string[] $options
-     *
-     * @return self
+     * @param string[]  $options
      */
     public static function create(ChatId $chatId, string $question, array $options): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->question = $question;
         $self->options  = $options;
@@ -54,11 +50,6 @@ final class SendPoll extends SendEntity
         return $self;
     }
 
-    /**
-     * @param string $option
-     *
-     * @return $this
-     */
     public function addOption(string $option): self
     {
         $this->options[] = $option;
@@ -66,17 +57,11 @@ final class SendPoll extends SendEntity
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendPoll';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([

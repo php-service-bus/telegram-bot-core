@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -49,13 +49,6 @@ final class KickChatMember implements TelegramMethod
      */
     private $untilDate;
 
-    /**
-     * @param ChatId                  $chatId
-     * @param UserId                  $userId
-     * @param \DateTimeImmutable|null $untilDate
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, UserId $userId, ?\DateTimeImmutable $untilDate): self
     {
         $self = new self();
@@ -67,37 +60,25 @@ final class KickChatMember implements TelegramMethod
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'kickChatMember';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
             'chat_id'    => $this->chatId->toString(),
             'user_id'    => $this->userId->toString(),
-            'until_date' => null !== $this->untilDate ? $this->untilDate->getTimestamp() : null,
+            'until_date' => $this->untilDate?->getTimestamp(),
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

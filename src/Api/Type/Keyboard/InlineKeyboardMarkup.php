@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -20,12 +20,14 @@ use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
  * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup
  * @see https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineKeyboardMarkup implements ReplayMarkup
 {
     /**
      * Array of button rows, each represented by an Array of InlineKeyboardButton objects.
+     *
+     * @psalm-readonly
      *
      * @var InlineKeyboardButton[]
      */

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -61,7 +61,7 @@ final class InteractionsProviderTest extends TestCase
     public function unknownMethod(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 404)))->call(
@@ -83,7 +83,7 @@ final class InteractionsProviderTest extends TestCase
     public function validationFailed(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 404)))->call(
@@ -105,7 +105,7 @@ final class InteractionsProviderTest extends TestCase
     public function internalError(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 500)))->call(
@@ -127,7 +127,7 @@ final class InteractionsProviderTest extends TestCase
     public function incorrectResponsePayload(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 200)))->call(
@@ -149,7 +149,7 @@ final class InteractionsProviderTest extends TestCase
     public function successRequest(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 $expectedResponse = '{"ok":true,"result":{"id":1,"is_bot":true,"first_name":"First","last_name":"","username":"User"}}';
 
@@ -177,7 +177,7 @@ final class InteractionsProviderTest extends TestCase
     public function failedDownload(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::failed('fail message')))->call(
@@ -199,7 +199,7 @@ final class InteractionsProviderTest extends TestCase
     public function successDownload(): void
     {
         Loop::run(
-            function(): \Generator
+            function (): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Success $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('', 200)))->call(

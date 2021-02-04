@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,7 +17,7 @@ namespace ServiceBus\TelegramBot\Api\Type\Passport;
  *
  * @see https://core.telegram.org/bots/api#encryptedpassportelement
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class EncryptedPassportElement
 {
@@ -33,6 +33,8 @@ final class EncryptedPassportElement
      * “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can
      * be decrypted and verified using the accompanying EncryptedCredentials.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
      * @var string|null
@@ -42,12 +44,16 @@ final class EncryptedPassportElement
     /**
      * Optional. User's verified phone number, available only for “phone_number” type.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $phoneNumber;
 
     /**
      * Optional. User's verified email address, available only for “email” type.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -57,6 +63,8 @@ final class EncryptedPassportElement
      * Optional. Array of encrypted files with documents provided by the user, available for “utility_bill”,
      * “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be
      * decrypted and verified using the accompanying EncryptedCredentials.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
@@ -69,6 +77,8 @@ final class EncryptedPassportElement
      * “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the
      * accompanying EncryptedCredentials.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
      * @var PassportFile|null
@@ -80,6 +90,8 @@ final class EncryptedPassportElement
      * “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying
      * EncryptedCredentials.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
      * @var PassportFile|null
@@ -90,6 +102,8 @@ final class EncryptedPassportElement
      * Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available for
      * “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified
      * using the accompanying EncryptedCredentials.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
@@ -103,6 +117,8 @@ final class EncryptedPassportElement
      * “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be
      * decrypted and verified using the accompanying EncryptedCredentials.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#encryptedcredentials
      *
      * @var PassportFile[]
@@ -111,6 +127,8 @@ final class EncryptedPassportElement
 
     /**
      * Base64-encoded element hash for using in PassportElementErrorUnspecified.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#passportelementerrorunspecified
      *

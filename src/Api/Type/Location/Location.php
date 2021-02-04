@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Location;
  *
  * @see https://core.telegram.org/bots/api#location
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Location
 {
     /**
      * Longitude.
+     *
+     * @psalm-readonly
      *
      * @var float
      */
@@ -31,25 +33,17 @@ final class Location
     /**
      * Latitude.
      *
+     * @psalm-readonly
+     *
      * @var float
      */
     public $latitude;
 
-    /**
-     * @param float $longitude
-     * @param float $latitude
-     *
-     * @return self
-     */
     public static function create(float $longitude, float $latitude): self
     {
         return new self($longitude, $latitude);
     }
 
-    /**
-     * @param float $longitude
-     * @param float $latitude
-     */
     private function __construct(float $longitude, float $latitude)
     {
         $this->longitude = $longitude;

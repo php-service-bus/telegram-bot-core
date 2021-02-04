@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,12 +15,14 @@ namespace ServiceBus\TelegramBot\Interaction\Result;
 /**
  * Success execution.
  *
- * @property-read object $type
+ * @psalm-immutable
  */
 final class Success implements Result
 {
     /**
      * Response type.
+     *
+     * @psalm-readonly
      *
      * @var object
      */
@@ -31,9 +33,6 @@ final class Success implements Result
         return new self($type);
     }
 
-    /**
-     * @param object $type
-     */
     private function __construct(object $type)
     {
         $this->type = $type;

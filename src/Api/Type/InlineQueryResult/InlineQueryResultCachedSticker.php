@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,12 +22,14 @@ use ServiceBus\TelegramBot\Api\Type\Keyboard\InlineKeyboardMarkup;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultCachedSticker implements InlineQueryResult
 {
     /**
      * Type of the result, must be sticker.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -36,12 +38,16 @@ final class InlineQueryResultCachedSticker implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid file identifier of the sticker.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -50,12 +56,16 @@ final class InlineQueryResultCachedSticker implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the sticker.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

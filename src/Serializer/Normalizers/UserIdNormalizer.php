@@ -3,7 +3,7 @@
 /**
  * Telegram TelegramBot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -21,9 +21,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class UserIdNormalizer implements DenormalizerInterface, NormalizerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function normalize($object, string $format = null, array $context = []): string
     {
         /** @var UserId $object */
@@ -31,25 +28,19 @@ final class UserIdNormalizer implements DenormalizerInterface, NormalizerInterfa
         return $object->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof UserId;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @psalm-param    string|int $data
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-suppress ImplementedReturnTypeMismatch
+     *
+     * @psalm-param string|int $data
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?UserId
     {
-        if ('' !== (string) $data)
+        if ((string) $data !== '')
         {
             return new UserId((string) $data);
         }
@@ -57,11 +48,8 @@ final class UserIdNormalizer implements DenormalizerInterface, NormalizerInterfa
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsDenormalization($data, string $type, string $format = null): bool
     {
-        return UserId::class === $type;
+        return $type === UserId::class;
     }
 }

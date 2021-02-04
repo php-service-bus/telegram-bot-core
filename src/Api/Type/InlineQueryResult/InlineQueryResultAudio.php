@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -22,12 +22,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultaudio
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultAudio implements InlineQueryResult
 {
     /**
      * Type of the result, must be audio.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -36,12 +38,16 @@ final class InlineQueryResultAudio implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid URL for the audio file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -50,12 +56,16 @@ final class InlineQueryResultAudio implements InlineQueryResult
     /**
      * Title.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Optional. Caption, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -65,12 +75,16 @@ final class InlineQueryResultAudio implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
 
     /**
      * Optional. Performer.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -79,6 +93,8 @@ final class InlineQueryResultAudio implements InlineQueryResult
     /**
      * Optional. Audio duration in seconds.
      *
+     * @psalm-readonly
+     *
      * @var int|null
      */
     public $audioDuration;
@@ -86,12 +102,16 @@ final class InlineQueryResultAudio implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the audio.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

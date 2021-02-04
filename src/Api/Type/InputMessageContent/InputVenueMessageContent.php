@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Location\Location;
  *
  * @see https://core.telegram.org/bots/api#inputvenuemessagecontent
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InputVenueMessageContent implements InputMessageContent
 {
     /**
      * Coordinates.
+     *
+     * @psalm-readonly
      *
      * @var Location
      */
@@ -33,12 +35,16 @@ final class InputVenueMessageContent implements InputMessageContent
     /**
      * Name of the venue.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Address of the venue.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -47,6 +53,8 @@ final class InputVenueMessageContent implements InputMessageContent
     /**
      * Optional. Foursquare identifier of the venue, if known.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $foursquareId;
@@ -54,6 +62,8 @@ final class InputVenueMessageContent implements InputMessageContent
     /**
      * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
      * “arts_entertainment/aquarium” or “food/icecream”.).
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */

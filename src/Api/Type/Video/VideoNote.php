@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,12 +19,14 @@ use ServiceBus\TelegramBot\Api\Type\Photo\PhotoSize;
  *
  * @see https://core.telegram.org/bots/api#videonote
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class VideoNote
 {
     /**
      * Unique identifier for this file.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -33,12 +35,16 @@ final class VideoNote
     /**
      * Video width and height (diameter of the video message) as defined by sender.
      *
+     * @psalm-readonly
+     *
      * @var int
      */
     public $length;
 
     /**
      * Duration of the video in seconds as defined by sender.
+     *
+     * @psalm-readonly
      *
      * @var int
      */
@@ -47,12 +53,16 @@ final class VideoNote
     /**
      * Optional. Video thumbnail.
      *
+     * @psalm-readonly
+     *
      * @var PhotoSize|null
      */
     public $thumb;
 
     /**
      * Optional. File size.
+     *
+     * @psalm-readonly
      *
      * @var int|null
      */

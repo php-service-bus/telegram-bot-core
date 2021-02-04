@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -17,12 +17,14 @@ namespace ServiceBus\TelegramBot\Api\Type\Location;
  *
  * @see https://core.telegram.org/bots/api#venue
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Venue
 {
     /**
      * Venue location.
+     *
+     * @psalm-readonly
      *
      * @var Location
      */
@@ -31,12 +33,16 @@ final class Venue
     /**
      * Name of the venue.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Address of the venue.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -45,6 +51,8 @@ final class Venue
     /**
      * Optional. Foursquare identifier of the venue.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $foursquareId;
@@ -52,6 +60,8 @@ final class Venue
     /**
      * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”,
      * “arts_entertainment/aquarium” or “food/icecream”.).
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */

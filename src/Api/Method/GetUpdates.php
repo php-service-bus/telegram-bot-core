@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -61,12 +61,6 @@ final class GetUpdates implements TelegramMethod
      */
     private $allowedUpdates;
 
-    /**
-     * @param int|null $offset
-     * @param int|null $limit
-     *
-     * @return self
-     */
     public static function create(int $offset = null, int $limit = null): self
     {
         $self = new self();
@@ -77,45 +71,29 @@ final class GetUpdates implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @param int $timeout
-     *
-     * @return void
-     */
     public function withTimeout(int $timeout): void
     {
         $this->timeout = $timeout;
     }
 
     /**
-     * @param string[] $allowedUpdates
-     *
-     * @return void
+     * @psalm-param array<string, string> $allowedUpdates
      */
     public function allowUpdates(array $allowedUpdates): void
     {
         $this->allowedUpdates = $allowedUpdates;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'getUpdates';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'GET';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter(
@@ -128,9 +106,6 @@ final class GetUpdates implements TelegramMethod
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return UpdateCollection::class;

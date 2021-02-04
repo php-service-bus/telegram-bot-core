@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -39,13 +39,6 @@ final class SendLocation extends SendEntity
      */
     private $livePeriod;
 
-    /**
-     * @param ChatId   $chatId
-     * @param Location $coordinates
-     * @param int|null $livePeriod
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, Location $coordinates, ?int $livePeriod = null): self
     {
         $self = new self($chatId);
@@ -56,17 +49,11 @@ final class SendLocation extends SendEntity
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendLocation';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([

@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -59,17 +59,9 @@ final class SendVenue extends SendEntity
      */
     private $foursquareType;
 
-    /**
-     * @param ChatId   $chatId
-     * @param Location $coordinates
-     * @param string   $title
-     * @param string   $address
-     *
-     * @return self
-     */
     public static function create(ChatId $chatId, Location $coordinates, string $title, string $address): self
     {
-        $self = new static($chatId);
+        $self = new self($chatId);
 
         $self->coordinates = $coordinates;
         $self->title       = $title;
@@ -78,11 +70,6 @@ final class SendVenue extends SendEntity
         return $self;
     }
 
-    /**
-     * @param string $foursquareType
-     *
-     * @return self
-     */
     public function setupFoursquareType(string $foursquareType): self
     {
         $this->foursquareType = $foursquareType;
@@ -90,9 +77,6 @@ final class SendVenue extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function unsetFoursquareType(): self
     {
         $this->foursquareType = null;
@@ -100,11 +84,6 @@ final class SendVenue extends SendEntity
         return $this;
     }
 
-    /**
-     * @param string $foursquareId
-     *
-     * @return $this
-     */
     public function setupFoursquareId(string $foursquareId): self
     {
         $this->foursquareId = $foursquareId;
@@ -112,9 +91,6 @@ final class SendVenue extends SendEntity
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function unsetFoursquareId(): self
     {
         $this->foursquareId = null;
@@ -122,17 +98,11 @@ final class SendVenue extends SendEntity
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'sendVenue';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([

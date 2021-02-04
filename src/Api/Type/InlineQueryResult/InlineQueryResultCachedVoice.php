@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedvoice
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultCachedVoice implements InlineQueryResult
 {
     /**
      * Type of the result, must be voice.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultCachedVoice implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * A valid file identifier for the voice message.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,12 +57,16 @@ final class InlineQueryResultCachedVoice implements InlineQueryResult
     /**
      * Voice message title.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $title;
 
     /**
      * Optional. Caption, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -66,6 +76,8 @@ final class InlineQueryResultCachedVoice implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
@@ -73,12 +85,16 @@ final class InlineQueryResultCachedVoice implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the voice message.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */

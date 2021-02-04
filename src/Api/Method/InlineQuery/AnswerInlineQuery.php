@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -87,12 +87,7 @@ final class AnswerInlineQuery implements TelegramMethod
     private $switchPmParameter;
 
     /**
-     * @param string              $inlineQueryId
      * @param InlineQueryResult[] $results
-     * @param string|null         $switchPmText
-     * @param string|null         $switchPmParameter
-     *
-     * @return self
      */
     public static function create(
         string $inlineQueryId,
@@ -110,9 +105,6 @@ final class AnswerInlineQuery implements TelegramMethod
         return $self;
     }
 
-    /**
-     * @return $this
-     */
     public function makePersonal(): self
     {
         $this->isPersonal = true;
@@ -120,11 +112,6 @@ final class AnswerInlineQuery implements TelegramMethod
         return $this;
     }
 
-    /**
-     * @param int $ttl
-     *
-     * @return $this
-     */
     public function changeCacheTtl(int $ttl): self
     {
         $this->cacheTime = $ttl;
@@ -132,25 +119,16 @@ final class AnswerInlineQuery implements TelegramMethod
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'answerInlineQuery';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return \array_filter([
@@ -164,9 +142,6 @@ final class AnswerInlineQuery implements TelegramMethod
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return SimpleSuccessResponse::class;

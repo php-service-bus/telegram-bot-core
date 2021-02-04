@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -19,7 +19,7 @@ use ServiceBus\TelegramBot\Api\Type\Message\Message;
  *
  * @see https://core.telegram.org/bots/api#chat
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class Chat
 {
@@ -28,12 +28,16 @@ final class Chat
      * difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or
      * double-precision float type are safe for storing this identifier.
      *
+     * @psalm-readonly
+     *
      * @var ChatId
      */
     public $id;
 
     /**
      * Type of chat.
+     *
+     * @psalm-readonly
      *
      * @var ChatType
      */
@@ -42,12 +46,16 @@ final class Chat
     /**
      * Optional. Title, for supergroups, channels and group chats.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $title;
 
     /**
      * Optional. Username, for private chats, supergroups and channels if available.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -56,12 +64,16 @@ final class Chat
     /**
      * Optional. First name of the other party in a private chat.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $firstName;
 
     /**
      * Optional. Last name of the other party in a private chat.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -70,12 +82,16 @@ final class Chat
     /**
      * Optional. True if a group has ‘All Members Are Admins’ enabled.
      *
+     * @psalm-readonly
+     *
      * @var bool
      */
     public $allMembersAreAdministrators = false;
 
     /**
      * Optional. Chat photo. Returned only in getChat.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#getchat
      *
@@ -85,6 +101,8 @@ final class Chat
 
     /**
      * Optional. Description, for supergroups and channel chats. Returned only in getChat.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#getchat
      *
@@ -96,6 +114,8 @@ final class Chat
      * Optional. Chat invite link, for supergroups and channel chats. Each administrator in a chat generates their own
      * invite links, so the bot must first generate the link using exportChatInviteLink. Returned only in getChat.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#getchat
      * @see https://core.telegram.org/bots/api#exportchatinvitelink
      *
@@ -106,6 +126,8 @@ final class Chat
     /**
      * Optional. Pinned message, for groups, supergroups and channels. Returned only in getChat.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#getchat
      *
      * @var Message|null
@@ -115,6 +137,8 @@ final class Chat
     /**
      * Optional. For supergroups, name of group sticker set. Returned only in getChat.
      *
+     * @psalm-readonly
+     *
      * @see https://core.telegram.org/bots/api#getchat
      *
      * @var string|null
@@ -123,6 +147,8 @@ final class Chat
 
     /**
      * Optional. True, if the bot can change the group sticker set. Returned only in getChat.
+     *
+     * @psalm-readonly
      *
      * @see https://core.telegram.org/bots/api#getchat
      *

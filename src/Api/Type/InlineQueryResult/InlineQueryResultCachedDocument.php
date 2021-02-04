@@ -3,7 +3,7 @@
 /**
  * Telegram Bot API.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -23,12 +23,14 @@ use ServiceBus\TelegramBot\Api\Type\ParseMode;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
  *
- * @psalm-readonly
+ * @psalm-immutable
  */
 final class InlineQueryResultCachedDocument implements InlineQueryResult
 {
     /**
      * Type of the result, must be document.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -37,12 +39,16 @@ final class InlineQueryResultCachedDocument implements InlineQueryResult
     /**
      * Unique identifier for this result, 1-64 bytes.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $id;
 
     /**
      * Title for the result.
+     *
+     * @psalm-readonly
      *
      * @var string
      */
@@ -51,6 +57,8 @@ final class InlineQueryResultCachedDocument implements InlineQueryResult
     /**
      * A valid file identifier for the file.
      *
+     * @psalm-readonly
+     *
      * @var string
      */
     public $documentFileId;
@@ -58,12 +66,16 @@ final class InlineQueryResultCachedDocument implements InlineQueryResult
     /**
      * Optional. Short description of the result.
      *
+     * @psalm-readonly
+     *
      * @var string|null
      */
     public $description;
 
     /**
      * Optional. Caption of the document to be sent, 0-1024 characters.
+     *
+     * @psalm-readonly
      *
      * @var string|null
      */
@@ -73,6 +85,8 @@ final class InlineQueryResultCachedDocument implements InlineQueryResult
      * Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs
      * in the media caption.
      *
+     * @psalm-readonly
+     *
      * @var ParseMode|null
      */
     public $parseMode;
@@ -80,12 +94,16 @@ final class InlineQueryResultCachedDocument implements InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message.
      *
+     * @psalm-readonly
+     *
      * @var InlineKeyboardMarkup|null
      */
     public $replyMarkup;
 
     /**
      * Optional. Content of the message to be sent instead of the file.
+     *
+     * @psalm-readonly
      *
      * @var InputMessageContent|null
      */
