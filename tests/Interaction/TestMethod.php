@@ -22,10 +22,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class TestMethod implements TelegramMethod
 {
     /**
-     * @Assert\NotBlank()
-     *
      * @var string
      */
+    #[Assert\NotBlank]
     private $id;
 
     /**

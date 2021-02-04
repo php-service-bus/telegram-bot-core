@@ -15,7 +15,6 @@ namespace ServiceBus\TelegramBot\Interaction;
 use function Amp\call;
 use function ServiceBus\Common\jsonDecode;
 use Amp\Promise;
-use Doctrine\Common\Annotations\AnnotationRegistry;
 use ServiceBus\HttpClient\Artax\ArtaxFormBody;
 use ServiceBus\HttpClient\Artax\ArtaxHttpClient;
 use ServiceBus\HttpClient\HttpClient;
@@ -55,12 +54,6 @@ final class InteractionsProvider
 
     public function __construct(?HttpClient $httpClient = null, ?TelegramSerializer $serializer = null)
     {
-        /**
-         * @noinspection   PhpDeprecationInspection
-         * @psalm-suppress DeprecatedMethod This method is deprecated and will be removed in doctrine/annotations 2.0
-         */
-        AnnotationRegistry::registerLoader('class_exists');
-
         $this->httpClient = $httpClient ?? new ArtaxHttpClient();
         $this->serializer = $serializer ?? new WrappedSymfonySerializer();
         $this->validator  = (new ValidatorBuilder())->enableAnnotationMapping()->getValidator();
