@@ -41,8 +41,7 @@
     "php-service-bus/code-style-config": "v1.3.*",
     "phpunit/phpunit": "v9.5.*",
     "vimeo/psalm": "v4.4.*",
-    "phpstan/phpstan": "v0.12.*",
-    "symfony/dotenv": "v5.1.*"
+    "phpstan/phpstan": "v0.12.*"
   },
   "prefer-stable": true,
   "minimum-stability": "dev",
