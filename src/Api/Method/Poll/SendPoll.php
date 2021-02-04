@@ -8,7 +8,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 1);
+declare(strict_types = 0);
 
 namespace ServiceBus\TelegramBot\Api\Method\Poll;
 
