@@ -14,10 +14,29 @@
     </coverage>
     <php>
         <ini name="error_reporting" value="-1"/>
+        <env name="REDIS_CONNECTION_DSN" value="tcp://localhost:6379"/>
     </php>
     <testsuites>
+
+        <testsuite name="Component: common">
+            <directory>./vendor/php-service-bus/common/tests/</directory>
+        </testsuite>
+
+        <testsuite name="Component: mutex">
+            <directory>./vendor/php-service-bus/mutex/tests/</directory>
+        </testsuite>
+
+        <testsuite name="Component: http client">
+            <directory>./vendor/php-service-bus/http-client/tests/</directory>
+        </testsuite>
+
+        <testsuite name="Component: message serializer">
+            <directory>./vendor/php-service-bus/message-serializer/tests/</directory>
+        </testsuite>
+
         <testsuite name="Telegram component">
             <directory>./tests/</directory>
         </testsuite>
+
     </testsuites>
 </phpunit>

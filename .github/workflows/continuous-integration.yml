@@ -87,6 +87,11 @@ jobs:
           ini-values: ${{ env.PHP_INI_VALUES }}
           tools: composer:v2
 
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.1.0
+        with:
+          redis-version: 6
+
       - name: Install dependencies
         run: composer update --no-ansi --no-interaction --no-progress
 

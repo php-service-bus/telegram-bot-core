@@ -22,7 +22,11 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "ServiceBus\\TelegramBot\\Tests\\": "tests/"
+      "ServiceBus\\TelegramBot\\Tests\\": "tests/",
+      "ServiceBus\\Common\\Tests\\": "vendor/php-service-bus/common/tests/",
+      "ServiceBus\\HttpClient\\Tests\\": "vendor/php-service-bus/http-client/tests/",
+      "ServiceBus\\Mutex\\Tests\\": "vendor/php-service-bus/mutex/tests/",
+      "ServiceBus\\MessageSerializer\\Tests\\": "vendor/php-service-bus/message-serializer/tests/"
     }
   },
   "require": {

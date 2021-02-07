@@ -54,7 +54,7 @@ final class InteractionsProvider
 
     public function __construct(?HttpClient $httpClient = null, ?TelegramSerializer $serializer = null)
     {
-        $this->httpClient = $httpClient ?? new ArtaxHttpClient();
+        $this->httpClient = $httpClient ?? ArtaxHttpClient::build();
         $this->serializer = $serializer ?? new WrappedSymfonySerializer();
         $this->validator  = (new ValidatorBuilder())->enableAnnotationMapping()->getValidator();
     }
