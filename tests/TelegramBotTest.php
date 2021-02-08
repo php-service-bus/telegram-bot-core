@@ -22,8 +22,6 @@ final class TelegramBotTest extends TestCase
 {
     /**
      * @test
-     *
-     * @return void
      */
     public function emptyUsername(): void
     {
@@ -35,8 +33,6 @@ final class TelegramBotTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
     public function invalidUsername(): void
     {
@@ -48,12 +44,10 @@ final class TelegramBotTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
     public function successCreate(): void
     {
-        static::assertSame('@DemoBot', (new TelegramBot('DemoBot'))->username);
-        static::assertSame('@DemoBot', (new TelegramBot('@DemoBot'))->username);
+        self::assertSame('@DemoBot', (new TelegramBot('DemoBot'))->username);
+        self::assertSame('@DemoBot', (new TelegramBot('@DemoBot'))->username);
     }
 }

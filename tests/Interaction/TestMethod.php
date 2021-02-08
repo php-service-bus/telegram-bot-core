@@ -27,33 +27,21 @@ final class TestMethod implements TelegramMethod
     #[Assert\NotBlank]
     private $id;
 
-    /**
-     * @param string $id
-     */
     public function __construct(string $id = '123')
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function methodName(): string
     {
         return 'TestMethod';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function httpRequestMethod(): string
     {
         return 'POST';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requestData(): array
     {
         return [
@@ -61,9 +49,6 @@ final class TestMethod implements TelegramMethod
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function typeClass(): string
     {
         return User::class;

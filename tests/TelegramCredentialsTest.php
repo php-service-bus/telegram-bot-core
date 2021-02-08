@@ -22,8 +22,6 @@ final class TelegramCredentialsTest extends TestCase
 {
     /**
      * @test
-     *
-     * @return void
      */
     public function emptyToken(): void
     {
@@ -35,8 +33,6 @@ final class TelegramCredentialsTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
     public function invalidToken(): void
     {
@@ -48,12 +44,10 @@ final class TelegramCredentialsTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
     public function successToken(): void
     {
-        static::assertSame(
+        self::assertSame(
             '25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o',
             (new  TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o'))->token
         );

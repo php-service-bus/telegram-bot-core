@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -25,8 +25,6 @@ final class PollUpdatesTest extends TestCase
 {
     /**
      * @test
-     *
-     * @return void
      */
     public function pollInfo(): void
     {
@@ -36,12 +34,12 @@ final class PollUpdatesTest extends TestCase
             Update::class
         );
 
-        static::assertNotNull($update->poll);
+        self::assertNotNull($update->poll);
 
         /** @var Poll $poll */
         $poll = $update->poll;
 
-        static::assertSame('root', $poll->question);
-        static::assertCount(3, $poll->options);
+        self::assertSame('root', $poll->question);
+        self::assertCount(3, $poll->options);
     }
 }

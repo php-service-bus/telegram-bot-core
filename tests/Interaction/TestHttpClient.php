@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -41,12 +41,6 @@ final class TestHttpClient implements HttpClient
      */
     private $expectedFailMessage;
 
-    /**
-     * @param string $payload
-     * @param int    $statusCode
-     *
-     * @return self
-     */
     public static function create(string $payload, int $statusCode): self
     {
         $self = new self();
@@ -57,11 +51,6 @@ final class TestHttpClient implements HttpClient
         return $self;
     }
 
-    /**
-     * @param string $message
-     *
-     * @return self
-     */
     public static function failed(string $message): self
     {
         $self = new self();
@@ -71,22 +60,22 @@ final class TestHttpClient implements HttpClient
         return $self;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(HttpRequest $requestData, ?RequestContext $context = null): Promise
     {
-        return null === $this->expectedFailMessage
+        return $this->expectedFailMessage === null
             ? new Success(new Psr7Response($this->expectedStatusCode, [], $this->expectedPayload))
             : new Failure(new HttpClientException($this->expectedFailMessage));
+
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function download(string $fileUrl, string $destinationDirectory, string $fileName, ?RequestContext $context = null): Promise
+    public function download(
+        string $fileUrl,
+        string $destinationDirectory,
+        string $fileName,
+        ?RequestContext $context = null
+    ): Promise
     {
-        return null === $this->expectedFailMessage
+        return $this->expectedFailMessage === null
             ? new Success(__FILE__)
             : new Failure(new HttpClientException($this->expectedFailMessage));
     }

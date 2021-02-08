@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -29,8 +29,6 @@ final class ChatMembersUpdateTest extends TestCase
 {
     /**
      * @test
-     *
-     * @return void
      */
     public function newChatParticipant(): void
     {
@@ -40,34 +38,32 @@ final class ChatMembersUpdateTest extends TestCase
             Update::class
         );
 
-        static::assertNotNull($update->message);
-        static::assertNotNull($update->message->chat);
-        static::assertNotEmpty($update->message->newChatMembers);
+        self::assertNotNull($update->message);
+        self::assertNotNull($update->message->chat);
+        self::assertNotEmpty($update->message->newChatMembers);
 
         $joinedMembers = JoinedChatMembers::create($update->message->chat, UserCollection::create($update->message->newChatMembers));
 
         $members = \iterator_to_array($joinedMembers->members);
 
-        static::assertCount(1, $members);
+        self::assertCount(1, $members);
 
         /** @var User $user */
         $user = \end($members);
 
-        static::assertSame('54324538', $user->id->toString());
-        static::assertSame('FirstName', $user->firstName);
-        static::assertSame('LastName', $user->lastName);
-        static::assertSame('Username', $user->username);
-        static::assertFalse($user->isBot);
+        self::assertSame('54324538', $user->id->toString());
+        self::assertSame('FirstName', $user->firstName);
+        self::assertSame('LastName', $user->lastName);
+        self::assertSame('Username', $user->username);
+        self::assertFalse($user->isBot);
 
-        static::assertSame('-341054026', $joinedMembers->chat->id->toString());
-        static::assertSame('qwertyroot', $joinedMembers->chat->title);
-        static::assertTrue($joinedMembers->chat->type->equals(ChatType::group()));
+        self::assertSame('-341054026', $joinedMembers->chat->id->toString());
+        self::assertSame('qwertyroot', $joinedMembers->chat->title);
+        self::assertTrue($joinedMembers->chat->type->equals(ChatType::group()));
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function leftChatParticipant(): void
     {
@@ -77,16 +73,16 @@ final class ChatMembersUpdateTest extends TestCase
             Update::class
         );
 
-        static::assertNotNull($update->message);
-        static::assertNotNull($update->message->chat);
-        static::assertNotNull($update->message->leftChatMember);
+        self::assertNotNull($update->message);
+        self::assertNotNull($update->message->chat);
+        self::assertNotNull($update->message->leftChatMember);
 
         $leftMember = LeftChatMember::create($update->message->chat, $update->message->leftChatMember);
 
-        static::assertSame('54324538', $leftMember->user->id->toString());
-        static::assertSame('FirstName', $leftMember->user->firstName);
-        static::assertSame('LastName', $leftMember->user->lastName);
-        static::assertSame('Username', $leftMember->user->username);
-        static::assertFalse($leftMember->user->isBot);
+        self::assertSame('54324538', $leftMember->user->id->toString());
+        self::assertSame('FirstName', $leftMember->user->firstName);
+        self::assertSame('LastName', $leftMember->user->lastName);
+        self::assertSame('Username', $leftMember->user->username);
+        self::assertFalse($leftMember->user->isBot);
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -31,9 +31,6 @@ final class InteractionsProviderTest extends TestCase
      */
     private $credentials;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -41,9 +38,6 @@ final class InteractionsProviderTest extends TestCase
         $this->credentials = new TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -55,13 +49,11 @@ final class InteractionsProviderTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
     public function unknownMethod(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 404)))->call(
@@ -69,21 +61,19 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Fail::class, $result);
-                static::assertSame('Method TestMethod not exists', $result->errorMessage);
+                self::assertInstanceOf(Fail::class, $result);
+                self::assertSame('Method TestMethod not exists', $result->errorMessage);
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function validationFailed(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 404)))->call(
@@ -91,21 +81,21 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Fail::class, $result);
-                static::assertSame('Validation failed', $result->errorMessage);
+                self::assertInstanceOf(Fail::class, $result);
+                self::assertSame('Validation failed', $result->errorMessage);
+
+                Loop::stop();
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function internalError(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 500)))->call(
@@ -113,21 +103,21 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Fail::class, $result);
-                static::assertSame('Incorrect server response code: 500', $result->errorMessage);
+                self::assertInstanceOf(Fail::class, $result);
+                self::assertSame('Incorrect server response code: 500', $result->errorMessage);
+
+                Loop::stop();
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function incorrectResponsePayload(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('{}', 200)))->call(
@@ -135,21 +125,21 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Fail::class, $result);
-                static::assertSame('Incorrect response payload', $result->errorMessage);
+                self::assertInstanceOf(Fail::class, $result);
+                self::assertSame('Incorrect response payload', $result->errorMessage);
+
+                Loop::stop();
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function successRequest(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 $expectedResponse = '{"ok":true,"result":{"id":1,"is_bot":true,"first_name":"First","last_name":"","username":"User"}}';
 
@@ -159,25 +149,25 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Success::class, $result);
+                self::assertInstanceOf(Success::class, $result);
 
                 /** @var User $type */
                 $type = $result->type;
 
-                static::assertSame('1', $type->id->toString());
+                self::assertSame('1', $type->id->toString());
+
+                Loop::stop();
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function failedDownload(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Fail $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::failed('fail message')))->call(
@@ -185,21 +175,21 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Fail::class, $result);
-                static::assertSame('fail message', $result->errorMessage);
+                self::assertInstanceOf(Fail::class, $result);
+                self::assertSame('fail message', $result->errorMessage);
+
+                Loop::stop();
             }
         );
     }
 
     /**
      * @test
-     *
-     * @return void
      */
     public function successDownload(): void
     {
         Loop::run(
-            function (): \Generator
+            function(): \Generator
             {
                 /** @var \ServiceBus\TelegramBot\Interaction\Result\Success $result */
                 $result = yield (new InteractionsProvider(TestHttpClient::create('', 200)))->call(
@@ -207,7 +197,9 @@ final class InteractionsProviderTest extends TestCase
                     $this->credentials
                 );
 
-                static::assertInstanceOf(Success::class, $result);
+                self::assertInstanceOf(Success::class, $result);
+
+                Loop::stop();
             }
         );
     }

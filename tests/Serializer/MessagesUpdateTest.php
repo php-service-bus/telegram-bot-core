@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -28,8 +28,6 @@ final class MessagesUpdateTest extends TestCase
 {
     /**
      * @test
-     *
-     * @return void
      */
     public function messageReceived(): void
     {
@@ -39,9 +37,9 @@ final class MessagesUpdateTest extends TestCase
             Update::class
         );
 
-        static::assertNotNull($update->message);
-        static::assertNotNull($update->message->from);
-        static::assertNotNull($update->message->chat);
+        self::assertNotNull($update->message);
+        self::assertNotNull($update->message->from);
+        self::assertNotNull($update->message->chat);
 
         /** @var Message $message */
         $message = $update->message;
@@ -50,18 +48,18 @@ final class MessagesUpdateTest extends TestCase
 
         $chat = $message->chat;
 
-        static::assertSame('3', $message->messageId->toString());
-        static::assertInstanceOf(UnixTime::class, $message->date);
-        static::assertSame('message text', $message->text);
+        self::assertSame('3', $message->messageId->toString());
+        self::assertInstanceOf(UnixTime::class, $message->date);
+        self::assertSame('message text', $message->text);
 
-        static::assertSame('288825898', $user->id->toString());
-        static::assertSame('Maksim', $user->firstName);
-        static::assertSame('Masiukevich', $user->lastName);
-        static::assertSame('desper1989', $user->username);
-        static::assertFalse($user->isBot);
+        self::assertSame('288825898', $user->id->toString());
+        self::assertSame('Maksim', $user->firstName);
+        self::assertSame('Masiukevich', $user->lastName);
+        self::assertSame('desper1989', $user->username);
+        self::assertFalse($user->isBot);
 
-        static::assertSame('-341054026', $chat->id->toString());
-        static::assertSame('qwertyroot', $chat->title);
-        static::assertTrue($chat->type->equals(ChatType::group()));
+        self::assertSame('-341054026', $chat->id->toString());
+        self::assertSame('qwertyroot', $chat->title);
+        self::assertTrue($chat->type->equals(ChatType::group()));
     }
 }
