@@ -65,7 +65,6 @@ final class TestHttpClient implements HttpClient
         return $this->expectedFailMessage === null
             ? new Success(new Psr7Response($this->expectedStatusCode, [], $this->expectedPayload))
             : new Failure(new HttpClientException($this->expectedFailMessage));
-
     }
 
     public function download(
@@ -73,8 +72,7 @@ final class TestHttpClient implements HttpClient
         string $destinationDirectory,
         string $fileName,
         ?RequestContext $context = null
-    ): Promise
-    {
+    ): Promise {
         return $this->expectedFailMessage === null
             ? new Success(__FILE__)
             : new Failure(new HttpClientException($this->expectedFailMessage));
