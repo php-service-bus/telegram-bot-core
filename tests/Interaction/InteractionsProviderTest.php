@@ -63,6 +63,8 @@ final class InteractionsProviderTest extends TestCase
 
                 self::assertInstanceOf(Fail::class, $result);
                 self::assertSame('Method TestMethod not exists', $result->errorMessage);
+
+                Loop::stop();
             }
         );
     }
