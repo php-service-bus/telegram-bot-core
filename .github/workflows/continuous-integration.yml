@@ -61,7 +61,7 @@ jobs:
         run: composer update --no-ansi --no-interaction --no-progress
 
       - name: Run phpstan/phpstan
-        run: ./vendor/bin/phpstan analyse src --level 7
+        run: rm -rf ~/.cache/psalm/ && ./vendor/bin/phpstan analyse src --level 7
 
   phpunit:
     name: PHPUnit
