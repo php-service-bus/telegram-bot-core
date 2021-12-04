@@ -8,17 +8,14 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
-namespace ServiceBus\TelegramBot\Serializer\Normalizers;
+namespace ServiceBus\TelegramBot\Hydrator\Normalizers;
 
 use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- *
- */
 final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     public function normalize($object, string $format = null, array $context = []): int

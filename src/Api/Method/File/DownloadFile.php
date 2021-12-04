@@ -8,7 +8,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Api\Method\File;
 
@@ -56,12 +56,12 @@ final class DownloadFile implements TelegramMethod
 
     public function methodName(): string
     {
-        return '';
+        return 'download';
     }
 
     public function httpRequestMethod(): string
     {
-        return '';
+        return 'GET';
     }
 
     public function requestData(): array

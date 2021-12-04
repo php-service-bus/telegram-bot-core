@@ -8,7 +8,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Api\Type\Passport;
 
@@ -66,9 +66,6 @@ final class EncryptedPassportElementType implements Enum
      */
     private $value;
 
-    /**
-     * @psalm-suppress MoreSpecificReturnType
-     */
     public static function create(string $value): static
     {
         if (\in_array($value, self::LIST, true) === false)

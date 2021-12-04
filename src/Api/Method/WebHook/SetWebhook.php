@@ -8,7 +8,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Api\Method\WebHook;
 
@@ -45,12 +45,16 @@ final class SetWebhook implements TelegramMethod
     /**
      * Api endpoint route.
      *
+     * @psalm-var non-empty-string
+     *
      * @var string
      */
     private $url;
 
     /**
      * Certificate file path.
+     *
+     * @psalm-var non-empty-string|null
      *
      * @var string|null
      */
@@ -71,10 +75,16 @@ final class SetWebhook implements TelegramMethod
      * types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous
      * setting will be used.
      *
+     * @psalm-var array<array-key, non-empty-string>
+     *
      * @var array
      */
     private $allowedUpdates = self::DEFAULT_ALLOWED_UPDATES;
 
+    /**
+     * @psalm-param non-empty-string      $url
+     * @psalm-param non-empty-string|null $certificateFilePath
+     */
     public static function create(string $url, string $certificateFilePath = null): self
     {
         $self = new self();
@@ -90,6 +100,9 @@ final class SetWebhook implements TelegramMethod
         $this->maxConnections = $maxConnections;
     }
 
+    /**
+     * @psalm-param array<array-key, non-empty-string> $allowedUpdates
+     */
     public function replaceAllowedUpdates(array $allowedUpdates): void
     {
         $this->allowedUpdates = $allowedUpdates;
@@ -109,8 +122,8 @@ final class SetWebhook implements TelegramMethod
     {
         return \array_filter([
             'url'             => $this->url,
-            'certificate'     =>  (string) $this->certificateFilePath !== ''
-                ? new InputFilePath((string) $this->certificateFilePath)
+            'certificate'     => !empty($this->certificateFilePath)
+                ? new InputFilePath($this->certificateFilePath)
                 : null,
             'max_connections' => $this->maxConnections,
             'allowed_updates' => \implode(', ', \array_values($this->allowedUpdates)),

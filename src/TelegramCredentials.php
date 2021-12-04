@@ -8,7 +8,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot;
 
@@ -23,6 +23,7 @@ final class TelegramCredentials
      * TelegramBot api token.
      *
      * @psalm-readonly
+     * @psalm-var non-empty-string
      *
      * @see https://core.telegram.org/bots/api#authorizing-your-bot
      *

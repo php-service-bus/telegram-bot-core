@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -8,11 +10,11 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
-use function ServiceBus\Common\jsonDecode;
+use ServiceBus\TelegramBot\Hydrator\TelegramHydrator;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatType;
 use ServiceBus\TelegramBot\Api\Type\Chat\JoinedChatMembers;
@@ -20,7 +22,7 @@ use ServiceBus\TelegramBot\Api\Type\Chat\LeftChatMember;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
 use ServiceBus\TelegramBot\Api\Type\User\UserCollection;
-use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
+use function ServiceBus\Common\jsonDecode;
 
 /**
  *
@@ -33,7 +35,7 @@ final class ChatMembersUpdateTest extends TestCase
     public function newChatParticipant(): void
     {
         /** @var Update $update */
-        $update = (new WrappedSymfonySerializer())->decode(
+        $update = TelegramHydrator::default()->handle(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/newChatParticipant.json')),
             Update::class
         );
@@ -68,7 +70,7 @@ final class ChatMembersUpdateTest extends TestCase
     public function leftChatParticipant(): void
     {
         /** @var Update $update */
-        $update = (new WrappedSymfonySerializer())->decode(
+        $update = TelegramHydrator::default()->handle(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/chat_members/leftChatParticipant.json')),
             Update::class
         );

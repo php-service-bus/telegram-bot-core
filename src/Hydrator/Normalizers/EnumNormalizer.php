@@ -8,17 +8,14 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
-namespace ServiceBus\TelegramBot\Serializer\Normalizers;
+namespace ServiceBus\TelegramBot\Hydrator\Normalizers;
 
 use ServiceBus\TelegramBot\Api\Type\Enum;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * Enum types normalizer.
- */
 final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     public function normalize($object, string $format = null, array $context = []): string
@@ -44,10 +41,11 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
         {
             /**
              * @noinspection PhpUndefinedMethodInspection
+             * @noinspection PhpUnnecessaryLocalVariableInspection
              *
              * @psalm-var class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $type
              *
-             * @var Enum $enum
+             * @var Enum                                                      $enum
              */
             $enum = $type::create($data);
 

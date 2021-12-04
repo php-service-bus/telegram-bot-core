@@ -8,16 +8,16 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Api\Method\Message;
 
-use function ServiceBus\Common\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\InputMedia\InputMedia;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+use function ServiceBus\Common\jsonEncode;
 
 /**
  * Send a group of photos or videos as an album.

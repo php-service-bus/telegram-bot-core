@@ -8,9 +8,11 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Interaction;
+
+use ServiceBus\HttpClient\InputFilePath;
 
 /**
  * Bot action interface.
@@ -20,7 +22,7 @@ interface TelegramMethod
     /**
      * Receive bot command name.
      *
-     * @return string
+     * @psalm-return non-empty-string
      */
     public function methodName(): string;
 
@@ -28,13 +30,13 @@ interface TelegramMethod
      * Receive http request method.
      *
      * @return string
+     *
+     * @psalm-return non-empty-string
      */
     public function httpRequestMethod(): string;
 
     /**
      * Receive request parameters.
-     *
-     * @return array
      */
     public function requestData(): array;
 

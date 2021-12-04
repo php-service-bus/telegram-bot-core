@@ -8,16 +8,16 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Api\Method;
 
-use function ServiceBus\Common\jsonEncode;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
 use ServiceBus\TelegramBot\Api\Type\ReplayMarkup;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+use function ServiceBus\Common\jsonEncode;
 
 /**
  *
@@ -115,7 +115,7 @@ abstract class SendEntity implements TelegramMethod
 
     final protected function replyToMessage(): ?string
     {
-        return null !== $this->replyToMessageId ? $this->replyToMessageId->toString() : null;
+        return $this->replyToMessageId?->toString();
     }
 
     final protected function replyMarkup(): ?string

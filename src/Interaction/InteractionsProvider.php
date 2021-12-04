@@ -8,12 +8,11 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
 namespace ServiceBus\TelegramBot\Interaction;
 
-use function Amp\call;
-use function ServiceBus\Common\jsonDecode;
+use ServiceBus\TelegramBot\Hydrator\TelegramHydrator;
 use Amp\Promise;
 use ServiceBus\HttpClient\Artax\ArtaxFormBody;
 use ServiceBus\HttpClient\Artax\ArtaxHttpClient;
@@ -21,16 +20,13 @@ use ServiceBus\HttpClient\HttpClient;
 use ServiceBus\HttpClient\HttpRequest;
 use ServiceBus\TelegramBot\Api\Method\File\DownloadFile;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
-use ServiceBus\TelegramBot\Serializer\SerializationFailed;
-use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
-use ServiceBus\TelegramBot\Serializer\TelegramSerializer;
+use ServiceBus\TelegramBot\Hydrator\SerializationFailed;
 use ServiceBus\TelegramBot\TelegramCredentials;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
+use function Amp\call;
+use function ServiceBus\Common\jsonDecode;
 
-/**
- *
- */
 final class InteractionsProvider
 {
     private const TELEGRAM_COMMAND_ENDPOINT_URL_PATTERN = 'https://api.telegram.org/bot{token}/{action}';
@@ -48,15 +44,15 @@ final class InteractionsProvider
     private $validator;
 
     /**
-     * @var TelegramSerializer
+     * @var TelegramHydrator
      */
-    private $serializer;
+    private $telegramHydrator;
 
-    public function __construct(?HttpClient $httpClient = null, ?TelegramSerializer $serializer = null)
+    public function __construct(?HttpClient $httpClient = null, ?TelegramHydrator $telegramHydrator = null)
     {
-        $this->httpClient = $httpClient ?? ArtaxHttpClient::build();
-        $this->serializer = $serializer ?? new WrappedSymfonySerializer();
-        $this->validator  = (new ValidatorBuilder())->enableAnnotationMapping()->getValidator();
+        $this->httpClient       = $httpClient ?? ArtaxHttpClient::build();
+        $this->telegramHydrator = $telegramHydrator ?? TelegramHydrator::default();
+        $this->validator        = (new ValidatorBuilder())->enableAnnotationMapping()->getValidator();
     }
 
     /**
@@ -76,9 +72,6 @@ final class InteractionsProvider
 
     /**
      * Download file.
-     *
-     * @param DownloadFile        $method
-     * @param TelegramCredentials $credentials
      *
      * @return Promise<\ServiceBus\TelegramBot\Interaction\Result\Result>
      */
@@ -129,8 +122,20 @@ final class InteractionsProvider
 
                     if ($response->getStatusCode() === 200)
                     {
+                        $responseBody = (string) $response->getBody();
+
+                        if ($responseBody === '')
+                        {
+                            throw new \RuntimeException(
+                                \sprintf('Unexpected empty response body. Action: %s', get_class($method))
+                            );
+                        }
+
                         return Result\Success::create(
-                            self::parseResponse($this->serializer, (string) $response->getBody(), $method->typeClass())
+                            $this->parseResponse(
+                                json: $responseBody,
+                                toClass: $method->typeClass()
+                            )
                         );
                     }
 
@@ -169,39 +174,36 @@ final class InteractionsProvider
 
         /** @psalm-suppress MixedArgumentTypeCoercion */
         return ($method->httpRequestMethod() === 'GET')
+            /** @phpstan-ignore-next-line */
             ? HttpRequest::get($endpointUrl, $parameters)
-            /** @todo: fix form body creating */
+            /** @phpstan-ignore-next-line */
             : HttpRequest::post($endpointUrl, ArtaxFormBody::fromParameters($parameters));
     }
 
     /**
-     * @psalm-suppress InvalidReturnType
-     * @template T
-     * @psalm-param class-string<T> $toClass
+     * @template T of object
+     * @psalm-param non-empty-string $json
+     * @psalm-param class-string<T>  $toClass
      * @psalm-return T
      *
      * @throws \RuntimeException
      */
-    private static function parseResponse(TelegramSerializer $serializer, string $json, string $toClass): object
+    private function parseResponse(string $json, string $toClass): object
     {
-        if ($toClass === SimpleSuccessResponse::class)
-        {
-            /** @psalm-suppress InvalidReturnStatement */
-            return new SimpleSuccessResponse();
-        }
+        /** @psalm-var class-string<T> $toClass $payload */
 
-        /**
-         * @psalm-var array{ok: bool, result: scalar|array}
-         */
         $payload = jsonDecode($json);
 
         if (isset($payload['ok']) && true === $payload['ok'])
         {
-            return $serializer->decode(
-                \is_scalar($payload['result'])
-                    ? ['value' => $payload['result']]
-                    : $payload['result'],
-                $toClass
+            /** @psalm-var array|scalar $result */
+            $result = $payload['result'] ?? [];
+
+            return $this->telegramHydrator->handle(
+                payload: \is_scalar($result)
+                    ? ['value' => $result]
+                    : $result,
+                toClass: $toClass
             );
         }
 
@@ -210,25 +212,43 @@ final class InteractionsProvider
 
     /**
      * Receive command endpoint URL.
+     *
+     * @return non-empty-string
      */
     private static function createCommandUrl(TelegramCredentials $credentials, TelegramMethod $method): string
     {
-        return \str_replace(
+        /**
+         * @noinspection PhpUnnecessaryLocalVariableInspection
+         *
+         * @psalm-var non-empty-string $url
+         */
+        $url = \str_replace(
             ['{token}', '{action}'],
             [$credentials->token, $method->methodName()],
             self::TELEGRAM_COMMAND_ENDPOINT_URL_PATTERN
         );
+
+        return $url;
     }
 
     /**
      * Receive file endpoint URL.
+     *
+     * @return non-empty-string
      */
     private static function createFileUrl(TelegramCredentials $credentials, string $filePath): string
     {
-        return \str_replace(
+        /**
+         * @noinspection PhpUnnecessaryLocalVariableInspection
+         *
+         * @psalm-var non-empty-string $url
+         */
+        $url = \str_replace(
             ['{token}', '{filePath}'],
             [$credentials->token, $filePath],
             self::TELEGRAM_FILE_ENDPOINT_URL_PATTERN
         );
+
+        return $url;
     }
 }

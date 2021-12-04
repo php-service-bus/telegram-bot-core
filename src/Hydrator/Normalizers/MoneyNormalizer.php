@@ -8,18 +8,15 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
-namespace ServiceBus\TelegramBot\Serializer\Normalizers;
+namespace ServiceBus\TelegramBot\Hydrator\Normalizers;
 
 use Money\Currency;
 use Money\Money;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * Money data normalizer.
- */
 final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function normalize($object, string $format = null, array $context = []): array
@@ -40,21 +37,17 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param array{currency: string, total_amount: string} $data
+     * @psalm-param array{currency: non-empty-string, total_amount: numeric-string} $data
      */
     public function denormalize($data, string $type, string $format = null, array $context = []): ?Money
     {
+        /** @phpstan-ignore-next-line **/
         if (isset($data['currency'], $data['total_amount']))
         {
-            try
-            {
-                return new Money($data['total_amount'], new Currency($data['currency']));
-            }
-            catch (\Throwable)
-            {
-            }
+            return new Money($data['total_amount'], new Currency($data['currency']));
         }
 
+        /** @phpstan-ignore-next-line **/
         return null;
     }
 

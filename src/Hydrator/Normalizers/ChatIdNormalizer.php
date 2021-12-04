@@ -8,41 +8,38 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
-namespace ServiceBus\TelegramBot\Serializer\Normalizers;
+namespace ServiceBus\TelegramBot\Hydrator\Normalizers;
 
-use ServiceBus\TelegramBot\Api\Type\Message\MessageId;
+use ServiceBus\TelegramBot\Api\Type\Chat\ChatId;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- *
- */
-final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInterface
+final class ChatIdNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function normalize($object, string $format = null, array $context = []): string
     {
-        /** @var MessageId $object */
+        /** @var ChatId $object */
 
         return $object->toString();
     }
 
     public function supportsNormalization($data, string $format = null): bool
     {
-        return $data instanceof MessageId;
+        return $data instanceof ChatId;
     }
 
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param  string|int $data
+     * @psalm-param string|int $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?MessageId
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?ChatId
     {
         if ((string) $data !== '')
         {
-            return new MessageId((string) $data);
+            return new ChatId((string) $data);
         }
 
         return null;
@@ -50,6 +47,6 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsDenormalization($data, string $type, string $format = null): bool
     {
-        return $type === MessageId::class;
+        return $type === ChatId::class;
     }
 }

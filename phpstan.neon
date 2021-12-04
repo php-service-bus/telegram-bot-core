@@ -1,10 +1,7 @@
 parameters:
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
-    ignoreErrors:
-        -
-            message: '#with type mixed is not subtype of native type object#'
-            path: %currentWorkingDirectory%/src
-        -
-            message: '#should return stati#'
-            path: %currentWorkingDirectory%/src
+	checkMissingIterableValueType: false
+	checkGenericClassInNonGenericObjectType: false
+	ignoreErrors:
+		- '#Cannot cast mixed to int#'
+		- '#Property .* is never written, only read#'
+		- '#Property .* is never read, only written#'

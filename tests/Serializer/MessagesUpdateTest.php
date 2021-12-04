@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -8,18 +10,18 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
-use function ServiceBus\Common\jsonDecode;
+use ServiceBus\TelegramBot\Hydrator\TelegramHydrator;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Chat\ChatType;
 use ServiceBus\TelegramBot\Api\Type\Common\UnixTime;
 use ServiceBus\TelegramBot\Api\Type\Message\Message;
 use ServiceBus\TelegramBot\Api\Type\Update;
 use ServiceBus\TelegramBot\Api\Type\User\User;
-use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
+use function ServiceBus\Common\jsonDecode;
 
 /**
  *
@@ -32,7 +34,7 @@ final class MessagesUpdateTest extends TestCase
     public function messageReceived(): void
     {
         /** @var Update $update */
-        $update = (new WrappedSymfonySerializer())->decode(
+        $update = TelegramHydrator::default()->handle(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/messages/messageReceived.json')),
             Update::class
         );

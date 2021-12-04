@@ -8,9 +8,9 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 0);
+declare(strict_types=0);
 
-namespace ServiceBus\TelegramBot\Serializer;
+namespace ServiceBus\TelegramBot\Hydrator;
 
 final class SerializationFailed extends \RuntimeException
 {

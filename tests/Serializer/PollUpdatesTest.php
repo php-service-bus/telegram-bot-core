@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * Telegram Bot API.
@@ -8,15 +10,15 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ServiceBus\TelegramBot\Tests\Serializer;
 
-use function ServiceBus\Common\jsonDecode;
+use ServiceBus\TelegramBot\Hydrator\TelegramHydrator;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Poll\Poll;
 use ServiceBus\TelegramBot\Api\Type\Update;
-use ServiceBus\TelegramBot\Serializer\WrappedSymfonySerializer;
+use function ServiceBus\Common\jsonDecode;
 
 /**
  *
@@ -29,7 +31,7 @@ final class PollUpdatesTest extends TestCase
     public function pollInfo(): void
     {
         /** @var Update $update */
-        $update = (new WrappedSymfonySerializer())->decode(
+        $update = TelegramHydrator::default()->handle(
             jsonDecode(\file_get_contents(__DIR__ . '/stubs/polls/vote.json')),
             Update::class
         );
