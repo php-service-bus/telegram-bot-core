@@ -37,16 +37,16 @@
     "php-service-bus/mutex": "v5.1.*",
     "php-service-bus/message-serializer": "v5.1.*",
     "moneyphp/money": "v4.0.*",
-    "symfony/validator": "v5.4.*",
-    "symfony/cache": "v5.4.*",
+    "symfony/validator": "v6.0.*",
+    "symfony/cache": "v6.0.*",
     "doctrine/annotations": "v1.13.*",
     "amphp/log": "v1.1.*"
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v5.1.*",
     "phpunit/phpunit": "v9.5.*",
-    "vimeo/psalm": "v4.13.*",
-    "phpstan/phpstan": "v1.2.*",
+    "vimeo/psalm": "v4.19.*",
+    "phpstan/phpstan": "v1.4.*",
     "boesing/psalm-plugin-stringf": "v1.1.*"
   },
   "prefer-stable": true,
@@ -61,6 +61,9 @@
     "pre-commit": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --allow-risky=yes && ./vendor/bin/psalm --config=psalm.xml && ./vendor/bin/phpstan analyse src --level 9 && ./vendor/bin/phpunit --configuration phpunit.xml --verbose"
   },
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
   }
 }

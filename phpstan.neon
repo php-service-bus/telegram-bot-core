@@ -2,6 +2,5 @@ parameters:
 	checkMissingIterableValueType: false
 	checkGenericClassInNonGenericObjectType: false
 	ignoreErrors:
-		- '#Cannot cast mixed to int#'
 		- '#Property .* is never written, only read#'
 		- '#Property .* is never read, only written#'
