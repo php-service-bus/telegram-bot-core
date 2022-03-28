@@ -43,6 +43,8 @@ final class MessageEntityType implements Enum
 
     private const TEXT_MENTION = 'text_mention';
 
+    private const MENTION = 'mention';
+
     private const LIST         = [
         self::HASH_TAG,
         self::CASH_TAG,
@@ -56,6 +58,7 @@ final class MessageEntityType implements Enum
         self::PRE,
         self::TEXT_LINK,
         self::TEXT_MENTION,
+        self::MENTION,
     ];
 
     /**
@@ -134,6 +137,11 @@ final class MessageEntityType implements Enum
     public static function textMention(): self
     {
         return new self(self::TEXT_MENTION);
+    }
+
+    public static function mention(): self
+    {
+        return new self(self::MENTION);
     }
 
     public function equals(MessageEntityType $type): bool
