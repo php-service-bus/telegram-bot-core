@@ -45,6 +45,12 @@ final class MessageEntityType implements Enum
 
     private const MENTION = 'mention';
 
+    private const UNDERLINE = 'underline';
+
+    private const SPOILER = 'spoiler';
+
+    private const STRIKETHROUGH = 'strikethrough';
+
     private const LIST         = [
         self::HASH_TAG,
         self::CASH_TAG,
@@ -59,6 +65,9 @@ final class MessageEntityType implements Enum
         self::TEXT_LINK,
         self::TEXT_MENTION,
         self::MENTION,
+        self::UNDERLINE,
+        self::SPOILER,
+        self::STRIKETHROUGH,
     ];
 
     /**
@@ -142,6 +151,21 @@ final class MessageEntityType implements Enum
     public static function mention(): self
     {
         return new self(self::MENTION);
+    }
+
+    public static function underline(): self
+    {
+        return new self(self::UNDERLINE);
+    }
+
+    public static function spoiler(): self
+    {
+        return new self(self::SPOILER);
+    }
+
+    public static function strikethrough(): self
+    {
+        return new self(self::STRIKETHROUGH);
     }
 
     public function equals(MessageEntityType $type): bool
