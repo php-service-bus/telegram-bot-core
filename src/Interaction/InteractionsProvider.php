@@ -134,6 +134,12 @@ final class InteractionsProvider
                         );
                     }
 
+                    if ($response->getStatausCode() === 400)
+                    {
+                        throw new \RuntimeException(jsonDecode((string) $response->getBody())['description']
+                            ?? \sprintf('Method %s has invalid parameters', $method->methodName()));
+                    }
+
                     if ($response->getStatusCode() === 404)
                     {
                         throw new \RuntimeException(\sprintf('Method %s not exists', $method->methodName()));
