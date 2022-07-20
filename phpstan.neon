@@ -1,7 +1,5 @@
 parameters:
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
-    ignoreErrors:
-        -
-            message: '#with type mixed is not subtype of native type object#'
-            path: %currentWorkingDirectory%/src
+	checkMissingIterableValueType: false
+	checkGenericClassInNonGenericObjectType: false
+	ignoreErrors:
+		- '#with type mixed is not subtype of native type object#'
