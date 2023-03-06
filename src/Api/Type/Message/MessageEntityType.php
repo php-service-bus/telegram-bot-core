@@ -45,6 +45,9 @@ final class MessageEntityType implements Enum
 
     private const MENTION = 'mention';
 
+
+    private const CUSTOM_EMOJI = 'custom_emoji';
+
     private const UNDERLINE = 'underline';
 
     private const SPOILER = 'spoiler';
@@ -65,6 +68,7 @@ final class MessageEntityType implements Enum
         self::TEXT_LINK,
         self::TEXT_MENTION,
         self::MENTION,
+        self::CUSTOM_EMOJI,
         self::UNDERLINE,
         self::SPOILER,
         self::STRIKETHROUGH
@@ -148,6 +152,11 @@ final class MessageEntityType implements Enum
     public static function mention(): self
     {
         return new self(self::MENTION);
+    }
+
+    public static function customEmoji(): self
+    {
+        return new self(self::CUSTOM_EMOJI);
     }
 
     public static function underline(): self
