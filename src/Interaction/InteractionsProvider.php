@@ -119,11 +119,10 @@ final class InteractionsProvider
                 {
                     /** @var \GuzzleHttp\Psr7\Response $response */
                     $response = yield $this->httpClient->execute($httpRequest);
+                    $responseBody = (string) $response->getBody();
 
                     if ($response->getStatusCode() === 200)
                     {
-                        $responseBody = (string) $response->getBody();
-
                         if ($responseBody === '')
                         {
                             throw new \RuntimeException(
@@ -136,6 +135,17 @@ final class InteractionsProvider
                                 json: $responseBody,
                                 toClass: $method->typeClass()
                             )
+                        );
+                    }
+
+                    if ($response->getStatusCode() === 400)
+                    {
+                        /** @psalm-var non-empty-string $responseBody */
+                        $responseDetails = jsonDecode($responseBody);
+
+                        throw new \RuntimeException(
+                            $responseDetails['description']
+                            ?? \sprintf('Method %s has invalid parameters', $method->methodName())
                         );
                     }
 

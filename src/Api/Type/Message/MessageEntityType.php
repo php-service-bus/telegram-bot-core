@@ -45,7 +45,14 @@ final class MessageEntityType implements Enum
 
     private const MENTION = 'mention';
 
+
     private const CUSTOM_EMOJI = 'custom_emoji';
+
+    private const UNDERLINE = 'underline';
+
+    private const SPOILER = 'spoiler';
+
+    private const STRIKETHROUGH = 'strikethrough';
 
     private const LIST         = [
         self::HASH_TAG,
@@ -62,6 +69,9 @@ final class MessageEntityType implements Enum
         self::TEXT_MENTION,
         self::MENTION,
         self::CUSTOM_EMOJI,
+        self::UNDERLINE,
+        self::SPOILER,
+        self::STRIKETHROUGH
     ];
 
     /**
@@ -147,6 +157,21 @@ final class MessageEntityType implements Enum
     public static function customEmoji(): self
     {
         return new self(self::CUSTOM_EMOJI);
+    }
+
+    public static function underline(): self
+    {
+        return new self(self::UNDERLINE);
+    }
+
+    public static function spoiler(): self
+    {
+        return new self(self::SPOILER);
+    }
+
+    public static function strikethrough(): self
+    {
+        return new self(self::STRIKETHROUGH);
     }
 
     public function equals(MessageEntityType $type): bool
