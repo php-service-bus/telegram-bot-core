@@ -45,6 +45,8 @@ final class MessageEntityType implements Enum
 
     private const MENTION = 'mention';
 
+    private const CUSTOM_EMOJI = 'custom_emoji';
+
     private const LIST         = [
         self::HASH_TAG,
         self::CASH_TAG,
@@ -59,6 +61,7 @@ final class MessageEntityType implements Enum
         self::TEXT_LINK,
         self::TEXT_MENTION,
         self::MENTION,
+        self::CUSTOM_EMOJI,
     ];
 
     /**
@@ -139,6 +142,11 @@ final class MessageEntityType implements Enum
     public static function mention(): self
     {
         return new self(self::MENTION);
+    }
+
+    public static function customEmoji(): self
+    {
+        return new self(self::CUSTOM_EMOJI);
     }
 
     public function equals(MessageEntityType $type): bool
