@@ -54,6 +54,8 @@ final class MessageEntityType implements Enum
 
     private const STRIKETHROUGH = 'strikethrough';
 
+    private const BLOCKQUOTE = 'blockquote';
+
     private const LIST         = [
         self::HASH_TAG,
         self::CASH_TAG,
@@ -71,7 +73,8 @@ final class MessageEntityType implements Enum
         self::CUSTOM_EMOJI,
         self::UNDERLINE,
         self::SPOILER,
-        self::STRIKETHROUGH
+        self::STRIKETHROUGH,
+        self::BLOCKQUOTE
     ];
 
     /**
@@ -172,6 +175,11 @@ final class MessageEntityType implements Enum
     public static function strikethrough(): self
     {
         return new self(self::STRIKETHROUGH);
+    }
+
+    public static function blockquote(): self
+    {
+        return new self(self::BLOCKQUOTE);
     }
 
     public function equals(MessageEntityType $type): bool
