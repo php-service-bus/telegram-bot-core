@@ -80,8 +80,7 @@ final class SendVideoNote extends SendEntity
      */
     public static function withUploadedFile(ChatId $chatId, string $fileId): self
     {
-        if ($fileId === '')
-        {
+        if ($fileId === '') {
             throw new \InvalidArgumentException('Video note file_id to send must be specified');
         }
 
@@ -118,8 +117,7 @@ final class SendVideoNote extends SendEntity
      */
     public function useUploadedThumb(string $thumbFileId): self
     {
-        if ($thumbFileId === '')
-        {
+        if ($thumbFileId === '') {
             throw new \InvalidArgumentException('Thumb file_id must be specified');
         }
 

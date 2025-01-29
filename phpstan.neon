@@ -1,6 +1,7 @@
 parameters:
-	checkMissingIterableValueType: false
-	checkGenericClassInNonGenericObjectType: false
-	ignoreErrors:
-		- '#Property .* is never written, only read#'
-		- '#Property .* is never read, only written#'
+    level: 9
+    ignoreErrors:
+         - identifier: missingType.iterableValue
+         - identifier: property.onlyRead
+         - identifier: property.onlyWritten
+         - identifier: property.readOnlyByPhpDocDefaultValue

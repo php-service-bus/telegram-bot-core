@@ -53,18 +53,14 @@ final class TelegramHydrator
      */
     public function handle(array $payload, string $toClass): object
     {
-        try
-        {
+        try {
             /** @psalm-suppress DocblockTypeContradiction */
-            if (\is_a($toClass, \IteratorAggregate::class, true))
-            {
+            if (\is_a($toClass, \IteratorAggregate::class, true)) {
                 $payload = ['list' => $payload];
             }
 
             return $this->denormalizer->handle($payload, $toClass);
-        }
-        catch (\Throwable $throwable)
-        {
+        } catch (\Throwable $throwable) {
             throw new SerializationFailed($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
         }
     }

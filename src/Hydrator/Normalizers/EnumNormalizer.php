@@ -18,14 +18,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = []): string
+    public function normalize(mixed $data, string $format = null, array $context = []): string
     {
-        /** @var Enum $object */
-
-        return $object->toString();
+        /** @var Enum $data */
+        return $data->toString();
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof Enum;
     }
@@ -33,30 +32,30 @@ final class EnumNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param string $data
+     * @psalm-param string|null $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?Enum
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): ?Enum
     {
-        if ($data !== '')
-        {
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             * @noinspection PhpUnnecessaryLocalVariableInspection
-             *
-             * @psalm-var class-string<\ServiceBus\TelegramBot\Api\Type\Enum> $type
-             *
-             * @var Enum                                                      $enum
-             */
-            $enum = $type::create($data);
-
-            return $enum;
+        if ((string) $data !== '') {
+            /** @psalm-var class-string<Enum> $type */
+            return $type::create((string) $data);
         }
 
         return null;
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return \is_a($type, Enum::class, true);
+        return \is_a($type, Enum::class, true) && (is_string($data) || $data === null);
+    }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            Enum::class => false
+        ];
     }
 }

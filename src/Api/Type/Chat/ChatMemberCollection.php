@@ -16,6 +16,8 @@ namespace ServiceBus\TelegramBot\Api\Type\Chat;
  * Chat members collection.
  *
  * @psalm-immutable
+ *
+ * @implements \IteratorAggregate<array-key, ChatMember>
  */
 final class ChatMemberCollection implements \IteratorAggregate
 {

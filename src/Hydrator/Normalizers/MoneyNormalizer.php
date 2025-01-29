@@ -19,17 +19,16 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = []): array
+    public function normalize(mixed $data, string $format = null, array $context = []): array
     {
-        /** @var Money $object */
-
+        /** @var Money $data */
         return [
-            'currency'     => $object->getCurrency()->getCode(),
-            'total_amount' => $object->getAmount(),
+            'currency'     => $data->getCurrency()->getCode(),
+            'total_amount' => $data->getAmount(),
         ];
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof Money;
     }
@@ -37,22 +36,29 @@ final class MoneyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param array{currency: non-empty-string, total_amount: numeric-string} $data
+     * @psalm-param array{currency?: non-empty-string, total_amount?: numeric-string}|null $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?Money
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): ?Money
     {
-        /** @phpstan-ignore-next-line **/
-        if (isset($data['currency'], $data['total_amount']))
-        {
+        if (is_array($data) && isset($data['currency'], $data['total_amount'])) {
             return new Money($data['total_amount'], new Currency($data['currency']));
         }
 
-        /** @phpstan-ignore-next-line **/
         return null;
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return $type === Money::class;
+        return $type === Money::class && (is_array($data) || $data === null);
+    }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            Money::class => false
+        ];
     }
 }

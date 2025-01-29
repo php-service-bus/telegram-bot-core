@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-        useDocblockTypes="true"
+        findUnusedCode="false"
         useDocblockPropertyTypes="true"
         strictBinaryOperands="true"
         findUnusedPsalmSuppress="true"
@@ -21,7 +21,4 @@
         <PropertyNotSetInConstructor errorLevel="suppress"/>
         <UnnecessaryVarAnnotation errorLevel="suppress"/>
     </issueHandlers>
-    <plugins>
-        <pluginClass class="Boesing\PsalmPluginStringf\Plugin"/>
-    </plugins>
 </psalm>

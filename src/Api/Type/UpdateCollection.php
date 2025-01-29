@@ -18,6 +18,8 @@ namespace ServiceBus\TelegramBot\Api\Type;
  * @see Update
  *
  * @psalm-immutable
+ *
+ * @implements \IteratorAggregate<array-key, Update>
  */
 final class UpdateCollection implements \IteratorAggregate
 {

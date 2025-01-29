@@ -70,8 +70,7 @@ final class SendVoice extends SendEntity
      */
     public static function withUploadedFile(ChatId $chatId, string $fileId, ?string $caption): self
     {
-        if ($fileId === '')
-        {
+        if ($fileId === '') {
             throw new \InvalidArgumentException('Voice file_id to send must be specified');
         }
 

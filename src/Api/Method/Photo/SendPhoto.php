@@ -70,8 +70,7 @@ final class SendPhoto extends SendEntity
      */
     public static function withUploadedFile(ChatId $chatId, string $fileId, ?string $caption = null): self
     {
-        if ($fileId === '')
-        {
+        if ($fileId === '') {
             throw new \InvalidArgumentException('Photo file_id to send must be specified');
         }
 

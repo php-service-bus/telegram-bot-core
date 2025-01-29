@@ -34,15 +34,13 @@ final class TelegramBot
      */
     public function __construct(string $username)
     {
-        if ($username === '')
-        {
+        if ($username === '') {
             throw new \InvalidArgumentException('TelegramBot username can\'t be empty');
         }
 
         $username = \sprintf('@%s', \ltrim($username, '@'));
 
-        if (\strtolower(\substr($username, -3)) !== 'bot')
-        {
+        if (\strtolower(\substr($username, -3)) !== 'bot') {
             throw new \InvalidArgumentException(
                 'TelegramBot username must end in `TelegramBot` (Like this, for example: TetrisBot or tetris_bot)'
             );

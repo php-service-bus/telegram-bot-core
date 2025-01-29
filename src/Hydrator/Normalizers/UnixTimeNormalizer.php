@@ -18,14 +18,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = []): int
+    public function normalize(mixed $data, string $format = null, array $context = []): int
     {
-        /** @var UnixTime $object */
-
-        return $object->extract();
+        /** @var UnixTime $data */
+        return $data->extract();
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof UnixTime;
     }
@@ -35,17 +34,26 @@ final class UnixTimeNormalizer implements NormalizerInterface, DenormalizerInter
      *
      * @psalm-param  int|null $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?UnixTime
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): ?UnixTime
     {
-        if (null !== $data)
-        {
+        if (null !== $data) {
             return new UnixTime($data);
         }
 
         return null;
     }
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return $type === UnixTime::class;
+        return $type === UnixTime::class && (is_int($data) || $data === null);
+    }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            UnixTime::class => false
+        ];
     }
 }

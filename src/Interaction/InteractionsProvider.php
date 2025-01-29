@@ -24,6 +24,7 @@ use ServiceBus\TelegramBot\Hydrator\SerializationFailed;
 use ServiceBus\TelegramBot\TelegramCredentials;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
+
 use function Amp\call;
 use function ServiceBus\Common\jsonDecode;
 
@@ -52,7 +53,7 @@ final class InteractionsProvider
     {
         $this->httpClient       = $httpClient ?? ArtaxHttpClient::build();
         $this->telegramHydrator = $telegramHydrator ?? TelegramHydrator::default();
-        $this->validator        = (new ValidatorBuilder())->enableAnnotationMapping()->getValidator();
+        $this->validator        = (new ValidatorBuilder())->enableAttributeMapping()->getValidator();
     }
 
     /**
@@ -62,8 +63,7 @@ final class InteractionsProvider
      */
     public function call(TelegramMethod $method, TelegramCredentials $credentials): Promise
     {
-        if ($method instanceof DownloadFile)
-        {
+        if ($method instanceof DownloadFile) {
             return $this->downloadFile($method, $credentials);
         }
 
@@ -78,18 +78,14 @@ final class InteractionsProvider
     private function downloadFile(DownloadFile $method, TelegramCredentials $credentials): Promise
     {
         return call(
-            function () use ($method, $credentials): \Generator
-            {
-                try
-                {
+            function () use ($method, $credentials): \Generator {
+                try {
                     $url = self::createFileUrl($credentials, $method->filePath);
 
                     yield $this->httpClient->download($url, $method->toDirectory, $method->withName);
 
                     return Result\Success::create(new SimpleSuccessResponse());
-                }
-                catch (\Throwable $throwable)
-                {
+                } catch (\Throwable $throwable) {
                     return Result\Fail::error($throwable->getMessage());
                 }
             }
@@ -104,27 +100,22 @@ final class InteractionsProvider
     private function callCommand(TelegramMethod $method, TelegramCredentials $credentials): Promise
     {
         return call(
-            function () use ($method, $credentials): \Generator
-            {
+            function () use ($method, $credentials): \Generator {
                 $violations = $this->validator->validate($method);
 
-                if ($violations->count() !== 0)
-                {
+                if ($violations->count() !== 0) {
                     return Result\Fail::validationFailed($violations);
                 }
 
                 $httpRequest = self::createRequest($credentials, $method);
 
-                try
-                {
+                try {
                     /** @var \GuzzleHttp\Psr7\Response $response */
                     $response = yield $this->httpClient->execute($httpRequest);
                     $responseBody = (string) $response->getBody();
 
-                    if ($response->getStatusCode() === 200)
-                    {
-                        if ($responseBody === '')
-                        {
+                    if ($response->getStatusCode() === 200) {
+                        if ($responseBody === '') {
                             throw new \RuntimeException(
                                 \sprintf('Unexpected empty response body. Action: %s', get_class($method))
                             );
@@ -138,8 +129,7 @@ final class InteractionsProvider
                         );
                     }
 
-                    if ($response->getStatusCode() === 400)
-                    {
+                    if ($response->getStatusCode() === 400) {
                         /** @psalm-var non-empty-string $responseBody */
                         $responseDetails = jsonDecode($responseBody);
 
@@ -149,24 +139,19 @@ final class InteractionsProvider
                         );
                     }
 
-                    if ($response->getStatusCode() === 404)
-                    {
+                    if ($response->getStatusCode() === 404) {
                         throw new \RuntimeException(\sprintf('Method %s not exists', $method->methodName()));
                     }
 
                     throw new \RuntimeException(
                         \sprintf('Incorrect server response code: %d', $response->getStatusCode())
                     );
-                }
-                catch (SerializationFailed $exception)
-                {
+                } catch (SerializationFailed $exception) {
                     return Result\Fail::error(\sprintf(
                         'Unserialize message failed: %s',
                         $exception->getMessage()
                     ));
-                }
-                catch (\Throwable $throwable)
-                {
+                } catch (\Throwable $throwable) {
                     return Result\Fail::error($throwable->getMessage());
                 }
             }
@@ -184,9 +169,7 @@ final class InteractionsProvider
 
         /** @psalm-suppress MixedArgumentTypeCoercion */
         return ($method->httpRequestMethod() === 'GET')
-            /** @phpstan-ignore-next-line */
             ? HttpRequest::get($endpointUrl, $parameters)
-            /** @phpstan-ignore-next-line */
             : HttpRequest::post($endpointUrl, ArtaxFormBody::fromParameters($parameters));
     }
 
@@ -204,8 +187,7 @@ final class InteractionsProvider
 
         $payload = jsonDecode($json);
 
-        if (isset($payload['ok']) && true === $payload['ok'])
-        {
+        if (isset($payload['ok']) && true === $payload['ok']) {
             /** @psalm-var array|scalar $result */
             $result = $payload['result'] ?? [];
 

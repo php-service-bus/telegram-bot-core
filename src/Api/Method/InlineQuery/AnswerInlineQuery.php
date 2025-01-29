@@ -15,6 +15,7 @@ namespace ServiceBus\TelegramBot\Api\Method\InlineQuery;
 use ServiceBus\TelegramBot\Api\Type\InlineQueryResult\InlineQueryResult;
 use ServiceBus\TelegramBot\Api\Type\SimpleSuccessResponse;
 use ServiceBus\TelegramBot\Interaction\TelegramMethod;
+
 use function ServiceBus\Common\jsonEncode;
 
 /**

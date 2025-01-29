@@ -18,14 +18,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = []): string
+    public function normalize(mixed $data, string $format = null, array $context = []): string
     {
-        /** @var MessageId $object */
-
-        return $object->toString();
+        /** @var MessageId $data */
+        return $data->toString();
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof MessageId;
     }
@@ -33,20 +32,29 @@ final class MessageIdNormalizer implements DenormalizerInterface, NormalizerInte
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param  string|int $data
+     * @psalm-param  string|int|null $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?MessageId
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): ?MessageId
     {
-        if ((string) $data !== '')
-        {
+        if ((string) $data !== '') {
             return new MessageId((string) $data);
         }
 
         return null;
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return $type === MessageId::class;
+        return $type === MessageId::class && (is_string($data) || is_int($data) || $data === null);
+    }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            MessageId::class => false
+        ];
     }
 }

@@ -18,14 +18,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class UserIdNormalizer implements DenormalizerInterface, NormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = []): string
+    public function normalize(mixed $data, string $format = null, array $context = []): string
     {
-        /** @var UserId $object */
-
-        return $object->toString();
+        /** @var UserId $data */
+        return $data->toString();
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof UserId;
     }
@@ -33,20 +32,29 @@ final class UserIdNormalizer implements DenormalizerInterface, NormalizerInterfa
     /**
      * @psalm-suppress MoreSpecificImplementedParamType
      *
-     * @psalm-param string|int $data
+     * @psalm-param string|int|null $data
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?UserId
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): ?UserId
     {
-        if ((string) $data !== '')
-        {
+        if ((string) $data !== '') {
             return new UserId((string) $data);
         }
 
         return null;
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return $type === UserId::class;
+        return $type === UserId::class && (is_string($data) || is_int($data) || $data === null);
+    }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            UserId::class => false
+        ];
     }
 }

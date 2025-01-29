@@ -108,8 +108,7 @@ final class SendAudio extends SendEntity
         ?string $title = null,
         ?string $caption = null
     ): self {
-        if ($fileId === '')
-        {
+        if ($fileId === '') {
             throw new \InvalidArgumentException('Audio file_id to send must be specified');
         }
 
@@ -148,8 +147,7 @@ final class SendAudio extends SendEntity
      */
     public function useUploadedThumb(string $thumbFileId): self
     {
-        if ($thumbFileId === '')
-        {
+        if ($thumbFileId === '') {
             throw new \InvalidArgumentException('Thumb file_id must be specified');
         }
 

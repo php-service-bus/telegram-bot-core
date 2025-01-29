@@ -18,6 +18,7 @@ use ServiceBus\TelegramBot\Hydrator\TelegramHydrator;
 use PHPUnit\Framework\TestCase;
 use ServiceBus\TelegramBot\Api\Type\Poll\Poll;
 use ServiceBus\TelegramBot\Api\Type\Update;
+
 use function ServiceBus\Common\jsonDecode;
 
 /**

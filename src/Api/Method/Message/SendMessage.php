@@ -27,10 +27,9 @@ final class SendMessage extends SendEntity
     /**
      * Text of the message to be sent.
      *
-     * @Assert\NotBlank()
-     *
      * @var string
      */
+    #[Assert\NotBlank]
     private $text;
 
     /**

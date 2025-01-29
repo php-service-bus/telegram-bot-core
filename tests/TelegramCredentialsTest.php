@@ -49,7 +49,7 @@ final class TelegramCredentialsTest extends TestCase
     {
         self::assertSame(
             '25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o',
-            (new  TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o'))->token
+            (new TelegramCredentials('25896951:AAGB5PnXUTW-SuI4CIe742FKcTvPEwP82_o'))->token
         );
     }
 }

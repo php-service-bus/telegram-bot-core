@@ -53,8 +53,7 @@ final class Fail implements Result
         $violations = [];
 
         /** @var \Symfony\Component\Validator\ConstraintViolation $violation */
-        foreach ($violationList as $violation)
-        {
+        foreach ($violationList as $violation) {
             $violations[$violation->getPropertyPath()][] = $violation->getMessage();
         }
 

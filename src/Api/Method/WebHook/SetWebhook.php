@@ -54,8 +54,6 @@ final class SetWebhook implements TelegramMethod
     /**
      * Certificate file path.
      *
-     * @psalm-var non-empty-string|null
-     *
      * @var string|null
      */
     private $certificateFilePath;
@@ -82,10 +80,9 @@ final class SetWebhook implements TelegramMethod
     private $allowedUpdates = self::DEFAULT_ALLOWED_UPDATES;
 
     /**
-     * @psalm-param non-empty-string      $url
-     * @psalm-param non-empty-string|null $certificateFilePath
+     * @psalm-param non-empty-string $url
      */
-    public static function create(string $url, string $certificateFilePath = null): self
+    public static function create(string $url, ?string $certificateFilePath = null): self
     {
         $self = new self();
 
@@ -122,7 +119,7 @@ final class SetWebhook implements TelegramMethod
     {
         return \array_filter([
             'url'             => $this->url,
-            'certificate'     => !empty($this->certificateFilePath)
+            'certificate'     => $this->certificateFilePath !== null && $this->certificateFilePath !== ''
                 ? new InputFilePath($this->certificateFilePath)
                 : null,
             'max_connections' => $this->maxConnections,

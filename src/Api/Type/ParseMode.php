@@ -34,8 +34,7 @@ final class ParseMode implements Enum
 
     public static function create(string $value): static
     {
-        if (\in_array($value, self::LIST, true) === false)
-        {
+        if (\in_array($value, self::LIST, true) === false) {
             throw new \InvalidArgumentException(\sprintf('Incorrect parse mode type: %s', $value));
         }
 

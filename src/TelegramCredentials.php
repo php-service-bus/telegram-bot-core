@@ -36,13 +36,11 @@ final class TelegramCredentials
      */
     public function __construct(string $token)
     {
-        if ($token === '')
-        {
+        if ($token === '') {
             throw new \InvalidArgumentException('API token can\'t be empty');
         }
 
-        if ((bool) \preg_match('/(\d+):[\w\-]+/', $token) === false)
-        {
+        if ((bool) \preg_match('/(\d+):[\w\-]+/', $token) === false) {
             throw new \InvalidArgumentException('Invalid bot api token (via regular expression "/(\d+)\:[\w\-]+/")');
         }
 
