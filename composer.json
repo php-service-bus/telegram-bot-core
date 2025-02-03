@@ -32,10 +32,10 @@
   "require": {
     "php": ">=8.2",
     "ext-json": "*",
-    "php-service-bus/common": "v5.2.x-dev",
-    "php-service-bus/http-client": "v5.2.x-dev",
-    "php-service-bus/mutex": "v5.2.x-dev",
-    "php-service-bus/message-serializer": "v5.2.x-dev",
+    "php-service-bus/common": "v5.2.*",
+    "php-service-bus/http-client": "v5.2.*",
+    "php-service-bus/mutex": "v5.2.*",
+    "php-service-bus/message-serializer": "v5.2.*",
     "moneyphp/money": "^v4.4",
     "symfony/validator": "^6.3 || ^7.0",
     "symfony/cache": "^6.3 || ^7.0",
@@ -43,7 +43,7 @@
     "amphp/log": "v1.2.*"
   },
   "require-dev": {
-    "php-service-bus/code-style-config": "v5.2.x-dev",
+    "php-service-bus/code-style-config": "v5.2.*",
     "phpunit/phpunit": "^10.0 || ^11.0",
     "vimeo/psalm": "^4.30 || ^5.4",
     "phpstan/phpstan": "^1.12 || ^2.0"
